@@ -5,7 +5,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $query = "SELECT * FROM user WHERE email ='$email' AND password = '$password' LIMIT 1;";
 
-$conn->query($query) or die($conn->errno);
+$res = $conn->query($query) or die($conn->errno);
 
 $row = $res->fetch_assoc();
 
