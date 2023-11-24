@@ -2,9 +2,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$db = "expensesGraphDB";
+$db = "expensesgraphdb";
 
-$conn = new mysqli($host, $user, $password, $db);
-
-
+$conn = new mysqli($host, $user, $password, $db) or die($conn->connect_error);
 ?>
