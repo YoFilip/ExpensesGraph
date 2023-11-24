@@ -1,0 +1,13 @@
+body{
+
+
+}
+#chart ,#myChart{
+    width: auto;
+    height: 500px;
+    display: flex;
+    margin: auto;
+}
+h1{
+    text-align: center;
+}
