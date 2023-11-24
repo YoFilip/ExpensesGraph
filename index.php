@@ -43,6 +43,18 @@
                 </div>
             </div>
     </section>
+
+    <section id="main">
+        <div class="elm_header">
+            <h1>element 1</h1></h1>
+        </div>
+        <div class="elm_header">
+            <h1>element 1</h1></h1>
+        </div>
+        <div class="elm_header">
+            <h1>element 1</h1></h1>
+        </div>
+    </section>
     
 </body>
 <script src="./js/menu.js"></script>
