@@ -10,12 +10,16 @@ const dropdownContents = document.querySelectorAll(".dropdown-content");
 const downArrows = document.querySelectorAll(".dropdown-btn .bx-chevron-down");
 const upArrows = document.querySelectorAll(".dropdown-btn .bx-chevron-up");
 
+const mainBox = document.getElementById("main");
+
 if (!isHomePage) {
 	expandSidebar();
 }
 
 btn_menu.addEventListener("click", function () {
 	toggleSidebar();
+
+
 });
 
 function expandSidebar() {
@@ -38,8 +42,11 @@ function toggleSidebar() {
 function changeMenuIcon() {
 	if (side_bar.classList.contains("expand")) {
 		btn_menu.classList.replace("bx-menu", "bx-menu-alt-right");
+		mainBox.style.marginLeft="250px";
 	} else {
+		mainBox.style.marginLeft="78px";
 		btn_menu.classList.replace("bx-menu-alt-right", "bx-menu");
+		
 	}
 }
 
@@ -78,11 +85,14 @@ function closeAllDropdowns() {
 
 	isDropdownOpen = false;
 	localStorage.setItem("dropdownOpen", "false");
+	
+
 }
 
 function toggleDropdown(dropdownContent, listId) {
 	if (dropdownContent.style.display === "block") {
 		closeAllDropdowns();
+
 	} else {
 		closeAllDropdowns();
 		dropdownContent.style.display = "block";
@@ -105,10 +115,12 @@ document.querySelectorAll(".dropdown-content a").forEach((link) => {
 
 if (isHomePage) {
 	window.addEventListener("beforeunload", function () {
+
 		closeAllDropdowns();
 		side_bar.classList.remove("expand");
 		isSidebarExpanded = false;
 		localStorage.setItem("sidebarExpanded", "false");
+		
 		changeMenuIcon();
 	});
 }

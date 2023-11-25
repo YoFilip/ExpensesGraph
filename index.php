@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +11,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
- 
+    
+    <!--Charts.js-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@1.0.0/dist/chartjs-plugin-zoom.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+
+
 </head>
+
 <body>
 
-<section class="sidebar">
-    <div class="nav-header">
+    <section class="sidebar">
+        <div class="nav-header">
             <p class="logo">TU <span>NAZWA</span> </p>
             <i class="bx bx-menu btn-menu"></i>
         </div>
@@ -44,18 +52,22 @@
             </div>
     </section>
 
-    <section id="main">
-        <div class="elm_header">
-            <h1>element 1</h1></h1>
+    <div id="main">
+        <div class="item">
+        <canvas id="myChart" ></canvas>
         </div>
-        <div class="elm_header">
-            <h1>element 1</h1></h1>
+        <div class="item">
+            <h1>Element 2</h1>
         </div>
-        <div class="elm_header">
-            <h1>element 1</h1></h1>
+        <div class="item">
+            <h1>Element 3</h1>
         </div>
-    </section>
-    
+        <div class="item">
+            <h1>Element 4</h1>
+        </div>
+    </div>
+
 </body>
 <script src="./js/menu.js"></script>
+<script src="./js/charts.js"></script>
 </html>

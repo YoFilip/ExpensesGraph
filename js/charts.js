@@ -31,10 +31,19 @@ new Chart(document.getElementById("myChart"), {
         ]
     },
     options: {
+        responsive: true,
         title: {
             display: true,
             text: '',
-
-        }
+        },
+        pan: {
+            enabled: true,
+            mode: 'x',
+         },
+         zoom: {
+            enabled: true,
+            mode: 'x',
+         }
     }
+    
 });
