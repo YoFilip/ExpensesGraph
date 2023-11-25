@@ -100,10 +100,12 @@ $conn->close();
 
         let  color = "#";
 
-        while(color.length < 8)
+        while(color.length < 7)
         {
             color += options[Math.floor(Math.random() * 16)]
         }
+        console.log(color);
+        return color;
     }
 
 
