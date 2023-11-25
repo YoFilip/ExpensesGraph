@@ -74,7 +74,7 @@ $conn->close();
         var dataset = {
             data: [10,20,30,40],
             label: categories[i], 
-            borderColor: colors[i], 
+            borderColor: getRandomColor(), 
             fill: false
         };
         datasets.push(dataset);
@@ -93,6 +93,18 @@ $conn->close();
             }
         }
     });
+
+    function getRandomColor()
+    {
+        let options = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+
+        let  color = "#";
+
+        while(color.length < 8)
+        {
+            color += options[Math.floor(Math.random() * 16)]
+        }
+    }
 
 
     // var categories = <?php// echo json_encode($categories); ?>;
