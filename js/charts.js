@@ -36,14 +36,25 @@ new Chart(document.getElementById("myChart"), {
             display: true,
             text: '',
         },
-        pan: {
-            enabled: true,
-            mode: 'x',
-         },
-         zoom: {
-            enabled: true,
-            mode: 'x',
-         }
+        plugins: {
+            zoom: {
+                pan: {
+                    enabled: true, 
+                    mode: 'xy', 
+                
+                },
+              zoom: {
+                wheel: {
+                  enabled: true,
+                },
+                pinch: {
+                  enabled: true
+                },
+                mode: 'xy',
+              }
+            }
+          }
+        
     }
     
 });
