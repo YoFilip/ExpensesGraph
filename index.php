@@ -17,6 +17,12 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@1.0.0/dist/chartjs-plugin-zoom.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.0.0/chartjs-plugin-zoom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-moment/1.0.0/chartjs-adapter-moment.min.js"></script>
+
 
 </head>
 
@@ -53,8 +59,9 @@
     </section>
 
     <div id="main">
+        
         <div class="item">
-        <canvas id="myChart" ></canvas>
+        <h1>Element 1</h1>
         </div>
         <div class="item">
             <h1>Element 2</h1>
@@ -64,6 +71,11 @@
         </div>
         <div class="item">
             <h1>Element 4</h1>
+        </div>
+        <div class="item">
+        <canvas id="myChart" width="300" height="100" ></canvas>
+        </div>
+        <div class="item">
         </div>
     </div>
 

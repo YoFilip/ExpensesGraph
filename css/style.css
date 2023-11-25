@@ -1,5 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@300&display=swap");
+
+:root {
+	--color-background: #e71515;
+	--color-white: #fff;
+	--color-black: #000;
+	--color-bg: #ecf2ff;
+	--color-hover: rgb(19, 87, 223);
+	--color-border: #000;
+}
+
+.dark-mode {
+	--color-background: #212121;
+	--color-white: #212121;
+	--color-black: #ffffff;
+	--color-bg: #fff;
+	--color-hover: rgb(19, 87, 223);
+		--color-border: #000;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -9,21 +28,10 @@
 	font-weight: bold;
 }
 
-:root {
-	--color-white: #fff;
-	--color-black: #000;
-	--color-bg: #ecf2ff;
-	--color-hover: rgb(19, 87, 223);
-	--color-border: #000;
+body{
+	background: var(--color-background);
 }
 
-.dark-mode {
-	--color-white: #212121;
-	--color-black: #ffffff;
-	--color-bg: #fff;
-	--color-hover: rgb(19, 87, 223);
-		--color-border: #000;
-}
 
 /* ****************************************************************************************
                                 SIDE BAR STYLES
@@ -281,50 +289,80 @@ ul {
 }
 
 #main > *:nth-child(1){ 
-	flex: 1 1 50%;
-	height: 40vh;
+	flex: 1 1 10%;
+	height: 20vh;
 	border-radius: 5px;
 	border: 2px solid var(--color-border);
-	margin: 10px;
-	min-width: 60ch;
-	margin-top: 50px;
+	margin: 20px;
+	min-width: 30ch;
+	margin-top: 100px;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 #main > *:nth-child(2){ 
-	flex: 1 1 30%;
-	height: 40vh;
+	flex: 1 1 10%;
+	height: 20vh;
 	border-radius: 5px;
 	border: 2px solid var(--color-border);
-	margin: 10px;
-	min-width: 60ch;
-	margin-top: 50px;
+	margin: 20px;
+	min-width: 30ch;
+	margin-top: 100px;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 #main > *:nth-child(3){ 
-	flex: 1 1 30%;
-	height: 40vh;
+	flex: 1 1 10%;
+	height: 20vh;
 	border-radius: 5px;
 	border: 2px solid var(--color-border);
-	margin: 10px;
-	min-width: 60ch;
+	margin: 20px;
+	min-width: 30ch;
+	margin-top: 100px;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 #main > *:nth-child(4){ 
-	flex: 1 1 50%;
-	height: 40vh;
+	flex: 1 1 10%;
+	height: 20vh;
 	border-radius: 5px;
 	border: 2px solid var(--color-border);
-	margin: 10px;
-	min-width: 60ch;
+	margin: 20px;
+	min-width: 30ch;
+	margin-top: 100px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#main > *:nth-child(5){ 
+	flex: 1 1 50%;
+	height: 45vh;
+	border-radius: 5px;
+	border: 2px solid var(--color-border);
+	margin: 20px;
+	min-width: 65ch;
+	margin-top: 100px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#main > *:nth-child(6){ 
+	flex: 1 1 30%;
+	height: 45vh;
+	border-radius: 5px;
+	border: 2px solid var(--color-border);
+	margin: 20px;
+	min-width: 65ch;
+	margin-top: 100px;
 
 	display: flex;
 	align-items: center;
@@ -335,10 +373,11 @@ ul {
 	text-align: center;
 }
 
-.myChart{
-	width: 300px;
-	height: 300px;
+.item {
+	text-align: center;
+	padding: 40px;
 }
+
 
 /* ****************************************************************************************
                        			END MAIN SECTION

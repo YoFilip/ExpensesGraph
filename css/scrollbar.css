@@ -1,4 +1,4 @@
-/* Scrollbar styles */
+/* Scrollbar styles
 
 ::-webkit-scrollbar {
 	width: 1rem;
@@ -17,4 +17,4 @@
 		rgb(19, 87, 223)
 	);
 	background: linear-gradient(to right, rgb(19, 87, 223), rgb(19, 87, 223));
-}
+} */
