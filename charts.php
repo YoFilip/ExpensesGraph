@@ -1,5 +1,6 @@
 <?php
 require_once "config.php";
+session_start();
 
 $query = "SELECT content FROM categories";
 $result = $conn->query($query);
@@ -10,7 +11,7 @@ while ($row = $result->fetch_assoc()) {
     $categories[] = $row['content'];
 }
 // TODO:
-// $query = "SELECT amount FROM expenses WHERE expenses.id = categories.expense_id "
+$query = "SELECT amount FROM expenses WHERE expenses.id = categories.expense_id AND $_SESSION['id'] = expenses.user_id";
 
 // $query = "INSERT INTO categories(expense_id, content) VALUES(1, 'umiejętności artura')";
 // $query1 = "INSERT INTO categories(expense_id, content) VALUES(1, 'umiejętności ar1tura')";
@@ -63,7 +64,6 @@ $conn->close();
 <script>
     
     const colors = ["red", "blue", "green", "yellow", "cyan", "gold"];
-
     
     var categories = <?php echo json_encode($categories); ?>;
 
@@ -98,13 +98,12 @@ $conn->close();
     {
         let options = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
 
-        let  color = "#";
+        let color = "#";
 
         while(color.length < 7)
         {
             color += options[Math.floor(Math.random() * 16)]
         }
-        console.log(color);
         return color;
     }
 
