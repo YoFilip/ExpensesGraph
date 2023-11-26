@@ -343,11 +343,11 @@ ul {
 
 #main > *:nth-child(5){ 
 	flex: 1 1 50%;
-	height: 45vh;
+	height: 50vh;
 	border-radius: 5px;
 	border: 2px solid var(--color-border);
 	margin: 20px;
-	min-width: 65ch;
+	min-width: 90ch;
 	margin-top: 100px;
 
 	display: flex;
@@ -357,7 +357,7 @@ ul {
 
 #main > *:nth-child(6){ 
 	flex: 1 1 30%;
-	height: 45vh;
+	height: 50vh;
 	border-radius: 5px;
 	border: 2px solid var(--color-border);
 	margin: 20px;
@@ -377,7 +377,6 @@ ul {
 	text-align: center;
 	padding: 40px;
 }
-
 
 /* ****************************************************************************************
                        			END MAIN SECTION
