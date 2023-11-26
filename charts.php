@@ -2,16 +2,41 @@
 require_once "config.php";
 // session_start();
 
-$query = "SELECT content FROM categories";
+$query = "SELECT title FROM categories";
 $result = $conn->query($query);
 
 $categories = array();
 
 while ($row = $result->fetch_assoc()) {
-    $categories[] = $row['content'];
+    $categories[] = $row['title'];
 }
+
 // TODO:
 // $query = "SELECT amount, date FROM expenses WHERE expenses.id = categories.expense_id AND $_SESSION['id'] = expenses.user_id";
+
+$query = "SELECT e.amount, e.date, c.title FROM expenses e, categories c WHERE e.expense_id = c.categorie_id";
+
+$res = $conn->query($query);
+
+$data = [];
+$dates = [];
+$titles = [];
+while($row = $res->fetch_assoc())
+{
+    $data = [...$data, $row['amount']];
+    $dates = [...$dates, $row['date']];
+    $titles = [...$titles, $row['title']];
+}
+
+// for($i = 0; $i < sizeof($titles); ++$i)
+// {
+
+// }
+
+foreach($data as $val)
+{
+    echo $val."<br>";
+}
 
 // $query = "SELECT amount FROM expenses";
 
@@ -95,14 +120,18 @@ $conn->close();
 <script>
     var categories = <?php echo json_encode($categories); ?>;
 
-    // var data = <?php// echo json_encode($data);?>;
+    var data = <?php echo json_encode($data);?>;
+
+    var dates = <?php echo json_encode($dates);?>;
+
+    var titles = <?php echo json_encode($titles);?>;
 
     var datasets = [];
     
     for (var i = 0; i < categories.length; i++) {
         var dataset = {
-            data: [i+5, i+6, i+8, i+9],
-            label: categories[i],
+            data: data,
+            label: titles[i],
             borderColor: getRandomColor(),
             fill: false
         };
@@ -112,7 +141,7 @@ $conn->close();
     new Chart(document.getElementById("myChart"), {
         type: 'line',
         data: {
-            labels: categories,
+            labels: dates,
             datasets: datasets 
         },
         options: {
