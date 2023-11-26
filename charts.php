@@ -14,70 +14,29 @@ while ($row = $result->fetch_assoc()) {
 // TODO:
 // $query = "SELECT amount, date FROM expenses WHERE expenses.id = categories.expense_id AND $_SESSION['id'] = expenses.user_id";
 
-$query = "SELECT e.amount, e.date, c.title FROM expenses e, categories c WHERE e.expense_id = c.categorie_id";
+$query = "SELECT c.categorie_id, e.amount, e.date, c.title FROM expenses e, categories c WHERE e.expense_id = c.categorie_id";
 
 $res = $conn->query($query);
 
 $data = [];
 $dates = [];
 $titles = [];
+$d1 = [];
 while($row = $res->fetch_assoc())
 {
     $data = [...$data, $row['amount']];
-    $dates = [...$dates, $row['date']];
     $titles = [...$titles, $row['title']];
+    $d1 = [...$d1, $row['date']=>$row['amount']];
 }
+ksort($d1);
 
-// for($i = 0; $i < sizeof($titles); ++$i)
-// {
+$date_var = array_keys($d1);
 
-// }
-
-foreach($data as $val)
+for($i = 0; $i < sizeof($d1); ++$i)
 {
-    echo $val."<br>";
+    $dates = [...$dates, $d1[$date_var[$i]]];
 }
 
-// $query = "SELECT amount FROM expenses";
-
-// $res = $conn->query($query);
-
-// $data = array();
-
-// $dateArr = [];
-
-// while($row = $res->fetch_assoc())
-// {
-//     $data[] = $row['amount'];
-// }
-
-// $valArr = array();
-
-// foreach($categories as $cat)
-// {
-//     $valArr += [$cat=>array(...$data)];    
-// }
-
-
-// $query4 = "INSERT INTO expenses(user_id, amount, description, date, currency) VALUES(1, 100, 'SIUUU1', '2023-05-20', 'GBP')";
-// $query5 = "INSERT INTO expenses(user_id, amount, description, date, currency) VALUES(1, 200, 'SIUUU2', '2023-05-20', 'EUR')";
-// $query6 = "INSERT INTO expenses(user_id, amount, description, date, currency) VALUES(1, 500, 'SIUUU4', '2023-05-20', 'PLN')";
-// $query7 = "INSERT INTO expenses(user_id, amount, description, date, currency) VALUES(1, 300, 'SIUUU3', '2023-05-20', 'DOL')";
-
-
-// $query1 = "INSERT INTO expenses(expense_id, content) VALUES(1, 'umiejętności ar1tura')";
-// $query2= "INSERT INTO expenses(expense_id, content) VALUES(1, 'umiejętno1ści artura')";
-// $query3 = "INSERT INTO expenses(expense_id, content) VALUES(1, 'umiejętności ar3tura')";
-
-// $conn->query($query);
-// $conn->query($query1);
-// $conn->query($query2);
-// $conn->query($query3);
-
-// $conn->query($query4);
-// $conn->query($query5);
-// $conn->query($query6);
-// $conn->query($query7);
 
 $conn->close();
 ?>
@@ -88,7 +47,6 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="./css/style.css"> -->
     <title>Charts Page</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
