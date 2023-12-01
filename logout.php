@@ -3,5 +3,5 @@
     session_unset();
 
     echo "<script>localStorage.removeItem('loggedIn');</script>";
-    header('Location: index.html');
+    header('Location: login.php');
 ?>

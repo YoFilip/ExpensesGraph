@@ -28,7 +28,7 @@ if ($connection->connect_errno != 0) {
 
                 unset($_SESSION['error']);
                 $result->free_result();
-                header('Location: tabela.php');
+                header('Location: home.php');
             } else {
                 $_SESSION['error'] = '<span style="color:red">Invalid email or password!</span>';
                 header('Location: login_page.php');
