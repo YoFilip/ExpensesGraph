@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Lis 30, 2023 at 10:10 PM
+-- Generation Time: Dec 01, 2023 at 01:07 AM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -61,12 +61,9 @@ CREATE TABLE `expenses` (
 --
 
 INSERT INTO `expenses` (`id`, `user_id`, `amount`, `description`, `date`, `currency`, `expense_id`) VALUES
-(1, 1, 10, 'awd', '2023-06-28', 'GBP', 1),
-(2, 1, 15, 'dwa', '2020-05-31', 'GBp', 2),
-(5, 1, 20, 'fre', '2023-09-12', 'EUR', 1),
-(6, 1, 25, 'awd', '2020-08-16', 'awd', 2),
-(7, 1, 20, 'fre', '2023-09-12', 'EUR', 1),
-(8, 1, 25, 'awd', '2020-08-16', 'awd', 2);
+(1, 1, 100, 'Szczotka', '2023-12-02', '', 0),
+(2, 1, 1000, 'Szczotka', '2023-12-02', '', 0),
+(3, 2, 5, 'Kubuś plej', '2023-12-01', '', 0);
 
 -- --------------------------------------------------------
 
@@ -92,15 +89,17 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `user` text NOT NULL,
   `password` text NOT NULL,
-  `email` text NOT NULL
+  `email` text NOT NULL,
+  `income` decimal(10,2) DEFAULT 0.00
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `user`, `password`, `email`) VALUES
-(10, 'roman', 'dfghj', 'roman@gmail.com');
+INSERT INTO `user` (`id`, `user`, `password`, `email`, `income`) VALUES
+(1, 'Filip', '$2y$10$M0YvGusLjHtM5Smrft03D.duUf28kW04/k2fYfCOrCpqdOJcaUdKm', 'filipxpp@wp.pl', 1250.00),
+(2, 'Konrad', '$2y$10$ksmVDtFcYMkfgp11m4sfb.aKoJ5bse2Si4YX6dCkds4kqfklueQze', 'kondzio@gmail.com', 2800.00);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -145,7 +144,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `notepad`
@@ -157,7 +156,7 @@ ALTER TABLE `notepad`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
