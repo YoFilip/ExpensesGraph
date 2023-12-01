@@ -9,7 +9,7 @@
 	--color-hover: rgb(19, 87, 223);
 	--color-border: #000;
 	--color-btn: #04AA6D;
-
+	--color-close-btn: #04AA6D;
 }
 
 .dark-mode {
@@ -20,6 +20,7 @@
 	--color-hover: rgb(19, 87, 223);
 	--color-border: #000;
 	--color-btn: #fff;
+	--color-close-btn: #04AA6D;
 }
 
 * {
@@ -443,6 +444,7 @@ color: var(--color-black);
 
 #main #pop-up-2 form{
 	margin-left: 50px;
+	color: var(--color-black)
 }
 #main #pop-up-2 .item-btn,.item-btn-close{
   margin-left: 30px;

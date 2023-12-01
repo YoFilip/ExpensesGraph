@@ -32,10 +32,21 @@ if ($result && $row = $result->fetch_assoc()) {
     $total_income = $row['income'];
 }
 
+function isZero(float $total_income, float $total_expenses){
+	if($total_income == 0){
+		return 0;
+	}
+	else return number_format((($total_expenses*100)/$total_income)-100, 3);
+}
+
 // Obliczanie podsumowania budżetu
 $budget_summary = $total_income - $total_expenses;
-$calculations = number_format((($total_expenses*100)/$total_income)-100, 2);
-$budget_percent = $calculations - ($calculations*2)
+$calculations = isZero($total_income, $total_expenses);
+$budget_percent = $calculations - ($calculations*2);
+
+
+
+
 
 
 ?>
@@ -118,7 +129,7 @@ $budget_percent = $calculations - ($calculations*2)
         <button class="item-btn" href="#">Podsumowanie</button>
         </div>
         <div class="item">
-            <p>Procent oszczędności:</p> <span id="percent"><?php echo $budget_percent; ?>% <i class="fa-solid fa-arrow-up"></i></span>
+            <p>Procent oszczędności:</p> <span id="percent"><?php echo $budget_percent ?>% <i class="fa-solid fa-arrow-up"></i></span>
         </div>
         <div class="item">       
             <canvas id="myChart" style="position: relative; height:40vh; width:80vw"></canvas>
