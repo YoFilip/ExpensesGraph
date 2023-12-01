@@ -22,6 +22,10 @@ $sql = "SELECT SUM(amount) AS total FROM expenses WHERE user_id='$user_id' AND a
 $result = $connection->query($sql);
 if ($result && $row = $result->fetch_assoc()) {
     $total_expenses = $row['total'];
+    if($total_expenses == NULL)
+    {
+        $total_expenses = 0;
+    }
 }
 
 // Obliczanie sumy dochodów
@@ -43,10 +47,6 @@ function isZero(float $total_income, float $total_expenses){
 $budget_summary = $total_income - $total_expenses;
 $calculations = isZero($total_income, $total_expenses);
 $budget_percent = $calculations - ($calculations*2);
-
-
-
-
 
 
 ?>
@@ -86,7 +86,7 @@ $budget_percent = $calculations - ($calculations*2);
             </li>
 
             <li class="dropdown">
-                <a href="index.php">
+                <a href="home.php">
                     <i class='bx bx-home-alt-2'></i>
                     <span class="title">Home</span>
                 </a>
