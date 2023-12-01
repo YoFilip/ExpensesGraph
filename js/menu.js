@@ -42,11 +42,11 @@ function toggleSidebar() {
 function changeMenuIcon() {
 	if (side_bar.classList.contains("expand")) {
 		btn_menu.classList.replace("bx-menu", "bx-menu-alt-right");
-		mainBox.style.marginLeft="250px";
+		mainBox.style.marginLeft = "250px";
 	} else {
-		mainBox.style.marginLeft="78px";
+		mainBox.style.marginLeft = "78px";
 		btn_menu.classList.replace("bx-menu-alt-right", "bx-menu");
-		
+
 	}
 }
 
@@ -85,7 +85,7 @@ function closeAllDropdowns() {
 
 	isDropdownOpen = false;
 	localStorage.setItem("dropdownOpen", "false");
-	
+
 
 }
 
@@ -120,7 +120,7 @@ if (isHomePage) {
 		side_bar.classList.remove("expand");
 		isSidebarExpanded = false;
 		localStorage.setItem("sidebarExpanded", "false");
-		
+
 		changeMenuIcon();
 	});
 }
