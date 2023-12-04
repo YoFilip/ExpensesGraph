@@ -1,3 +1,4 @@
+
 const btn_menu = document.querySelector(".btn-menu");
 const side_bar = document.querySelector(".sidebar");
 let isSidebarExpanded = false;

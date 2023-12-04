@@ -16,20 +16,19 @@ if ($connection->connect_errno != 0) {
 
 $user_id = $_SESSION['id'];
 
-// Obliczanie sumy wydatków
-$total_expenses = 0;
+$total_expenses = 0; //Wydatki
 $sql = "SELECT SUM(amount) AS total FROM expenses WHERE user_id='$user_id' AND amount IS NOT NULL";
 $result = $connection->query($sql);
 if ($result && $row = $result->fetch_assoc()) {
-    $total_expenses = $row['total'];
+    $total_expenses = $row['total'] * (-1);
+	
     if($total_expenses == NULL)
     {
         $total_expenses = 0;
     }
 }
 
-// Obliczanie sumy dochodów
-$total_income = 0;
+$total_income = 0; // Dochód
 $sql = "SELECT income FROM user WHERE id='$user_id'";
 $result = $connection->query($sql);
 if ($result && $row = $result->fetch_assoc()) {
@@ -40,11 +39,10 @@ function isZero(float $total_income, float $total_expenses){
 	if($total_income == 0){
 		return 0;
 	}
-	else return number_format((($total_expenses*100)/$total_income)-100, 3);
+	else return number_format(((($total_expenses*100)/$total_income)+100)*(-1), 2);
 }
 
-// Obliczanie podsumowania budżetu
-$budget_summary = $total_income - $total_expenses;
+$budget_summary = $total_income + $total_expenses;
 $calculations = isZero($total_income, $total_expenses);
 $budget_percent = $calculations - ($calculations*2);
 
@@ -155,15 +153,15 @@ $budget_percent = $calculations - ($calculations*2);
     <div id="main">
         
         <div class="item">
-        <p>Całkowite Dochód: <?php echo $total_income; ?>zł</p><br>
+        <p>Dochód:<br><?php echo $total_income; ?>zł</p>
         <button class="item-btn" onClick="openPopUpIncome()">Dodaj Dochód</button>
         </div>
         <div class="item">
-        <p>Całkowite wydatki: <?php echo $total_expenses; ?>zł</p><br>
+        <p>Wydatki:<br><?php echo $total_expenses; ?>zł</p>
         <button class="item-btn" id="openModal" onClick="openPopUpExpenses()">Dodaj wydatki</button>
         </div>
         <div class="item">
-        <p>Kapitał: <br> <?php echo $budget_summary; ?>zł</p>
+        <p>Kapitał:<br> <?php echo $budget_summary; ?>zł</p>
         <button class="item-btn" href="#">Podsumowanie</button>
         </div>
         <div class="item">
