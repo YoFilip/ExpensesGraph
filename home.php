@@ -27,7 +27,6 @@ if ($result && $row = $result->fetch_assoc()) {
         $total_expenses = 0;
     }
 }
-
 $total_income = 0; // Dochód
 $sql = "SELECT income FROM user WHERE id='$user_id'";
 $result = $connection->query($sql);
@@ -45,46 +44,6 @@ function isZero(float $total_income, float $total_expenses){
 $budget_summary = $total_income + $total_expenses;
 $calculations = isZero($total_income, $total_expenses);
 $budget_percent = $calculations - ($calculations*2);
-
-// $sql = "SELECT SUM(amount) as total, date, expense_id FROM expenses WHERE user_id='$user_id' GROUP BY date, expense_id ORDER BY date";
-// $result = $connection->query($sql);
-// $expensesData = [];
-// while ($row = $result->fetch_assoc()) {
-//     $expensesData[] = $row;
-// }
-
-// $categories = []; 
-// foreach ($expensesData as $expense) {
-//     $category_id = $expense['expense_id'];
-//     $date = $expense['date'];
-//     $amount = $expense['total'];
-
-//     if (!isset($categories[$category_id])) {
-//         $categories[$category_id] = ['data' => [], 'label' => '']; 
-//     }
-//     $categories[$category_id]['data'][$date] = $amount;
-// }
-
-// $sql = "SELECT categorie_id, title FROM categories";
-// $result = $connection->query($sql);
-// while ($row = $result->fetch_assoc()) {
-//     if (isset($categories[$row['categorie_id']])) {
-//         $categories[$row['categorie_id']]['label'] = $row['title'];
-//     }
-// }
-
-// $labels = array_keys($expensesData[0]['data']);
-// $datasets = [];
-
-// foreach ($categories as $category) {
-//     $datasets[] = [
-//         'label' => $category['label'],
-//         'data' => array_values($category['data']),
-//         'borderColor' => "#someColor", 
-//         'fill' => false,
-//     ];
-// }
-
 ?>
 
 <!DOCTYPE html>
@@ -94,7 +53,7 @@ $budget_percent = $calculations - ($calculations*2);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="./scrollbar.css">
+    <link rel="stylesheet" href="./css/scrollbar.css">
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -105,6 +64,7 @@ $budget_percent = $calculations - ($calculations*2);
     <!--Charts.js-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
+
 </head>
 
 <body>
@@ -137,7 +97,6 @@ $budget_percent = $calculations - ($calculations*2);
                     Wyloguj</span>
                 </a>
                
-                
                 <span class="tooltip">Home</span>
             </li>
 
@@ -165,10 +124,10 @@ $budget_percent = $calculations - ($calculations*2);
         <button class="item-btn" href="#">Podsumowanie</button>
         </div>
         <div class="item">
-            <p>Procent oszczędności:</p> <span id="percent"><?php echo $budget_percent ?>% <i class="fa-solid fa-arrow-up"></i></span>
-        </div>
+            <p>Procent oszczędności:&nbsp;</p><p id="percent"> <?php echo $budget_percent; ?>%</p>
+        </div>  
         <div class="item">       
-            <canvas id="myChart" style="position: relative; height:40vh; width:80vw"></canvas>
+            <canvas id="myChart" style="position: relative; height:40vh; width:50vw"></canvas>
         </div>
 
     <div id="pop-up-1">
@@ -202,10 +161,7 @@ $budget_percent = $calculations - ($calculations*2);
     </form>
     </div>
     </div>
-
-
     
-
 </body>
 
 <script src="./js/menu.js"></script>

@@ -305,7 +305,8 @@ ul {
 
 #main > *:nth-child(1){ 
 	flex: 1 1 10%;
-	height: 20vh;
+	height: auto;
+	min-height: 20vh;
 	border-radius: 5px;
 	border: 2px solid var(--color-border);
 	margin: 20px;
@@ -317,8 +318,8 @@ ul {
 }
 #main > *:nth-child(2){ 
 	flex: 1 1 10%;
-	height: 20vh;
-	border-radius: 5px;
+	height: auto;
+	min-height: 20vh;
 	border: 2px solid var(--color-border);
 	margin: 20px;
 	min-width: 30ch;
@@ -328,8 +329,8 @@ ul {
 }
 #main > *:nth-child(3){ 
 	flex: 1 1 10%;
-	height: 20vh;
-	border-radius: 5px;
+	height: auto;
+	min-height: 20vh;
 	border: 2px solid var(--color-border);
 	margin: 20px;
 	min-width: 30ch;
@@ -340,34 +341,40 @@ ul {
 }
 #main > *:nth-child(4){ 
 	flex: 1 1 10%;
-	height: 20vh;
-	border-radius: 5px;
+	height: auto;
+	min-height: 20vh;
 	border: 2px solid var(--color-border);
 	margin: 20px;
+	width: auto;
+	max-width: 140ch;
+	min-width: 30ch;
+	background-color: var(--color-white);
+	color: var(--color-white);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#main > *:nth-child(5){ 
+	
+	flex: 1 1 100%;
+	height: auto;
+	min-height: 20vh;
+	border: 2px solid var(--color-border);
+	margin: 20px;
+	width: auto;
+	max-width: 140ch;
 	min-width: 30ch;
 	margin-top: 100px;
 	background-color: var(--color-white);
 	color: var(--color-white);
 }
 
-#main > *:nth-child(5){ 
-	flex: 1 1 50%;
-	height: 50vh;
-	border-radius: 5px;
-	border: 2px solid var(--color-border);
-	margin: 20px;
-	min-width: 90ch;
-	margin-top: 100px;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
 
 .item {
 	text-align: center;
-	padding: 40px;
+	align-items: center;
+	padding: 30px;
 }
 .item > *{
 display: flex;
@@ -375,6 +382,7 @@ justify-content: center;
 align-items: center;
 font-size: 25px;
 color: var(--color-black);
+
 }
 .item-btn,.item-btn-close{
 	background-color: var(--color-close-btn); 
@@ -388,14 +396,10 @@ color: var(--color-black);
 	border-radius: 25px;
 }
 
-#myChart{
-	width: 300px;
-	height: 300px;
-}
-
 #percent{
 	color: #04AA6D;
 	font-size: 30px;
+	
 }
 
 
@@ -412,6 +416,7 @@ color: var(--color-black);
 		justify-content: center;
 		align-items: center;
 		color: var(--color-white);
+		
 }
 
 #main #pop-up-1 .item-btn,.item-btn-close{
