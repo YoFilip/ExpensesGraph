@@ -27,6 +27,7 @@ if ($result && $row = $result->fetch_assoc()) {
         $total_expenses = 0;
     }
 }
+
 $total_income = 0; // Dochód
 $sql = "SELECT income FROM user WHERE id='$user_id'";
 $result = $connection->query($sql);
@@ -53,7 +54,7 @@ $budget_percent = $calculations - ($calculations*2);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="./css/scrollbar.css">
+    <link rel="stylesheet" href="./scrollbar.css">
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -64,7 +65,7 @@ $budget_percent = $calculations - ($calculations*2);
     <!--Charts.js-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script> 
 </head>
 
 <body>
@@ -97,6 +98,7 @@ $budget_percent = $calculations - ($calculations*2);
                     Wyloguj</span>
                 </a>
                
+                
                 <span class="tooltip">Home</span>
             </li>
 
@@ -161,14 +163,9 @@ $budget_percent = $calculations - ($calculations*2);
     </form>
     </div>
     </div>
-    
 </body>
 
 <script src="./js/menu.js"></script>
-<script>
-    var chartLabels = <?php echo json_encode($labels); ?>;
-    var chartDataSets = <?php echo json_encode($datasets); ?>;
-</script>
 <script src="./js/charts.js"></script>
 <script src="./js/pop_up.js"></script>
 </html>

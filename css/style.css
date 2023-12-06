@@ -363,7 +363,7 @@ ul {
 	border: 2px solid var(--color-border);
 	margin: 20px;
 	width: auto;
-	max-width: 140ch;
+	max-width: 120ch;
 	min-width: 30ch;
 	margin-top: 100px;
 	background-color: var(--color-white);
@@ -395,11 +395,8 @@ color: var(--color-black);
 	font-size: 16px;
 	border-radius: 25px;
 }
-#myChart{
-	
-}
 
-#percent{
+#percent{	
 	color: #04AA6D;
 	font-size: 30px;
 	
