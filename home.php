@@ -2,6 +2,20 @@
 session_start();
 require_once "connect.php";
 
+
+function getRandomColor()
+{
+    $colorArr = ['0','1','2','3','4','5','6','7','8','9', 'A', 'B', 'C', 'D', 'E', 'F'];
+
+    $color = "#";
+    while(strlen($color) < 7)
+    {
+        $color .= $colorArr[rand(0, 15)];
+    }
+    return $color;
+
+}
+
 if (!isset($_SESSION['logged_in'])) {
     header('Location: login_page.php');
     exit();
@@ -46,44 +60,57 @@ $budget_summary = $total_income + $total_expenses;
 $calculations = isZero($total_income, $total_expenses);
 $budget_percent = $calculations - ($calculations*2);
 
-// $sql = "SELECT SUM(amount) as total, date, expense_id FROM expenses WHERE user_id='$user_id' GROUP BY date, expense_id ORDER BY date";
-// $result = $connection->query($sql);
-// $expensesData = [];
-// while ($row = $result->fetch_assoc()) {
-//     $expensesData[] = $row;
-// }
+$sql = "SELECT SUM(amount) as total, date, expense_id FROM expenses WHERE user_id='$user_id' GROUP BY date, expense_id ORDER BY date";
+$result = $connection->query($sql);
+$expensesData = [];
+while ($row = $result->fetch_assoc()) {
+    $expensesData[] = $row;
+    // $expensesData = [...$expensesData, 
+    //     'expense_id' => $row['expense_id'],
+    //     'date' => $row['date'],
+    //     'total' => $row['total']
+    // ];
+}
 
-// $categories = []; 
-// foreach ($expensesData as $expense) {
-//     $category_id = $expense['expense_id'];
-//     $date = $expense['date'];
-//     $amount = $expense['total'];
+$dateArr = [];
 
-//     if (!isset($categories[$category_id])) {
-//         $categories[$category_id] = ['data' => [], 'label' => '']; 
-//     }
-//     $categories[$category_id]['data'][$date] = $amount;
-// }
+$categories = []; 
+foreach ($expensesData as $expense) {
+    $category_id = $expense['expense_id'];
+    $date = $expense['date'];
+    $amount = $expense['total'];
 
-// $sql = "SELECT categorie_id, title FROM categories";
-// $result = $connection->query($sql);
-// while ($row = $result->fetch_assoc()) {
-//     if (isset($categories[$row['categorie_id']])) {
-//         $categories[$row['categorie_id']]['label'] = $row['title'];
-//     }
-// }
+    $dateArr += [$date => $amount];
 
-// $labels = array_keys($expensesData[0]['data']);
-// $datasets = [];
+    if (!isset($categories[$category_id])) {
+        $categories[$category_id] = ['data' => [], 'label' => '']; 
+    }
+    $categories[$category_id]['data'][$date] = $amount;
+}
 
-// foreach ($categories as $category) {
-//     $datasets[] = [
-//         'label' => $category['label'],
-//         'data' => array_values($category['data']),
-//         'borderColor' => "#someColor", 
-//         'fill' => false,
-//     ];
-// }
+ksort($dateArr);
+
+$sql = "SELECT categorie_id, title FROM categories";
+$result = $connection->query($sql);
+while ($row = $result->fetch_assoc()) {
+    if (isset($categories[$row['categorie_id']])) {
+        $categories[$row['categorie_id']]['label'] = $row['title'];
+    }
+}
+
+$datasets = [];
+
+$keys = array_keys($dateArr);
+
+foreach ($categories as $category) {
+    $datasets[] = [
+        'label' => $category['label'],
+        'data' => array_values($category['data']),
+        'borderColor' => getRandomColor(), 
+        'fill' => false,
+    ];
+}
+
 
 ?>
 
@@ -210,9 +237,126 @@ $budget_percent = $calculations - ($calculations*2);
 
 <script src="./js/menu.js"></script>
 <script>
-    var chartLabels = <?php echo json_encode($labels); ?>;
+    var chartLabels = <?php echo json_encode($keys); ?>;
     var chartDataSets = <?php echo json_encode($datasets); ?>;
+    console.log(chartLabels);
 </script>
-<script src="./js/charts.js"></script>
+<!-- <script src="./js/charts.js"></script> -->
+
+<script>
+
+// new Chart(document.getElementById("myChart"), {
+//     type: 'line',
+//     data: {
+//         labels: ['2023-12-04', '2023-12-05', '2023-12-06', '2023-12-07', '2023-12-12', '2023-12-13', '2023-12-14', '2023-12-15', '2023-12-18', '2023-12-19', '2023-12-21', '2023-12-22', '2023-12-25', '2023-12-26', '2023-12-27', '2023-12-29'],
+//         datasets: [
+//             {
+//                 data: [52, 101, 108, 131, 251, 284, 296, 329, 335, 373, 377, 386, 410, 446, 467],
+//                 label: "Dom",
+//                 borderColor: "#3cba9f",
+//                 fill: false,
+//             },
+//             {
+//                 data: [42, 94, 179, 180, 321, 403, 409, 497, 502, 538, 566, 582, 587, 613, 638, 666],
+//                 label: "Dzieci",
+//                 borderColor: "#e43202",
+//                 fill: false,
+//             },
+//         ],
+//     },
+//     options: {
+//         title: {
+//             display: true,
+//             text: "WYKRES WYDATKÓW",
+//         },
+//         scales: {
+//             y: {
+//                 beginAtZero: true
+//             }
+//         },
+//         plugins: {
+//             zoom: {
+//                 pan: {
+//                     enabled: true,
+//                     mode: 'x',
+//                     rangeMax: {
+//                         x: 100000,
+//                     },
+//                     rangeMin: {
+//                         x: 1750,
+//                     },
+//                 },
+//                 zoom: {
+//                     enabled: true,
+//                     mode: 'xy',
+//                     rangeMax: {
+//                         x: 10000,
+//                     },
+//                     rangeMin: {
+//                         x: 1750,
+//                     },
+//                 },
+//             },
+//         },
+//     },
+// });
+
+
+
+
+
+
+new Chart(document.getElementById("myChart"), {
+    type: 'line',
+     type: 'line',
+        data: {
+            labels: chartLabels,
+            datasets: chartDataSets
+        },
+    options: {
+        title: {
+            display: true,
+            text: "WYKRES WYDATKÓW",
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+        plugins: {
+            zoom: {
+                pan: {
+                    enabled: true,
+                    mode: 'x',
+                    rangeMax: {
+                        x: 100000,
+                    },
+                    rangeMin: {
+                        x: 1750,
+                    },
+                },
+                zoom: {
+                    enabled: true,
+                    mode: 'xy',
+                    rangeMax: {
+                        x: 10000,
+                    },
+                    rangeMin: {
+                        x: 1750,
+                    },
+                },
+            },
+        },
+    },
+});
+
+
+
+
+
+
+</script>
+
+
 <script src="./js/pop_up.js"></script>
 </html>
