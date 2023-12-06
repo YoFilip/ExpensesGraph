@@ -1,56 +1,29 @@
-new Chart(document.getElementById("myChart"), {
-    type: 'line',
-    data: {
-        labels: ['2023-12-04', '2023-12-05', '2023-12-06', '2023-12-07', '2023-12-12', '2023-12-13', '2023-12-14', '2023-12-15', '2023-12-18', '2023-12-19', '2023-12-21', '2023-12-22', '2023-12-25', '2023-12-26', '2023-12-27', '2023-12-29'],
-        datasets: [
-            {
-                data: [52, 101, 108, 131, 251, 284, 296, 329, 335, 373, 377, 386, 410, 446, 467],
-                label: "Dom",
-                borderColor: "#3cba9f",
-                fill: false,
-            },
-            {
-                data: [42, 94, 179, 180, 321, 403, 409, 497, 502, 538, 566, 582, 587, 613, 638, 666],
-                label: "Dzieci",
-                borderColor: "#e43202",
-                fill: false,
-            },
-        ],
-    },
-    options: {
-        title: {
-            display: true,
-            text: "WYKRES WYDATKÓW",
-        },
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        },
-        plugins: {
-            zoom: {
-                pan: {
-                    enabled: true,
-                    mode: 'x',
-                    rangeMax: {
-                        x: 100000,
-                    },
-                    rangeMin: {
-                        x: 1750,
-                    },
-                },
-                zoom: {
-                    enabled: true,
-                    mode: 'xy',
-                    rangeMax: {
-                        x: 10000,
-                    },
-                    rangeMin: {
-                        x: 1750,
-                    },
-                },
-            },
-        },
-    },
-});
-
+var ctx = document.getElementById('myChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            datasets: [{ 
+                data: [86,114,106,106,107,111,133],
+                label: "Total",
+                borderColor: "rgb(62,149,205)",
+                backgroundColor: "rgb(62,149,205,0.1)",
+              }, { 
+                data: [70,90,44,60,83,90,100],
+                label: "Accepted",
+                borderColor: "rgb(60,186,159)",
+                backgroundColor: "rgb(60,186,159,0.1)",
+              }, { 
+                data: [10,21,60,44,17,21,17],
+                label: "Pending",
+                borderColor: "rgb(255,165,0)",
+                backgroundColor:"rgb(255,165,0,0.1)",
+              }, { 
+                data: [6,3,2,2,7,0,16],
+                label: "Rejected",
+                borderColor: "rgb(196,88,80)",
+                backgroundColor:"rgb(196,88,80,0.1)",
+              }
+            ]
+          },
+        });

@@ -395,6 +395,9 @@ color: var(--color-black);
 	font-size: 16px;
 	border-radius: 25px;
 }
+#myChart{
+	
+}
 
 #percent{
 	color: #04AA6D;
