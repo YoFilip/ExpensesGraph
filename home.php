@@ -101,11 +101,12 @@ while ($row = $result->fetch_assoc()) {
 $datasets = [];
 
 $keys = array_keys($dateArr);
+$vals = array_values($dateArr);
 
 foreach ($categories as $category) {
     $datasets[] = [
         'label' => $category['label'],
-        'data' => array_values($category['data']),
+        'data' => $vals,
         'borderColor' => getRandomColor(), 
         'fill' => false,
     ];
