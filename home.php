@@ -93,6 +93,41 @@ while ($row = $result->fetch_assoc()) {
 
 $datasets = [];
 
+$sql = "SELECT date, expense_id, amount, description FROM expenses WHERE user_id = '$user_id' AND expense_id = 1 ORDER BY date";
+
+$res = $connection->query($sql);
+$data = [];
+$descs = [];
+$expName = "";
+foreach($res as $values)
+{
+    $expName = $values['description'];
+    $data[] += $values['amount']; 
+}
+
+$datasets[] = [
+    'name' => $expName,
+    'data' => $data
+];
+
+$sql = "SELECT date, expense_id, amount, description FROM expenses WHERE user_id = '$user_id' AND expense_id = 2 ORDER BY date";
+
+$res = $connection->query($sql);
+$data = [];
+$descs = [];
+$expName = "";
+foreach($res as $values)
+{
+    $expName = $values['description'];
+    $data[] += $values['amount']; 
+}
+
+$datasets[] = [
+    'name' => $expName,
+    'data' => $data
+];
+
+// $datasets += ['name' => $res['description'], '']
 // foreach ($categories as $category) {
 //     $datasets[] = [
 //         'label' => $category['label'],
@@ -341,16 +376,7 @@ $datasets = [];
 // });
 
 var options = {
-          series: [{
-          name: 'PRODUCT A',
-          data: [1,2,3,4,5]
-        }, {
-          name: 'PRODUCT B',
-          data: [3,4,5,6,7]
-        }, {
-          name: 'PRODUCT C',
-          data: [5,6,7,8,9]
-        }],
+          series: chartDataSets,
           chart: {
           type: 'area',
           stacked: false,
@@ -395,15 +421,16 @@ var options = {
         xaxis: {
           type: 'datetime',
           tickAmount: 8,
-          min: new Date("01/01/2014").getTime(),
-          max: new Date("01/20/2014").getTime(),
-          labels: {
-              rotate: -15,
-              rotateAlways: true,
-              formatter: function(val, timestamp) {
-                return moment(new Date(timestamp)).format("DD MMM YYYY")
-            }
-          }
+        //   min: new Date("01/01/2014").getTime(),
+        //   max: new Date("01/20/2014").getTime(),
+        //   labels: {
+        //       rotate: -15,
+        //       rotateAlways: true,
+        //       formatter: function(val, timestamp) {
+        //         return moment(new Date(timestamp)).format("DD MMM YYYY")
+        //     }
+        //   }
+          categories: 
         },
         title: {
           text: 'Irregular Data in Time Series',
