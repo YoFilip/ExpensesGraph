@@ -10,6 +10,7 @@
 	--color-border: #000;
 	--color-btn: #04AA6D;
 	--color-close-btn: #04AA6D;
+	--close-btn: #ff0000;
 }
 
 .dark-mode {
@@ -21,6 +22,7 @@
 	--color-border: #000;
 	--color-btn: #fff;
 	--color-close-btn: #04AA6D;
+	--close-btn: #ff0000;
 }
 
 * {
@@ -305,7 +307,7 @@ ul {
 
 #main > *:nth-child(1){ 
 	flex: 1 1 10%;
-	height: 20vh;
+	height: 22vh;
 	border-radius: 5px;
 	border: 2px solid var(--color-border);
 	margin: 20px;
@@ -317,7 +319,7 @@ ul {
 }
 #main > *:nth-child(2){ 
 	flex: 1 1 10%;
-	height: 20vh;
+	height: 22vh;
 	border-radius: 5px;
 	border: 2px solid var(--color-border);
 	margin: 20px;
@@ -328,7 +330,7 @@ ul {
 }
 #main > *:nth-child(3){ 
 	flex: 1 1 10%;
-	height: 20vh;
+	height: 22vh;
 	border-radius: 5px;
 	border: 2px solid var(--color-border);
 	margin: 20px;
@@ -340,7 +342,7 @@ ul {
 }
 #main > *:nth-child(4){ 
 	flex: 1 1 10%;
-	height: 20vh;
+	height: 22vh;
 	border-radius: 5px;
 	border: 2px solid var(--color-border);
 	margin: 20px;
@@ -451,7 +453,7 @@ color: var(--color-black);
 }
 #main #pop-up-2 .item-btn-close{
 margin-top: 200px;
-background-color: var(--color-background);
+background-color: var(--close-btn);
 }
 #main #pop-up-2 .item-btn{
 margin-top: 30px;
