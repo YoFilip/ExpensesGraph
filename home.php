@@ -67,8 +67,7 @@ while ($row = $result->fetch_assoc()) {
     $expensesData[] = $row;
 }
 
-$dateArr1 = [];
-$dateArr2 = [];
+$dateArr = [];
 
 $categories = [];
 foreach ($expensesData as $expense) {
@@ -76,15 +75,7 @@ foreach ($expensesData as $expense) {
     $date = $expense['date'];
     $amount = $expense['total'];
 
-    switch($category_id)
-    {
-        case 1 :
-            $dateArr1 += [$date => $amount];
-            break;
-        case 2 :
-             $dateArr2 += [$date => $amount];
-             break;
-    }
+    $dateArr += [$category_id =>[$date => $amount]];
 
     if (!isset($categories[$category_id])) {
         $categories[$category_id] = ['data' => [], 'label' => '']; 
@@ -102,47 +93,14 @@ while ($row = $result->fetch_assoc()) {
 
 $datasets = [];
 
-$key1 = array_keys($dateArr1);
-$key2 = array_keys($dateArr2);
-
-$data1 = [];
-$data2 = [];
-
-
-foreach ($categories as $category) {
-    $iter = 1;
-    switch($iter)
-    {
-        case 1 :
-            foreach($key1 as $key)
-            {
-                $data1 = [...$data1, $dateArr1[$key]];
-            }
-            $datasets[] = [
-                'label' => $category['label'],
-                'data' => $data1,
-                'borderColor' => getRandomColor(), 
-                'fill' => false,
-            ];
-            break;
-        case 2 :
-            foreach($key2 as $key)
-            {
-                $data2 = [...$data2, $dateArr2[$key]];
-            }
-            $datasets[] = [
-                'label' => $category['label'],
-                'data' => $data2,
-                'borderColor' => getRandomColor(), 
-                'fill' => false,
-            ];
-            break;
-    }
-
-    $iter++;
-
-
-}
+// foreach ($categories as $category) {
+//     $datasets[] = [
+//         'label' => $category['label'],
+//         'data' => $data2,
+//         'borderColor' => getRandomColor(), 
+//         'fill' => false,
+//     ];
+// }
 
 
 ?>
