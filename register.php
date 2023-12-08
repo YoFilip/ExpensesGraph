@@ -9,6 +9,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = mysqli_real_escape_string($connection, $_POST['email']);
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
+        $sql = "SELECT * FROM user WHERE email = '$email'";
+
+        $res = $connection->query($sql);
+
+        if($res->num_rows > 0)
+            die("Konto już istnieje! <a href='login_page.php'>Zaloguj</a>");
+
         $sql = "INSERT INTO user (user, email, password) VALUES ('$username', '$email', '$password')";
 
         if ($connection->query($sql)) {

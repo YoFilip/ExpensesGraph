@@ -65,30 +65,32 @@ $result = $connection->query($sql);
 $expensesData = [];
 while ($row = $result->fetch_assoc()) {
     $expensesData[] = $row;
-    // $expensesData = [...$expensesData, 
-    //     'expense_id' => $row['expense_id'],
-    //     'date' => $row['date'],
-    //     'total' => $row['total']
-    // ];
 }
 
-$dateArr = [];
+$dateArr1 = [];
+$dateArr2 = [];
 
-$categories = []; 
+$categories = [];
 foreach ($expensesData as $expense) {
     $category_id = $expense['expense_id'];
     $date = $expense['date'];
     $amount = $expense['total'];
 
-    $dateArr += [$date => $amount];
+    switch($category_id)
+    {
+        case 1 :
+            $dateArr1 += [$date => $amount];
+            break;
+        case 2 :
+             $dateArr2 += [$date => $amount];
+             break;
+    }
 
     if (!isset($categories[$category_id])) {
         $categories[$category_id] = ['data' => [], 'label' => '']; 
     }
     $categories[$category_id]['data'][$date] = $amount;
 }
-
-ksort($dateArr);
 
 $sql = "SELECT categorie_id, title FROM categories";
 $result = $connection->query($sql);
@@ -100,16 +102,46 @@ while ($row = $result->fetch_assoc()) {
 
 $datasets = [];
 
-$keys = array_keys($dateArr);
-$vals = array_values($dateArr);
+$key1 = array_keys($dateArr1);
+$key2 = array_keys($dateArr2);
+
+$data1 = [];
+$data2 = [];
+
 
 foreach ($categories as $category) {
-    $datasets[] = [
-        'label' => $category['label'],
-        'data' => $vals,
-        'borderColor' => getRandomColor(), 
-        'fill' => false,
-    ];
+    $iter = 1;
+    switch($iter)
+    {
+        case 1 :
+            foreach($key1 as $key)
+            {
+                $data1 = [...$data1, $dateArr1[$key]];
+            }
+            $datasets[] = [
+                'label' => $category['label'],
+                'data' => $data1,
+                'borderColor' => getRandomColor(), 
+                'fill' => false,
+            ];
+            break;
+        case 2 :
+            foreach($key2 as $key)
+            {
+                $data2 = [...$data2, $dateArr2[$key]];
+            }
+            $datasets[] = [
+                'label' => $category['label'],
+                'data' => $data2,
+                'borderColor' => getRandomColor(), 
+                'fill' => false,
+            ];
+            break;
+    }
+
+    $iter++;
+
+
 }
 
 
@@ -196,7 +228,7 @@ foreach ($categories as $category) {
             <p>Procent oszczędności:</p> <span id="percent"><?php echo $budget_percent ?>% <i class="fa-solid fa-arrow-up"></i></span>
         </div>
         <div class="item">       
-            <canvas id="myChart" style="position: relative; height:40vh; width:80vw"></canvas>
+            <div id="myChart" style="position: relative; height:40vh; width:80vw"></div>
         </div>
 
     <div id="pop-up-1">
@@ -238,12 +270,11 @@ foreach ($categories as $category) {
 
 <script src="./js/menu.js"></script>
 <script>
-    var chartLabels = <?php echo json_encode($keys); ?>;
+    var chartLabels = <?php echo json_encode(); ?>;
     var chartDataSets = <?php echo json_encode($datasets); ?>;
-    console.log(chartLabels);
 </script>
 <!-- <script src="./js/charts.js"></script> -->
-
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
 
 // new Chart(document.getElementById("myChart"), {
@@ -307,50 +338,151 @@ foreach ($categories as $category) {
 
 
 
-new Chart(document.getElementById("myChart"), {
-    type: 'line',
-     type: 'line',
-        data: {
-            labels: chartLabels,
-            datasets: chartDataSets
+// new Chart(document.getElementById("myChart"), {
+//     type: 'line',
+//      type: 'line',
+//         data: {
+//             labels: chartLabels,
+//             datasets: chartDataSets
+//         },
+//     options: {
+//         title: {
+//             display: true,
+//             text: "WYKRES WYDATKÓW",
+//         },
+//         scales: {
+//             y: {
+//                 beginAtZero: true
+//             }
+//         },
+//         plugins: {
+//             zoom: {
+//                 pan: {
+//                     enabled: true,
+//                     mode: 'x',
+//                     rangeMax: {
+//                         x: 100000,
+//                     },
+//                     rangeMin: {
+//                         x: 1750,
+//                     },
+//                 },
+//                 zoom: {
+//                     enabled: true,
+//                     mode: 'xy',
+//                     rangeMax: {
+//                         x: 10000,
+//                     },
+//                     rangeMin: {
+//                         x: 1750,
+//                     },
+//                 },
+//             },
+//         },
+//     },
+// });
+
+var options = {
+          series: [{
+          name: 'PRODUCT A',
+          data: [1,2,3,4,5]
+        }, {
+          name: 'PRODUCT B',
+          data: [3,4,5,6,7]
+        }, {
+          name: 'PRODUCT C',
+          data: [5,6,7,8,9]
+        }],
+          chart: {
+          type: 'area',
+          stacked: false,
+          height: 350,
+          zoom: {
+            enabled: false
+          },
         },
-    options: {
-        title: {
-            display: true,
-            text: "WYKRES WYDATKÓW",
+        dataLabels: {
+          enabled: false
         },
-        scales: {
-            y: {
-                beginAtZero: true
-            }
+        markers: {
+          size: 0,
         },
-        plugins: {
-            zoom: {
-                pan: {
-                    enabled: true,
-                    mode: 'x',
-                    rangeMax: {
-                        x: 100000,
-                    },
-                    rangeMin: {
-                        x: 1750,
-                    },
-                },
-                zoom: {
-                    enabled: true,
-                    mode: 'xy',
-                    rangeMax: {
-                        x: 10000,
-                    },
-                    rangeMin: {
-                        x: 1750,
-                    },
-                },
+        fill: {
+          type: 'gradient',
+          gradient: {
+              shadeIntensity: 1,
+              inverseColors: false,
+              opacityFrom: 0.45,
+              opacityTo: 0.05,
+              stops: [20, 100, 100, 100]
             },
         },
-    },
-});
+        yaxis: {
+          labels: {
+              style: {
+                  colors: '#8e8da4',
+              },
+              offsetX: 0,
+              formatter: function(val) {
+                return (val / 1000000).toFixed(2);
+              },
+          },
+          axisBorder: {
+              show: false,
+          },
+          axisTicks: {
+              show: false
+          }
+        },
+        xaxis: {
+          type: 'datetime',
+          tickAmount: 8,
+          min: new Date("01/01/2014").getTime(),
+          max: new Date("01/20/2014").getTime(),
+          labels: {
+              rotate: -15,
+              rotateAlways: true,
+              formatter: function(val, timestamp) {
+                return moment(new Date(timestamp)).format("DD MMM YYYY")
+            }
+          }
+        },
+        title: {
+          text: 'Irregular Data in Time Series',
+          align: 'left',
+          offsetX: 14
+        },
+        tooltip: {
+          shared: true
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: -10
+        }
+        };
 
+        var chart = new ApexCharts(document.querySelector("#myChart"), options);
+        chart.render();
+
+        
+
+// var options = {
+//   chart: {
+//     type: 'line'
+//   },
+//   series: [{
+//     name: 'sales',
+//     data: [30,40,35,50,49,60,70,91,125]
+//   }],
+//   xaxis: {
+//     categories: [1991,1992,1993,1994,1995,1996,1997,1998,1999]
+//   }
+// }
+
+// var chart = new ApexCharts(document.querySelector("#myChart"), options);
+
+// chart.render();
 
 
 
