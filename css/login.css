@@ -316,6 +316,10 @@ ul {
     form input{
         margin-bottom: 10px;
     }
+	form input[type=email],input[type=password]{
+		text-transform:lowercase;
+	}
+
     form input[type=submit]{
         width: 220px;
         height: 40px;
