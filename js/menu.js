@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 const btn_menu = document.querySelector(".btn-menu");
 const side_bar = document.querySelector(".sidebar");
 let isSidebarExpanded = false;
@@ -16,11 +12,8 @@ const upArrows = document.querySelectorAll(".dropdown-btn .bx-chevron-up");
 
 const mainBox = document.getElementById("main");
 
-<<<<<<< HEAD
 
 console.log('działa');
-=======
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 if (!isHomePage) {
 	expandSidebar();
 }
@@ -177,7 +170,4 @@ btn_theme.addEventListener("click", function () {
 		document.body.classList.contains("dark-mode") ? "dark" : "light"
 	);
 });
-<<<<<<< HEAD
 
-=======
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f

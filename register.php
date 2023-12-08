@@ -9,11 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = mysqli_real_escape_string($connection, $_POST['email']);
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-<<<<<<< HEAD
     
 
-=======
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
         $sql = "INSERT INTO user (user, email, password) VALUES ('$username', '$email', '$password')";
 
         if ($connection->query($sql)) {
@@ -29,15 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
     <meta charset="utf-8" />
-<<<<<<< HEAD
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Register Page</title>
     <link rel="stylesheet" href="./css/login.css">
@@ -118,19 +110,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 
 <script src="./js/menu.js"></script>
-=======
-    <title>Register</title>
-</head>
-<body>
-    <form action="register.php" method="post">
-        Username: <br /> <input type="text" name="username" required /> <br />
-        Email: <br /> <input type="email" name="email" required /> <br />
-        Password: <br /> <input type="password" name="password" required /> <br /><br />
-        <input type="submit" value="Register" />
-    </form>
-
-    <a href="login_page.php">Zaloguj się</a>
-</body>
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 </html>
 

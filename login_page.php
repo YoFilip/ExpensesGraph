@@ -13,7 +13,6 @@ if ((isset($_SESSION['logged_in'])) && ($_SESSION['logged_in'] == true)) {
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Login Page</title>
-<<<<<<< HEAD
     <link rel="stylesheet" href="./css/login.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -91,26 +90,9 @@ if ((isset($_SESSION['logged_in'])) && ($_SESSION['logged_in'] == true)) {
 
 
     
-=======
-</head>
-
-<body>
-
-    <form action="login.php" method="post">
-        Email: <br /> <input type="email" name="email" required/> <br />
-        Password: <br /> <input type="password" name="password" required /> <br /><br />
-        <input type="submit" value="Log in" />
-    </form>
-
-
-    <a href="register.php">Zarejestruj się</a>
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 
     <?php if (isset($_SESSION['error'])) echo $_SESSION['error']; ?>
 </body>
 
-<<<<<<< HEAD
 <script src="./js/menu.js"></script>
-=======
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 </html>

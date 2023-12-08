@@ -2,11 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@300&display=swap");
 
 :root {
-<<<<<<< HEAD
 	--color-background: #ffffff;
-=======
-	--color-background: #e71515;
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 	--color-white: #fff;
 	--color-black: #000;
 	--color-bg: #ecf2ff;
@@ -309,12 +305,7 @@ ul {
 
 #main > *:nth-child(1){ 
 	flex: 1 1 10%;
-<<<<<<< HEAD
 	height: 20vh;
-=======
-	height: auto;
-	min-height: 20vh;
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 	border-radius: 5px;
 	border: 2px solid var(--color-border);
 	margin: 20px;
@@ -326,13 +317,8 @@ ul {
 }
 #main > *:nth-child(2){ 
 	flex: 1 1 10%;
-<<<<<<< HEAD
 	height: 20vh;
 	border-radius: 5px;
-=======
-	height: auto;
-	min-height: 20vh;
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 	border: 2px solid var(--color-border);
 	margin: 20px;
 	min-width: 30ch;
@@ -342,13 +328,8 @@ ul {
 }
 #main > *:nth-child(3){ 
 	flex: 1 1 10%;
-<<<<<<< HEAD
 	height: 20vh;
 	border-radius: 5px;
-=======
-	height: auto;
-	min-height: 20vh;
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 	border: 2px solid var(--color-border);
 	margin: 20px;
 	min-width: 30ch;
@@ -359,43 +340,16 @@ ul {
 }
 #main > *:nth-child(4){ 
 	flex: 1 1 10%;
-<<<<<<< HEAD
 	height: 20vh;
 	border-radius: 5px;
 	border: 2px solid var(--color-border);
 	margin: 20px;
-=======
-	height: auto;
-	min-height: 20vh;
-	border: 2px solid var(--color-border);
-	margin: 20px;
-	width: auto;
-	max-width: 140ch;
-	min-width: 30ch;
-	background-color: var(--color-white);
-	color: var(--color-white);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-#main > *:nth-child(5){ 
-	
-	flex: 1 1 100%;
-	height: auto;
-	min-height: 20vh;
-	border: 2px solid var(--color-border);
-	margin: 20px;
-	width: auto;
-	max-width: 120ch;
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 	min-width: 30ch;
 	margin-top: 100px;
 	background-color: var(--color-white);
 	color: var(--color-white);
 }
 
-<<<<<<< HEAD
 #main > *:nth-child(5){ 
 	flex: 1 1 50%;
 	height: 50vh;
@@ -414,13 +368,6 @@ ul {
 .item {
 	text-align: center;
 	padding: 40px;
-=======
-
-.item {
-	text-align: center;
-	align-items: center;
-	padding: 30px;
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 }
 .item > *{
 display: flex;
@@ -428,10 +375,6 @@ justify-content: center;
 align-items: center;
 font-size: 25px;
 color: var(--color-black);
-<<<<<<< HEAD
-=======
-
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 }
 .item-btn,.item-btn-close{
 	background-color: var(--color-close-btn); 
@@ -445,7 +388,6 @@ color: var(--color-black);
 	border-radius: 25px;
 }
 
-<<<<<<< HEAD
 #myChart{
 	width: 300px;
 	height: 300px;
@@ -454,12 +396,6 @@ color: var(--color-black);
 #percent{
 	color: #04AA6D;
 	font-size: 30px;
-=======
-#percent{	
-	color: #04AA6D;
-	font-size: 30px;
-	
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 }
 
 
@@ -476,10 +412,6 @@ color: var(--color-black);
 		justify-content: center;
 		align-items: center;
 		color: var(--color-white);
-<<<<<<< HEAD
-=======
-		
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 }
 
 #main #pop-up-1 .item-btn,.item-btn-close{
@@ -528,17 +460,10 @@ margin-top: 30px;
 	color: var(--color-background);
 }
 
-<<<<<<< HEAD
 
 /* ****************************************************************************************
 								   END MAIN SECTION
   **************************************************************************************** */
-=======
-/* ****************************************************************************************
-                       			END MAIN SECTION
-  **************************************************************************************** */
-
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 /* ****************************************************************************************
                       Extra small devices (phones, 600px and down)
   **************************************************************************************** */

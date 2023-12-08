@@ -20,14 +20,8 @@ if (isset($_POST['submit_expense'])) {
     $date = $_POST['date'];
     $description = mysqli_real_escape_string($connection, $_POST['description']);
     $amount = $_POST['amount'];
-<<<<<<< HEAD
 
     $sql = "INSERT INTO expenses (user_id, date, description, amount) VALUES ('$user_id', '$date', '$description', '$amount')";
-=======
-    $category_id = $_POST['category'];
-
-    $sql = "INSERT INTO expenses (user_id, date, description, amount, expense_id) VALUES ('$user_id', '$date', '$description', '$amount', '$category_id')";
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 
     if ($connection->query($sql)) {
         echo "Wydatek dodany pomyślnie!";
@@ -36,10 +30,6 @@ if (isset($_POST['submit_expense'])) {
     }
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 144d856dbf825e8a904dca03dbd1eb017c98112f
 if (isset($_POST['submit_income'])) {
     $profit = $_POST['profit'];
 
