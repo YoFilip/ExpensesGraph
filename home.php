@@ -50,38 +50,8 @@ $budget_percent = $calculations - ($calculations*2);
 
 
 
-//=============================================================================
 
 
-$expensesQuery = "SELECT date, amount, expense_id FROM expenses WHERE user_id='$user_id'";
-$expensesResult = $connection->query($expensesQuery);
-
-$expensesData = [];
-while($row = $expensesResult->fetch_assoc()) {
-    $catName = $categories[$row['expense_id']] ?? 'Inne';
-    $expensesData[$catName][] = [
-        'x' => $row['date'], // data wydatku
-        'y' => (float)$row['amount'] // kwota wydatku
-    ];
-}
-
-// Pobierz kategorie z bazy danych
-$categoriesQuery = "SELECT categorie_id, title FROM categories";
-$categoriesResult = $connection->query($categoriesQuery);
-
-$categories = [];
-while($row = $categoriesResult->fetch_assoc()) {
-    $categories[$row['categorie_id']] = $row['title'];
-}
-
-$chartData = [];
-foreach ($expensesData as $expense) {
-    $catName = $categories[$expense['categorie_id']] ?? 'Inne';
-    $chartData[$catName][] = [
-        'x' => $expense['date'], // data wydatku
-        'y' => $expense['amount'] // kwota wydatku
-    ];
-}
 
 ?>
 
@@ -170,7 +140,7 @@ foreach ($expensesData as $expense) {
         <button class="item-btn" onClick="openPopUpIncome()">Dodaj Dochód</button>
         </div>
         <div class="item">
-        <p>Całkowite wydatki: <?php echo "&nbsp;&nbsp;".$total_expenses; ?>zł</p>
+        <p>Całkowite wydatki: <?php echo "&nbsp;&nbsp;".$total_expenses*(-1); ?>zł</p>
         <button class="item-btn" id="openModal" onClick="openPopUpExpenses()">Dodaj wydatki</button>
         </div>
         <div class="item">
@@ -188,7 +158,7 @@ foreach ($expensesData as $expense) {
     <h2>Dodaj Dochód</h2><br>
     <form action="add_expense.php" method="post">
         <p class="form-p">Kwota Dochodu: <br /> <input type="number" name="profit" step="0.01"/> <br /></p>
-        <button class="item-btn"type="submit" name="submit_income"><i class="fa-solid fa-plus"></i> Dodaj dochód</button><br>
+        <button class="item-btn"type="submit" name="submit_income">Dodaj dochód</button><br>
         <button id="pop-up-close" class="item-btn-close" onClick="popUpCloseIncome()">Zamknij Okno</button>
     </form>
     </div>
@@ -199,6 +169,15 @@ foreach ($expensesData as $expense) {
         Data: <br /> <input type="date" name="date" required /> <br />
         Opis: <br /> <input type="text" name="description" required /> <br />
         Kwota Wydatku: <br /> <input type="number" name="amount" step="0.01" required /> <br />
+        <select name="category">
+        <?php
+            $sql = "SELECT * FROM categories";
+            $result = $connection->query($sql);
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value='" . $row['categorie_id'] . "'>" . $row['title'] . "</option>";
+            }
+            ?>
+         </select>
         <button class="item-btn"type="submit" name="submit_expense" onClick="closeOpenPopUpExpenses()"><i class="fa-solid fa-plus"></i> Dodaj wydatek</button>
         <button id="pop-up-close" class="item-btn-close" onClick="closeOpenPopUpExpenses()">Zamknij Okno</button>
 
@@ -208,9 +187,7 @@ foreach ($expensesData as $expense) {
 
 </body>
 
-<script>
-    var expensesData = <?php echo json_encode($expensesData); ?>;
-</script>
+
 <script src="./js/menu.js"></script>
 <script src="./js/charts.js"></script>
 <script src="./js/pop_up.js"></script>
