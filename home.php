@@ -69,6 +69,7 @@ $budget_percent = $calculations - ($calculations*2);
     <!--Charts.js-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 
 <body>
@@ -105,9 +106,23 @@ $budget_percent = $calculations - ($calculations*2);
                 <span class="tooltip">Home</span>
             </li>
 
+
+           
+            <li class="dropdown">
+                <a href="register.php">
+                <i class='bx bx-log-out'></i>
+                    <span class="title">
+                    Rejestracja</span>
+                </a>
+               
+                
+                <span class="tooltip">Rejestracja</span>
+            </li>
+
+
             <div class="theme-wrapper">
                 <i class="bx bxs-moon theme-icon"></i>
-                <p>Dark Mode</p>
+                <p>Dark mode</p>
                 <div class="theme-btn">
                     <span class="theme-ball"></span>
                 </div>
@@ -121,7 +136,7 @@ $budget_percent = $calculations - ($calculations*2);
         <button class="item-btn" onClick="openPopUpIncome()">Dodaj Dochód</button>
         </div>
         <div class="item">
-        <p>Całkowite wydatki: <?php echo $total_expenses; ?>zł</p><br>
+        <p>Całkowite wydatki: <?php echo "&nbsp;".$total_expenses; ?>zł</p><br>
         <button class="item-btn" id="openModal" onClick="openPopUpExpenses()">Dodaj wydatki</button>
         </div>
         <div class="item">
@@ -132,7 +147,7 @@ $budget_percent = $calculations - ($calculations*2);
             <p>Procent oszczędności:</p> <span id="percent"><?php echo $budget_percent ?>% <i class="fa-solid fa-arrow-up"></i></span>
         </div>
         <div class="item">       
-            <canvas id="myChart" style="position: relative; height:40vh; width:80vw"></canvas>
+            <div id="myChart" style="position: relative; height:40vh; width:80vw"></div>
         </div>
 
     <div id="pop-up-1">

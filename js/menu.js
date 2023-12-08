@@ -12,6 +12,8 @@ const upArrows = document.querySelectorAll(".dropdown-btn .bx-chevron-up");
 
 const mainBox = document.getElementById("main");
 
+
+console.log('działa');
 if (!isHomePage) {
 	expandSidebar();
 }
@@ -168,3 +170,4 @@ btn_theme.addEventListener("click", function () {
 		document.body.classList.contains("dark-mode") ? "dark" : "light"
 	);
 });
+

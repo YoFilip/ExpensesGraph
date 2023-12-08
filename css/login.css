@@ -10,6 +10,7 @@
 	--color-border: #000;
 	--color-btn: #04AA6D;
 	--color-close-btn: #04AA6D;
+    --color-login-border: #000;
 }
 
 .dark-mode {
@@ -21,6 +22,7 @@
 	--color-border: #000;
 	--color-btn: #fff;
 	--color-close-btn: #04AA6D;
+    --color-login-border: rgb(19, 87, 223);
 }
 
 * {
@@ -62,7 +64,7 @@ h2{
 	transition: var(--transition);
 	display: block;
 	box-sizing: inherit;
-	border-right: 2px solid var(--color-border);
+	border-right: 2px solid var(--color-black);
 }
 
 .sidebar.expand {
@@ -152,7 +154,6 @@ h2{
 
 .nav-links li a {
 	display: flex;
-	height: 100%;
 	width: 100%;
 	border-radius: 12px;
 	align-items: center;
@@ -287,183 +288,55 @@ ul {
 	padding-left: 0rem !important;
 }
 
-/* ****************************************************************************************
-                                END SIDE BAR STYLES
-  **************************************************************************************** */
 
 /* ****************************************************************************************
-                                MAIN SECTION
+                      STYLES FOR LOGIN PAGE
   **************************************************************************************** */
 
-#main{
-	display: flex;
-	flex-wrap: wrap;
-	margin-left: 77px;
-	justify-content: center;
-	align-items: center;
-}
 
-#main > *:nth-child(1){ 
-	flex: 1 1 10%;
-	height: 20vh;
-	border-radius: 5px;
-	border: 2px solid var(--color-border);
-	margin: 20px;
-	min-width: 30ch;
-	margin-top: 100px;
-	background-color: var(--color-white);
-	color: var(--color-white);
-
-}
-#main > *:nth-child(2){ 
-	flex: 1 1 10%;
-	height: 20vh;
-	border-radius: 5px;
-	border: 2px solid var(--color-border);
-	margin: 20px;
-	min-width: 30ch;
-	margin-top: 100px;
-	background-color: var(--color-white);
-	color: var(--color-white);
-}
-#main > *:nth-child(3){ 
-	flex: 1 1 10%;
-	height: 20vh;
-	border-radius: 5px;
-	border: 2px solid var(--color-border);
-	margin: 20px;
-	min-width: 30ch;
-	margin-top: 100px;
-	background-color: var(--color-white);
-	color: var(--color-white);
-
-}
-#main > *:nth-child(4){ 
-	flex: 1 1 10%;
-	height: 20vh;
-	border-radius: 5px;
-	border: 2px solid var(--color-border);
-	margin: 20px;
-	min-width: 30ch;
-	margin-top: 100px;
-	background-color: var(--color-white);
-	color: var(--color-white);
-}
-
-#main > *:nth-child(5){ 
-	flex: 1 1 50%;
-	height: 50vh;
-	border-radius: 5px;
-	border: 2px solid var(--color-border);
-	margin: 20px;
-	min-width: 90ch;
-	margin-top: 100px;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+    #main{
+        background-color: var(--color-background);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;    
+    }
+    form{
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: #000000;
+        border: 3px solid var(--color-login-border);
+        width: auto;
+        height: auto;
+        padding: 100px 150px 100px 150px;
+    }
+    form input{
+        margin-bottom: 10px;
+    }
+    form input[type=submit]{
+        width: 220px;
+        height: 40px;
+        background-color: var(--color-hover);
+        border: none;
+        margin-top: 20px;
+        color: #fff;
+    }   
+    #login_a{
+        margin-top: 20px;
+    }
 
 
-.item {
-	text-align: center;
-	padding: 40px;
-}
-.item > *{
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: 25px;
-color: var(--color-black);
-}
-.item-btn,.item-btn-close{
-	background-color: var(--color-close-btn); 
-	border: none;
-	color: var(--color-white);
-	padding: 8px 30px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	border-radius: 25px;
-}
-
-#myChart{
-	width: 300px;
-	height: 300px;
-}
-
-#percent{
-	color: #04AA6D;
-	font-size: 30px;
-}
 
 
-#main #pop-up-1{
-		background:var(--color-white); 
-        display:none;
-        width:900px;
-		height: 500px; 
-        position:absolute; 
-        z-index:999;
-        padding:30px; 
-		flex-direction: column;
-		border: 3px solid var(--color-black);
-		justify-content: center;
-		align-items: center;
-		color: var(--color-white);
-}
-
-#main #pop-up-1 .item-btn,.item-btn-close{
-      margin-left: 30px;
-}
-#main #pop-up-1 .item-btn-close{
-	margin-top: 200px;
-	background-color: var(--color-background);
-}
-#main #pop-up-1 .item-btn{
-	margin-top: 30px;
-}
-
-
-#main #pop-up-2{
-	background:var(--color-white); 
-	display:none;
-	width:900px;
-	height: 500px; 
-	position:absolute; 
-	z-index:999;
-	padding:30px; 
-	flex-direction: column;
-	border: 3px solid var(--color-black);
-	justify-content: center;
-	align-items: center;
-	color: var(--color-white);
-	
-}
-
-#main #pop-up-2 form{
-	margin-left: 50px;
-	color: var(--color-black)
-}
-#main #pop-up-2 .item-btn,.item-btn-close{
-  margin-left: 30px;
-}
-#main #pop-up-2 .item-btn-close{
-margin-top: 200px;
-background-color: var(--color-background);
-}
-#main #pop-up-2 .item-btn{
-margin-top: 30px;
-}
-#red{
-	color: var(--color-background);
-}
 
 
 /* ****************************************************************************************
-								   END MAIN SECTION
+								   END  STYLES FOR LOGIN PAGE
   **************************************************************************************** */
+
 /* ****************************************************************************************
                       Extra small devices (phones, 600px and down)
   **************************************************************************************** */
