@@ -1,44 +1,48 @@
 <?php
 session_start();
 
-if ((!isset($_POST['email'])) || (!isset($_POST['password']))) {
+if (!isset($_POST['email']) || !isset($_POST['password'])) {
     header('Location: login_page.php');
     exit();
 }
 
 require_once "connect.php";
-$connection = @new mysqli($host, $db_user, $db_password, $db_name);
+$connection = new mysqli($host, $db_user, $db_password, $db_name);
 
 if ($connection->connect_errno != 0) {
     echo "Error: " . $connection->connect_errno;
 } else {
-    $email = $_POST['email'];
+    $email = htmlentities($_POST['email'], ENT_QUOTES, "UTF-8");
     $password = $_POST['password'];
 
-    $email = htmlentities($email, ENT_QUOTES, "UTF-8");
+    $stmt = $connection->prepare("SELECT id, user, password FROM user WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
 
-    if ($result = @$connection->query(sprintf("SELECT * FROM user WHERE email='%s'", mysqli_real_escape_string($connection, $email)))) {
-        $num_users = $result->num_rows;
-        if ($num_users > 0) {
-            $row = $result->fetch_assoc();
-            if (password_verify($password, $row['password'])) {
-                $_SESSION['logged_in'] = true;
-                $_SESSION['id'] = $row['id'];
-                $_SESSION['user'] = $row['username'];
+   // ...
 
-                unset($_SESSION['error']);
-                $result->free_result();
-                header('Location: home.php');
-            } else {
-                $_SESSION['error'] = '<span style="color:red">Invalid email or password!</span>';
-                header('Location: login_page.php');
-            }
-        } else {
-            $_SESSION['error'] = '<span style="color:red">Invalid email or password!</span>';
-            header('Location: login_page.php');
-        }
+if ($stmt->num_rows > 0) {
+    $stmt->bind_result($id, $username, $hashed_password);
+    $stmt->fetch();
+    
+    if (password_verify($password, $hashed_password)) {
+        $_SESSION['logged_in'] = true;
+        $_SESSION['id'] = $id;
+        $_SESSION['user'] = $username;
+
+        unset($_SESSION['error']);
+        $stmt->close();
+        $connection->close();
+        header('Location: dashboard.php');
+    } else {
+        $_SESSION['error'] = 'Invalid email or password!';
+        header('Location: login_page.php');
     }
+} else {
+    $_SESSION['error'] = 'Invalid email or password!';
+    header('Location: login_page.php');
+}
 
-    $connection->close();
 }
 ?>

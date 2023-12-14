@@ -2,97 +2,136 @@
 session_start();
 
 if ((isset($_SESSION['logged_in'])) && ($_SESSION['logged_in'] == true)) {
-    header('Location: home.php');
+    header('Location: dashboard.php');
     exit();
 }
 ?>
 
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Login Page</title>
-    <link rel="stylesheet" href="./css/login.css">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <script src="https://kit.fontawesome.com/6215660fb9.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>ExpensesGraph</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@200&family=Changa:wght@300&family=Orbitron&family=Roboto:wght@500&display=swap');
+    form{
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--text);
+    width: auto;
+    height: auto;
+    padding: 100px 150px 100px 150px;
+    }
+    form input{
+        margin-bottom: 10px;
+        width: 300px;
+        height: 30px;
+        padding: 6px
+    }
+    form input[type=email],input[type=password]{
+        text-transform:lowercase;
+    }
+
+    form input[type=email]:hover,input[type=password]:hover{
+        border: 1px solid var(--text);
+    }
+    form input[type=submit]{
+        width: 300px;
+        height: 40px;
+        background-color: var(--text);
+        border: none;
+        margin-top: 20px;
+        color: #fff;
+        transition: all 1s; 
+    }  
+    form input[type=submit]:hover{
+        width: 325px;
+        height: 50px;
+    }
+    form label{
+        margin-bottom: 10px;
+    }
+    #login_a{
+        margin-top: 20px;
+        color: var(--text);
+        text-decoration: underline;
+    }
+    </style>
 </head>
-
 <body>
-<section class="sidebar">
-        <div class="nav-header">
-            <p class="logo">TU <span>NAZWA</span> </p>
-            <i class="bx bx-menu btn-menu"></i>
-        </div>
-        <ul class="nav-links">
-            <li>
-                <i class="bx bx-search search-btn"></i>
-                <input type="text" id="searchInput" placeholder="Wyszukaj..." />
-                <span class="tooltip">Search...</span>
-            </li>
-
-            <li class="dropdown">
-                <a href="home.php">
-                    <i class='bx bx-home-alt-2'></i>
-                    <span class="title">Home</span>
-                </a>
-                
-                <span class="tooltip">Home</span>
-            </li>
-
-            <li class="dropdown">
-                <a href="logout.php">
-                <i class='bx bx-log-out'></i>
-                    <span class="title">
-                    Wyloguj</span>
-                </a>
-               
-                
-                <span class="tooltip">Home</span>
-            </li>
-
-
-            <li class="dropdown">
-                <a href="register.php">
-                <i class='bx bx-log-out'></i>
-                    <span class="title">
-                    Rejestracja</span>
-                </a>
-               
-                
-                <span class="tooltip">Rejestracja</span>
-            </li>
-
-            <div class="theme-wrapper">
-                <i class="bx bxs-moon theme-icon"></i>
-                <p>Dark Mode</p>
-                <div class="theme-btn">
-                    <span class="theme-ball"></span>
-                </div>
+    
+    <!--Header section-->
+    <section>
+        <div class="header">
+            <div class="row">
+            <div class="card-03">
+                <header>
+                    <span class="material-symbols-outlined">
+                        join_left
+                    </span>
+                        <h1>ExpensesGraph</h1>
+                    <input type="checkbox" id="nav_check" hidden>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="register_page.php">Sign Up</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <label for="nav_check" class="hamburger">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </label>
+                </header>
             </div>
+            </div>
+        </div>
     </section>
+    <!--end Header section-->
 
 
-    <div id="main">
+    <!--Cards layout start-->
+    <section>
+        <div class="container">
+        
+            <h1>Sign In Now</h1>
+            
+            <div class="row">
+            <div class="card-02">
+            <form action="login.php" method="post" id="login_page">
+                <label>Email:</label><input type="email" name="email" required/>
+                <label>Password: </label> <input type="password" name="password" required /> 
+                <input type="submit" value="Sign In" />
+              
+                <a href="register_page.php" id="login_a">Sign In</a>
+            </form>
+        
 
-    <form action="login.php" method="post" id="login_page">
-        Email:<input type="email" name="email" required/>
-        Password:  <input type="password" name="password" required /> 
-        <input type="submit" value="Log in" />
-        <a href="register.php" id="login_a">Zarejestruj się</a>
-    </form>
-  
-</div>
+            </div>
+            </div>
+        </div>
+        </main>
+        <!--Cards layout end-->
+    </section> 
+</body>
+</html>
+
+
+
+
 
 
 
     
 
-    <?php if (isset($_SESSION['error'])) echo $_SESSION['error']; ?>
-</body>
 
-<script src="./js/menu.js"></script>
-</html>
+
+

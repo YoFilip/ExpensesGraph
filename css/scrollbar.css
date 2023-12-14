@@ -1,4 +1,3 @@
-
 ::-webkit-scrollbar {
 	width: 1rem;
 	overflow-x: none;
@@ -6,14 +5,14 @@
 }
 
 ::-webkit-scrollbar-track {
-	background: #212121;
+	background: var(--white);
 }
 
 ::-webkit-scrollbar-thumb {
 	background: -webkit-linear-gradient(
 		to right,
-		rgb(19, 87, 223),
-		rgb(19, 87, 223)
+		var(--text),
+		var(--text)
 	);
-	background: linear-gradient(to right, rgb(19, 87, 223), rgb(19, 87, 223));
+	background: linear-gradient(to right, var(--text), var(--text));
 }

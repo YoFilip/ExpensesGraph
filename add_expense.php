@@ -44,5 +44,5 @@ if (isset($_POST['submit_income'])) {
 
 $connection->close();
 
-header('Location: home.php');
+header('Location: dashboard.php');
 ?>
