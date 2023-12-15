@@ -260,7 +260,7 @@ var options = {
         tickAmount: <?php echo sizeof($dates);?>
         },
         title: {
-          text: 'Irregular Data in Time Series',
+          text: 'Wydatki',
           align: 'center',
           offsetX: 14
         },
