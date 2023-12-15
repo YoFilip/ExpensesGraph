@@ -2,6 +2,15 @@
 session_start();
 require_once "connect.php";
 
+function findIndex($arr, $val)
+    {
+        for($i = 0; $i < sizeof($arr); ++$i)
+        {
+            if($arr[$i] == $val)
+                return $i + 1;
+        }
+    }
+
 if (!isset($_SESSION['logged_in'])) {
     header('Location: login_page.php');
     exit();
@@ -38,6 +47,68 @@ function calculateBudgetPercentage(float $total_income, float $total_expenses) {
 // Obliczanie podsumowania budżetu
 $budget_summary = $total_income - $total_expenses;
 $budget_percent = calculateBudgetPercentage($total_income, $total_expenses);
+
+$dates = [];
+
+    $sql = "SELECT SUM(amount) as total, date,
+     expense_id, description FROM expenses WHERE
+      user_id='$user_id' GROUP BY date ORDER BY date";
+    $result = $connection->query($sql);
+    $expensesData = [];
+    while ($row = $result->fetch_assoc()) {
+        $dates[] = $row['date'];
+        $expensesData[] = $row;
+    }
+
+    
+    $dataArr1 = [];
+    $dataArr2 = [];
+
+    foreach ($expensesData as $expense) {
+        $category_id = $expense['expense_id'];
+        $date = $expense['date'];
+        $amount = $expense['total'];
+
+        if($category_id == 1)
+            $dataArr1[] = [$date => $amount];
+        else if($category_id == 2)
+            $dataArr2[] = [$date => $amount];
+    }
+    $data = [];
+    foreach($dataArr1 as $d1 => $d1_val)
+    {
+        foreach($d1_val as $d => $d_val)
+        {
+            $data[] = [findIndex($dates, $d), $d_val];
+        }
+    }
+
+    $datasets = [];
+
+
+
+    $dataset1[] = [
+        'name' => 'Praca',
+        'data' => $data
+    ];
+
+    $data = [];
+    foreach($dataArr2 as $d1 => $d1_val)
+    {
+        foreach($d1_val as $d => $d_val)
+        {
+            $data[] = [findIndex($dates, $d), $d_val];
+        }
+    }
+
+    $dataset2[] = [
+        'name' => 'Dom',
+        'data' => $data 
+    ];
+
+    $datasets = array_merge($dataset1, $dataset2);
+
+
 ?>
 
 
@@ -139,6 +210,78 @@ $budget_percent = calculateBudgetPercentage($total_income, $total_expenses);
     </section> 
 <!--Cards layout end-->
 </body>
-<script src="./js/charts.js"></script>
+<!-- <script src="./js/charts.js"></script> -->
+
+<script>
+
+    console.log(<?php echo json_encode($data);?>);
+    var chartDatasets = <?php echo json_encode($datasets); ?>;
+
+    console.log(chartDatasets);
+
+var options = {
+          series: chartDatasets,
+          chart: {
+          type: 'area',
+          stacked: false,
+          height: 350,
+          zoom: {
+            enabled: false
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        markers: {
+          size: 0,
+        },
+        fill: {
+          type: 'gradient',
+          gradient: {
+              shadeIntensity: 1,
+              inverseColors: false,
+              opacityFrom: 0.45,
+              opacityTo: 0.05,
+              stops: [20, 100, 100, 100]
+            },
+        },
+        yaxis: {
+          labels: {
+              style: {
+                  colors: '#8e8da4',
+              },
+              offsetX: 0,
+          },
+          axisBorder: {
+              show: false,
+          },
+          axisTicks: {
+              show: false
+          }
+        },
+        xaxis: {
+        categories: <?php echo json_encode($dates);?>,
+        type: 'date',
+        tickAmount: <?php echo sizeof($dates);?>
+        },
+        title: {
+          text: 'Irregular Data in Time Series',
+          align: 'center',
+          offsetX: 14
+        },
+        tooltip: {
+          shared: true
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: -10
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#myChart"), options);
+        chart.render();
+</script>
+
 <script src="./js/cookie.js.js"></script>
 </html>
