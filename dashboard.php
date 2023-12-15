@@ -213,12 +213,7 @@ $dates = [];
 <!-- <script src="./js/charts.js"></script> -->
 
 <script>
-
-    console.log(<?php echo json_encode($data);?>);
     var chartDatasets = <?php echo json_encode($datasets); ?>;
-
-    console.log(chartDatasets);
-
 var options = {
           series: chartDatasets,
           chart: {
