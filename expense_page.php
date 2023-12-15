@@ -72,6 +72,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     .card-02{
         height: 35rem;
     }
+    select{
+        border: 1px solid black;
+        margin-bottom: 40px;
+    }
 
     
 
@@ -131,6 +135,25 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                 Date: <br /> <input type="date" name="date" required /> <br />
                 Description: <br /> <input type="text" name="description" required /> <br />
                 Expense Amount: <br /> <input type="number" name="amount" step="0.01" required /> <br />
+                
+                <select name="category">
+                    <?php
+                    require_once "connect.php";
+
+                    $connection = new mysqli($host, $db_user, $db_password, $db_name);
+
+                    if ($connection->connect_errno != 0) {
+                        echo "Error: " . $connection->connect_errno;
+                        exit();
+                    }
+
+                    $sql = "SELECT * FROM categories";
+                    $result = $connection->query($sql);
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['categorie_id'] . "'>" . $row['title'] . "</option>";
+                    }
+                    ?>
+                </select> 
                 <button class="item-btn" type="submit" name="submit_expense">Add an expense</button>
             </form>
             <div class="notifications"></div>
