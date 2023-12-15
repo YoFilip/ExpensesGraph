@@ -24,25 +24,16 @@ if (isset($_POST['submit_expense'])) {
     $sql = "INSERT INTO expenses (user_id, date, description, amount) VALUES ('$user_id', '$date', '$description', '$amount')";
 
     if ($connection->query($sql)) {
-        echo "Wydatek dodany pomyślnie!";
+        $_SESSION['expense_status'] = "success";
+        $_SESSION['expense_message'] = "Expense added successfully!";
     } else {
-        echo "Błąd podczas dodawania wydatku: " . $connection->error;
+        $_SESSION['expense_status'] = "error";
+        $_SESSION['expense_message'] = "Error while adding expense: " . $connection->error;
     }
-}
-
-if (isset($_POST['submit_income'])) {
-    $profit = $_POST['profit'];
-
-    $sql = "UPDATE user SET income = income + '$profit' WHERE id = '$user_id'";
-
-    if ($connection->query($sql)) {
-        echo "Dochód dodany pomyślnie!";
-    } else {
-        echo "Błąd podczas dodawania dochodu: " . $connection->error;
-    }
+    
+    
+    header('Location: expense_page.php');     
 }
 
 $connection->close();
-
-header('Location: dashboard.php');
 ?>

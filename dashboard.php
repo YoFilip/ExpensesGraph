@@ -77,6 +77,12 @@ $budget_percent = calculateBudgetPercentage($total_income, $total_expenses);
                                     <a href="#">Raports</a>
                                 </li>
                                 <li>
+                                    <a href="income_page.php">Add Income</a>
+                                </li>
+                                <li>
+                                    <a href="expense_page.php">Add Expense</a>
+                                </li>
+                                <li>
                                     <a href="logout.php">Sign Out</a>
                                 </li>
                             </ul>

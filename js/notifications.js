@@ -22,14 +22,14 @@ let notifications = document.querySelector('.notifications');
         let type = 'success';
         let icon = 'check_circle';
         let title = 'Success';
-        let text = 'This is a success toast.';
+        let text = 'This is simple alert';
         createToast(type, icon, title, text);
     }
     error.onclick = function(){
         let type = 'error';
         let icon = 'warning';
         let title = 'Error';
-        let text = 'This is a error toast.';
+        let text = 'This is simple alert';
         createToast(type, icon, title, text);
     }
    

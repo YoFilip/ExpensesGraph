@@ -50,8 +50,7 @@ function closeBox() {
     if (blurBg) {
         document.body.removeChild(blurBg);
     }
-
-    // Ukryj popup
+    
     var popup = document.getElementById("myForm");
     popup.style.display = "none";
 
