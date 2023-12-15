@@ -93,45 +93,45 @@ while ($row = $result->fetch_assoc()) {
 
 $datasets = [];
 
-$sql = "SELECT date, expense_id, amount, description FROM expenses WHERE user_id = '$user_id' AND expense_id = 1 ORDER BY date";
+// $sql = "SELECT date, expense_id, amount, description, categories.title FROM expenses, categories WHERE user_id = '$user_id' AND expense_id = 1 ORDER BY date";
 
-$res = $connection->query($sql);
-$data = [];
-$descs = [];
-$expName = "";
-foreach($res as $values)
-{
-    $expName = $values['description'];
-    $data[] += $values['amount']; 
-}
+// $res = $connection->query($sql);
+// $data = [];
+// $descs = [];
+// $expName = "";
+// foreach($res as $values)
+// {
+//     $expName = $values['title'];
+//     $data[] += $values['amount'];
+// }
 
-$datasets[] = [
-    'name' => $expName,
-    'data' => $data
-];
+// $datasets[] = [
+//     'name' => $expName,
+//     'data' => $data
+// ];
 
-$sql = "SELECT date, expense_id, amount, description FROM expenses WHERE user_id = '$user_id' AND expense_id = 2 ORDER BY date";
+// $sql = "SELECT date, expense_id, amount, description, categories.title FROM expenses, categories WHERE user_id = '$user_id' AND expense_id = 2 ORDER BY date";
 
-$res = $connection->query($sql);
-$data = [];
-$descs = [];
-$expName = "";
-foreach($res as $values)
-{
-    $expName = $values['description'];
-    $data[] += $values['amount']; 
-}
+// $res = $connection->query($sql);
+// $data = [];
+// $descs = [];
+// $expName = "";
+// foreach($res as $values)
+// {
+//     $expName = $values['description'];
+//     $data[] += $values['amount']; 
+// }
 
-$datasets[] = [
-    'name' => $expName,
-    'data' => $data
-];
+// $datasets[] = [
+//     'name' => $expName,
+//     'data' => $data
+// ];
 
-// $datasets += ['name' => $res['description'], '']
+// $datasets += ['name' => $res['description'], ''];
 // foreach ($categories as $category) {
 //     $datasets[] = [
 //         'label' => $category['label'],
-//         'data' => $data2,
+//         'data' => $data,
 //         'borderColor' => getRandomColor(), 
 //         'fill' => false,
 //     ];
@@ -263,8 +263,10 @@ $datasets[] = [
 
 <script src="./js/menu.js"></script>
 <script>
-    var chartLabels = <?php echo json_encode(); ?>;
     var chartDataSets = <?php echo json_encode($datasets); ?>;
+
+    console.log(chartDataSets);
+
 </script>
 <!-- <script src="./js/charts.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -375,99 +377,103 @@ $datasets[] = [
 //     },
 // });
 
-var options = {
-          series: chartDataSets,
-          chart: {
-          type: 'area',
-          stacked: false,
-          height: 350,
-          zoom: {
-            enabled: false
-          },
-        },
-        dataLabels: {
-          enabled: false
-        },
-        markers: {
-          size: 0,
-        },
-        fill: {
-          type: 'gradient',
-          gradient: {
-              shadeIntensity: 1,
-              inverseColors: false,
-              opacityFrom: 0.45,
-              opacityTo: 0.05,
-              stops: [20, 100, 100, 100]
-            },
-        },
-        yaxis: {
-          labels: {
-              style: {
-                  colors: '#8e8da4',
-              },
-              offsetX: 0,
-              formatter: function(val) {
-                return (val / 1000000).toFixed(2);
-              },
-          },
-          axisBorder: {
-              show: false,
-          },
-          axisTicks: {
-              show: false
-          }
-        },
-        xaxis: {
-          type: 'datetime',
-          tickAmount: 8,
-        //   min: new Date("01/01/2014").getTime(),
-        //   max: new Date("01/20/2014").getTime(),
-        //   labels: {
-        //       rotate: -15,
-        //       rotateAlways: true,
-        //       formatter: function(val, timestamp) {
-        //         return moment(new Date(timestamp)).format("DD MMM YYYY")
-        //     }
-        //   }
-          categories: 
-        },
-        title: {
-          text: 'Irregular Data in Time Series',
-          align: 'left',
-          offsetX: 14
-        },
-        tooltip: {
-          shared: true
-        },
-        legend: {
-          position: 'top',
-          horizontalAlign: 'right',
-          offsetX: -10
-        }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#myChart"), options);
-        chart.render();
+// var options = {
+//           series: chartDataSets,
+//           chart: {
+//           type: 'area',
+//           stacked: false,
+//           height: 350,
+//           zoom: {
+//             enabled: false
+//           },
+//         },
+//         dataLabels: {
+//           enabled: false
+//         },
+//         markers: {
+//           size: 0,
+//         },
+//         fill: {
+//           type: 'gradient',
+//           gradient: {
+//               shadeIntensity: 1,
+//               inverseColors: false,
+//               opacityFrom: 0.45,
+//               opacityTo: 0.05,
+//               stops: [20, 100, 100, 100]
+//             },
+//         },
+//         yaxis: {
+//           labels: {
+//               style: {
+//                   colors: '#8e8da4',
+//               },
+//               offsetX: 0,
+//               formatter: function(val) {
+//                 return (val / 1000000).toFixed(2);
+//               },
+//           },
+//           axisBorder: {
+//               show: false,
+//           },
+//           axisTicks: {
+//               show: false
+//           }
+//         },
+//         xaxis: {
+//         //   type: 'datetime',
+//         //   tickAmount: 8,
+//         //   min: new Date("01/01/2014").getTime(),
+//         //   max: new Date("01/20/2014").getTime(),
+//         //   labels: {
+//         //         rotate: -15,
+//         //         rotateAlways: true,
+//         //         formatter: function(val, timestamp) {
+//         //         return moment(new Date(timestamp)).format("DD MMM YYYY")
+//         //     }
+//         categories: 
+//         },
+        
+//         title: {
+//           text: 'Irregular Data in Time Series',
+//           align: 'left',
+//           offsetX: 14
+//         },
+//         tooltip: {
+//           shared: true
+//         },
+//         legend: {
+//           position: 'top',
+//           horizontalAlign: 'right',
+//           offsetX: -10
+//         }
+//     };
+//         var chart = new ApexCharts(document.querySelector("#myChart"), options);
+//         chart.render();
 
         
 
-// var options = {
-//   chart: {
-//     type: 'line'
-//   },
-//   series: [{
-//     name: 'sales',
-//     data: [30,40,35,50,49,60,70,91,125]
-//   }],
-//   xaxis: {
-//     categories: [1991,1992,1993,1994,1995,1996,1997,1998,1999]
-//   }
-// }
+var options = {
+  chart: {
+    type: 'line'
+  },
+  series: [{
+    name: 'sales',
+    data: [[1, 34], [3, 54], [5, 23]]
+  },
+  {
+    name: 'losses',
+    data: [[2, 25], [4, 60], [6, 80]]
+  }
+],
+  xaxis: {
+    categories: [1991,1992,1993,1994,1995,1996,1997,1998,1999]
+  }
+}
 
-// var chart = new ApexCharts(document.querySelector("#myChart"), options);
+var chart = new ApexCharts(document.querySelector("#myChart"), options);
 
-// chart.render();
+chart.render();
 
 
 
