@@ -94,8 +94,18 @@ if ((isset($_SESSION['logged_in'])) && ($_SESSION['logged_in'] == true)) {
             </div>
             </div>
         </div>
-    </section>
+</section>
+
     <!--end Header section-->
+
+     <!--Cookie Pop up-->
+     <div class="popup" id="myForm">
+        <h1>Cookie Policy</h1>
+        <p>This website uses cookies to ensure the best quality of services. Please read our <a href="#">cookie policy</a> to learn more.</p>
+        <button type="button" class="close-button" id="acceptCookiesButton" onclick="acceptCookies(event)">I Agree</button>
+        <button type="button" class="close-button" id="rejectCookiesButton" onclick="rejectCookies(event)">I Disagree</button>
+    </div>
+    <!--end Cookie Pop up-->
 
 
     <!--Cards layout start-->
@@ -113,8 +123,6 @@ if ((isset($_SESSION['logged_in'])) && ($_SESSION['logged_in'] == true)) {
               
                 <a href="register_page.php" id="login_a">Sign In</a>
             </form>
-        
-
             </div>
             </div>
         </div>
@@ -122,6 +130,7 @@ if ((isset($_SESSION['logged_in'])) && ($_SESSION['logged_in'] == true)) {
         <!--Cards layout end-->
     </section> 
 </body>
+<script src="./js/cookie.js"></script>
 </html>
 
 

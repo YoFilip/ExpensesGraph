@@ -57,72 +57,82 @@ $budget_percent = calculateBudgetPercentage($total_income, $total_expenses);
 </head>
 <body>
     
-<!--Header section-->
-<section>
-    <div class="header">
-        <div class="row">
-            <div class="card-03">
-                <header>
-                    <span class="material-symbols-outlined">
-                        join_left
-                    </span>
-                    <h1>ExpensesGraph</h1>
-                    <input type="checkbox" id="nav_check" hidden>
-                    <nav>
-                        <ul>
-                            <li>
-                            <a href="dashboard.php">Dashboard</a>
-                            </li>
-                            <li>
-                                <a href="#">Raports</a>
-                            </li>
-                            <li>
-                                <a href="logout.php">Sign Out</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <label for="nav_check" class="hamburger">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </label>
-                </header>
+    <!--Header section-->
+    <section>
+        <div class="header">
+            <div class="row">
+                <div class="card-03">
+                    <header>
+                        <span class="material-symbols-outlined">
+                            join_left
+                        </span>
+                        <h1>ExpensesGraph</h1>
+                        <input type="checkbox" id="nav_check" hidden>
+                        <nav>
+                            <ul>
+                                <li>
+                                <a href="dashboard.php">Dashboard</a>
+                                </li>
+                                <li>
+                                    <a href="#">Raports</a>
+                                </li>
+                                <li>
+                                    <a href="logout.php">Sign Out</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <label for="nav_check" class="hamburger">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </label>
+                    </header>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<!--end Header section-->
+    </section>
+    <!--end Header section-->
 
-<!--Cards layout start-->
-<section>
-    <div class="container">
-        <h1>Your Expenses</h1>
-        <div class="row">
-            <div class="card-01">
-                <h4>Total Income</h4>
-                <p><?php echo $total_income; ?>zł</p>
-            </div>
-            <div class="card-01">
-                <h4>Total Expenses</h4>
-                <p><?php echo -$total_expenses; ?>zł</p>
-            </div>
-            <div class="card-01">
-                <h4>Budget Summary</h4>
-                <p><?php echo $budget_summary ?>zł</p>
-                <div class="percentage-change">
-                    <span><?php echo $budget_percent ?>%</span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="card-02">
-                <div id="myChart">
-                </div>
-            </div>
-        </div>
+     <!--Cookie Pop up-->
+     <div class="popup" id="myForm">
+        <h1>Cookie Policy</h1>
+        <p>This website uses cookies to ensure the best quality of services. Please read our <a href="#">cookie policy</a> to learn more.</p>
+        <button type="button" class="close-button" id="acceptCookiesButton" onclick="acceptCookies(event)">I Agree</button>
+        <button type="button" class="close-button" id="rejectCookiesButton" onclick="rejectCookies(event)">I Disagree</button>
     </div>
-</section> 
+    <!--end Cookie Pop up-->
+
+    <!--Cards layout start-->
+    <section>
+        <div class="container">
+            <h1>Your Expenses</h1>
+            <div class="row">
+                <div class="card-01">
+                    <h4>Total Income</h4>
+                    <p><?php echo $total_income; ?>zł</p>
+                </div>
+                <div class="card-01">
+                    <h4>Total Expenses</h4>
+                    <p><?php echo -$total_expenses; ?>zł</p>
+                </div>
+                <div class="card-01">
+                    <h4>Budget Summary</h4>
+                    <p><?php echo $budget_summary ?>zł</p>
+                    <div class="percentage-change">
+                        <span><?php echo $budget_percent ?>%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card-02">
+                    <div id="myChart">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
 <!--Cards layout end-->
 </body>
 <script src="./js/charts.js"></script>
+<script src="./js/cookie.js.js"></script>
 </html>

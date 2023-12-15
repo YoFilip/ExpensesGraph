@@ -115,6 +115,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </section>
     <!--end Header section-->
 
+     <!--Cookie Pop up-->
+    <div class="popup" id="myForm">
+        <h1>Cookie Policy</h1>
+        <p>This website uses cookies to ensure the best quality of services. Please read our <a href="#">cookie policy</a> to learn more.</p>
+        <button type="button" class="close-button" id="acceptCookiesButton" onclick="acceptCookies(event)">I Agree</button>
+        <button type="button" class="close-button" id="rejectCookiesButton" onclick="rejectCookies(event)">I Disagree</button>
+    </div>
+    <!--end Cookie Pop up-->
 
     <!--Cards layout start-->
     <section>
@@ -140,6 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </section> 
     <!--Cards layout end-->
 </body>
+<script src="./js/cookie.js"></script>
 </html>
 
 
