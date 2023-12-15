@@ -63,6 +63,11 @@ if ((isset($_SESSION['logged_in'])) && ($_SESSION['logged_in'] == true)) {
         color: var(--text);
         text-decoration: underline;
     }
+    .material-symbols-outlined{
+        font-size: 45px;
+    }
+
+
     </style>
 </head>
 <body>
@@ -120,27 +125,33 @@ if ((isset($_SESSION['logged_in'])) && ($_SESSION['logged_in'] == true)) {
                 <label>Email:</label><input type="email" name="email" required/>
                 <label>Password: </label> <input type="password" name="password" required /> 
                 <input type="submit" value="Sign In" />
-              
                 <a href="register_page.php" id="login_a">Sign In</a>
-            </form>
+                </form>
+                
+                <div class="notifications"></div>
             </div>
-            </div>
+          </div>
+
+
+           
         </div>
         </main>
         <!--Cards layout end-->
     </section> 
 </body>
 <script src="./js/cookie.js"></script>
+<script src="./js/notifications.js"></script>
+<?php if (isset($_SESSION['error'])): ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let type = 'error';
+            let icon = 'warning';
+            let title = 'Error';
+            let text = '<?php echo $_SESSION['error']; ?>';
+            createToast(type, icon, title, text);
+            <?php unset($_SESSION['error']); ?>
+        });
+    </script>
+<?php endif; ?>
+
 </html>
-
-
-
-
-
-
-
-    
-
-
-
-

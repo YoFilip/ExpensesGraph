@@ -12,10 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO user (user, email, password) VALUES ('$username', '$email', '$password')";
 
         if ($connection->query($sql)) {
-            $_SESSION['registration_success'] = "Rejestracja przebiegła pomyślnie!";
+            $_SESSION['registration_success'] = "Registration was successful!";
         } else {
-            $_SESSION['registration_error'] = "Błąd podczas rejestracji: " . $connection->error;
+            $_SESSION['registration_error'] = "Error during registration!" . $connection->error;
         }
+        
         $connection->close();
         
 }}
@@ -45,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         padding: 100px 150px 100px 150px;
         }
         form input{
-            margin-bottom: 10px;
+      
             width: 300px;
             height: 30px;
             padding: 6px
@@ -81,6 +82,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .card-02{
             height: auto;
         }
+        .material-symbols-outlined{
+        font-size: 45px;
+    }
     </style>
 </head>
 <body>
@@ -137,17 +141,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label>Email:</label><input type="email" name="email" required /> <br />
                 <label>Password:</label><input type="password" name="password" required /> <br /><br />
                 <input type="submit" value="Sign Up" />
-
                 <a href="login_page.php" id="login_a">Sign In</a>
             </form>
-
-            </div>
+                <div class="notifications"></div>
             </div>
         </div>
         </main>
     </section> 
     <!--Cards layout end-->
 </body>
+<?php if (isset($_SESSION['registration_success'])): ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let type = 'success';
+            let icon = 'check_circle';
+            let title = 'Success';
+            let text = '<?php echo $_SESSION['registration_success']; ?>';
+            createToast(type, icon, title, text);
+            <?php unset($_SESSION['registration_success']); ?>
+        });
+    </script>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['registration_error'])): ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let type = 'error';
+            let icon = 'warning';
+            let title = 'Error';
+            let text = '<?php echo $_SESSION['registration_error']; ?>';
+            createToast(type, icon, title, text);
+            <?php unset($_SESSION['registration_error']); ?>
+        });
+    </script>
+<?php endif; ?>
+
+<script src="./js/notifications.js"></script>
 <script src="./js/cookie.js"></script>
 </html>
 
