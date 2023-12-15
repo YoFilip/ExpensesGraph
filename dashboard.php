@@ -1,115 +1,130 @@
-<?php
-session_start();
-require_once "connect.php";
+    <?php
+    session_start();
+    require_once "connect.php";
 
-function findIndex($arr, $val)
-    {
-        for($i = 0; $i < sizeof($arr); ++$i)
+    function findIndex($arr, $val)
         {
-            if($arr[$i] == $val)
-                return $i + 1;
+            for($i = 0; $i < sizeof($arr); ++$i)
+            {
+                if($arr[$i] == $val)
+                    return $i + 1;
+            }
         }
+
+    if (!isset($_SESSION['logged_in'])) {
+        header('Location: login_page.php');
+        exit();
     }
 
-if (!isset($_SESSION['logged_in'])) {
-    header('Location: login_page.php');
-    exit();
-}
+    $connection = new mysqli($host, $db_user, $db_password, $db_name);
 
-$connection = new mysqli($host, $db_user, $db_password, $db_name);
-
-if ($connection->connect_errno != 0) {
-    echo "Error: " . $connection->connect_errno;
-    exit();
-}
-
-$user_id = $_SESSION['id'];
-
-// Obliczanie sumy wydatków
-$sql = "SELECT SUM(amount) AS total FROM expenses WHERE user_id='$user_id' AND amount IS NOT NULL";
-$result = $connection->query($sql);
-$total_expenses = ($result && $row = $result->fetch_assoc()) ? floatval($row['total']) : 0;
-
-// Obliczanie sumy dochodów
-$sql = "SELECT income FROM user WHERE id='$user_id'";
-$result = $connection->query($sql);
-$total_income = ($result && $row = $result->fetch_assoc()) ? floatval($row['income']) : 0;
-
-// Funkcja do obliczania procentu budżetu
-function calculateBudgetPercentage(float $total_income, float $total_expenses) {
-    if ($total_income == 0) {
-        return 0;
-    } else {
-        return number_format((($total_expenses * 100) / $total_income) - 100,2)*(-1);
+    if ($connection->connect_errno != 0) {
+        echo "Error: " . $connection->connect_errno;
+        exit();
     }
-}
 
-// Obliczanie podsumowania budżetu
-$budget_summary = $total_income - $total_expenses;
-$budget_percent = calculateBudgetPercentage($total_income, $total_expenses);
+    $user_id = $_SESSION['id'];
 
-$dates = [];
-
-    $sql = "SELECT SUM(amount) as total, date,
-     expense_id, description FROM expenses WHERE
-      user_id='$user_id' GROUP BY date ORDER BY date";
+    // Obliczanie sumy wydatków
+    $sql = "SELECT SUM(amount) AS total FROM expenses WHERE user_id='$user_id' AND amount IS NOT NULL";
     $result = $connection->query($sql);
-    $expensesData = [];
-    while ($row = $result->fetch_assoc()) {
-        $dates[] = $row['date'];
-        $expensesData[] = $row;
+    $total_expenses = ($result && $row = $result->fetch_assoc()) ? floatval($row['total']) : 0;
+
+    // Obliczanie sumy dochodów
+    $sql = "SELECT income FROM user WHERE id='$user_id'";
+    $result = $connection->query($sql);
+    $total_income = ($result && $row = $result->fetch_assoc()) ? floatval($row['income']) : 0;
+
+
+
+    function calculateBudgetPercentage(float $total_income, float $total_expenses) {
+        if ($total_income == 0) {
+            return 0;
+        } else {
+
+    $total_expenses = filter_var($total_expenses, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    $total_income = filter_var($total_income, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+
+    if (is_numeric($total_expenses) && is_numeric($total_income) && $total_income != 0) {
+        $percentage = (($total_expenses * 100) / $total_income) - 100;
+        $formatted_percentage = sprintf("%.5f", $percentage * (-1));
+
+        return number_format($formatted_percentage, 2, '.', '');
+    } else {
+        return 0;
     }
 
-    
-    $dataArr1 = [];
-    $dataArr2 = [];
-
-    foreach ($expensesData as $expense) {
-        $category_id = $expense['expense_id'];
-        $date = $expense['date'];
-        $amount = $expense['total'];
-
-        if($category_id == 1)
-            $dataArr1[] = [$date => $amount];
-        else if($category_id == 2)
-            $dataArr2[] = [$date => $amount];
-    }
-    $data = [];
-    foreach($dataArr1 as $d1 => $d1_val)
-    {
-        foreach($d1_val as $d => $d_val)
-        {
-            $data[] = [findIndex($dates, $d), $d_val];
+            
         }
     }
 
-    $datasets = [];
 
+    // Obliczanie podsumowania budżetu
+    $budget_summary = $total_income - $total_expenses;
+    $budget_percent = calculateBudgetPercentage($total_income, $total_expenses);
 
+    $dates = [];
 
-    $dataset1[] = [
-        'name' => 'Praca',
-        'data' => $data
-    ];
-
-    $data = [];
-    foreach($dataArr2 as $d1 => $d1_val)
-    {
-        foreach($d1_val as $d => $d_val)
-        {
-            $data[] = [findIndex($dates, $d), $d_val];
+        $sql = "SELECT SUM(amount) as total, date,
+        expense_id, description FROM expenses WHERE
+        user_id='$user_id' GROUP BY date ORDER BY date";
+        $result = $connection->query($sql);
+        $expensesData = [];
+        while ($row = $result->fetch_assoc()) {
+            $dates[] = $row['date'];
+            $expensesData[] = $row;
         }
-    }
 
-    $dataset2[] = [
-        'name' => 'Dom',
-        'data' => $data 
-    ];
+        
+        $dataArr1 = [];
+        $dataArr2 = [];
 
-    $datasets = array_merge($dataset1, $dataset2);
+        foreach ($expensesData as $expense) {
+            $category_id = $expense['expense_id'];
+            $date = $expense['date'];
+            $amount = $expense['total'];
+
+            if($category_id == 1)
+                $dataArr1[] = [$date => $amount];
+            else if($category_id == 2)
+                $dataArr2[] = [$date => $amount];
+        }
+        $data = [];
+        foreach($dataArr1 as $d1 => $d1_val)
+        {
+            foreach($d1_val as $d => $d_val)
+            {
+                $data[] = [findIndex($dates, $d), $d_val];
+            }
+        }
+
+        $datasets = [];
 
 
-?>
+
+        $dataset1[] = [
+            'name' => 'Praca',
+            'data' => $data
+        ];
+
+        $data = [];
+        foreach($dataArr2 as $d1 => $d1_val)
+        {
+            foreach($d1_val as $d => $d_val)
+            {
+                $data[] = [findIndex($dates, $d), $d_val];
+            }
+        }
+
+        $dataset2[] = [
+            'name' => 'Dom',
+            'data' => $data 
+        ];
+
+        $datasets = array_merge($dataset1, $dataset2);
+
+
+    ?>
 
 
 <!DOCTYPE html>
@@ -145,7 +160,7 @@ $dates = [];
                                 <a href="dashboard.php">Dashboard</a>
                                 </li>
                                 <li>
-                                    <a href="#">Raports</a>
+                                    <a href="raports_page.php">Raports</a>
                                 </li>
                                 <li>
                                     <a href="income_page.php">Add Income</a>
@@ -170,14 +185,7 @@ $dates = [];
     </section>
     <!--end Header section-->
 
-     <!--Cookie Pop up-->
-     <div class="popup" id="myForm">
-        <h1>Cookie Policy</h1>
-        <p>This website uses cookies to ensure the best quality of services. Please read our <a href="#">cookie policy</a> to learn more.</p>
-        <button type="button" class="close-button" id="acceptCookiesButton" onclick="acceptCookies(event)">I Agree</button>
-        <button type="button" class="close-button" id="rejectCookiesButton" onclick="rejectCookies(event)">I Disagree</button>
-    </div>
-    <!--end Cookie Pop up-->
+
 
     <!--Cards layout start-->
     <section>
@@ -210,10 +218,8 @@ $dates = [];
     </section> 
 <!--Cards layout end-->
 </body>
-<!-- <script src="./js/charts.js"></script> -->
-
 <script>
-    var chartDatasets = <?php echo json_encode($datasets); ?>;
+var chartDatasets = <?php echo json_encode($datasets); ?>;
 var options = {
           series: chartDatasets,
           chart: {
@@ -277,6 +283,4 @@ var options = {
         var chart = new ApexCharts(document.querySelector("#myChart"), options);
         chart.render();
 </script>
-
-<script src="./js/cookie.js.js"></script>
 </html>

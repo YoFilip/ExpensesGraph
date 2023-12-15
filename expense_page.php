@@ -100,7 +100,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                             <a href="dashboard.php" >Home</a>
                         </li>
                         <li>
-                            <a href="#">Raports</a>
+                            <a href="raports_page.php">Raports</a>
                         </li>
                         <li>
                             <a href="income_page.php">Add Income</a>

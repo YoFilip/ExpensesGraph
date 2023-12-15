@@ -20,7 +20,6 @@ if ($connection->connect_errno != 0) {
     $stmt->execute();
     $stmt->store_result();
 
-   // ...
 
 if ($stmt->num_rows > 0) {
     $stmt->bind_result($id, $username, $hashed_password);
