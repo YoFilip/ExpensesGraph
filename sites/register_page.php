@@ -177,8 +177,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </script>
 <?php endif; ?>
 
-<script src="./js/notifications.js"></script>
-<script src="./js/cookie.js"></script>
+<script src="../js/notifications.js"></script>
+<script src="../js/cookie.js"></script>
 </html>
 
 

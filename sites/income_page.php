@@ -100,7 +100,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                             <a href="raports_page.php">Raports</a>
                         </li>
                         <li>
-                            <a href="/expense_page.php">Add Expense</a>
+                            <a href="expense_page.php">Add Expense</a>
                         </li>
                         <li>
                             <a href="../php/logout.php">Sign Out</a>
@@ -143,7 +143,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <!--Cards layout end-->
 </section> 
 </body>
-<script src="./js/notifications.js"></script>
+<script src="../js/notifications.js"></script>
 <?php if (isset($_SESSION['income_status'])): ?>
 <script>
     document.addEventListener('DOMContentLoaded', function() {

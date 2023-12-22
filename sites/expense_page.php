@@ -104,7 +104,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                             <a href="raports_page.php">Raports</a>
                         </li>
                         <li>
-                            <a href="/income_page.php">Add Income</a>
+                            <a href="income_page.php">Add Income</a>
                         </li>
                         <li>
                             <a href="../php/logout.php">Sign Out</a>
@@ -133,9 +133,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
           
        
             <form action="../php/add_expense.php" method="post">
-                Date: <br /> <input type="date" name="date" required /> <br />
-                Description: <br /> <input type="text" name="description" required /> <br />
-                Expense Amount: <br /> <input type="number" name="amount" step="0.01" required /> <br />
+                <label>Date:</label> <br /> <input type="date" name="date" required /> <br />
+                <label> Description:</label><br /> <input type="text" name="description" required /> <br />
+                <label>Expense Amount:</label> <br /> <input type="number" name="amount" step="0.01" required /> <br />
                 
                 <select name="category">
                     <?php
@@ -155,7 +155,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     }
                     ?>
                 </select> 
-                <button class="item-btn" type="submit" name="submit_expense">Add an expense</button>
+                <button class="item-btn" id="none" type="submit" name="submit_expense">Add an expense</button>
             </form>
             <div class="notifications"></div>
           
@@ -167,7 +167,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <!--Cards layout end-->
 </section> 
 </body>
-<script src="./js/notifications.js"></script>
+<script src="../js/notifications.js"></script>
 <?php if (isset($_SESSION['expense_status'])): ?>
 <script>
     document.addEventListener('DOMContentLoaded', function() {

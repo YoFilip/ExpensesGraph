@@ -194,7 +194,7 @@ if (!$expense) {
         <!--Cards layout end-->
     </section> 
 </body>
-<script src="./js/notifications.js"></script>
+<script src="../js/notifications.js"></script>
 <?php if (isset($_SESSION['error'])): ?>
     <script>
         document.addEventListener('DOMContentLoaded', function() {

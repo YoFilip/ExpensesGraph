@@ -140,8 +140,8 @@ if ((isset($_SESSION['logged_in'])) && ($_SESSION['logged_in'] == true)) {
         <!--Cards layout end-->
     </section> 
 </body>
-<script src="./js/cookie.js"></script>
-<script src="./js/notifications.js"></script>
+<script src="../js/notifications.js"></script>
+<script src="../js/cookie.js"></script>
 <?php if (isset($_SESSION['error'])): ?>
     <script>
         document.addEventListener('DOMContentLoaded', function() {

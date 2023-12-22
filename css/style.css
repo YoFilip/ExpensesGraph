@@ -233,6 +233,27 @@ header nav ul li a {
     }
   }
 
+  .item-btn{
+    margin-top: 20px;
+  }
+  #none{
+    margin-top: 0;
+  }
+
+  form input[type="submit"]{
+    margin-top: 10px;
+  }
+  form label{
+    margin-top: 10px;
+  }
+  select{
+    width: 65px;
+    text-align: center;
+    background-color: var(--black);
+    color: var(--white);
+    margin-top: 10px;
+    height: 30px;
+  }
 
 
   /*====Popup Cookie===*/
@@ -280,6 +301,8 @@ header nav ul li a {
     margin-left: 5px;
     margin-top: 10px;
   }
+
+  
 
 
 

@@ -205,7 +205,7 @@ $result = $connection->query($sql);
         </div>
     </section>
 </body>
-<script src="./js/notifications.js"></script>
+<script src="../js/notifications.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     var deleteButtons = document.querySelectorAll('.btn-delete');
