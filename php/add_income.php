@@ -3,7 +3,7 @@ session_start();
 require_once "connect.php";
 
 if (!isset($_SESSION['logged_in'])) {
-    header('Location: login_page.php');
+    header('Location: ../sites/login_page.php');
     exit();
 }
 
@@ -29,7 +29,7 @@ if (isset($_POST['submit_income'])) {
         $_SESSION['income_message'] = "Error while adding income: " . $connection->error;
     }
     
-    header('Location: income_page.php'); 
+    header('Location: ../sites/income_page.php'); 
 }
 
 $connection->close();

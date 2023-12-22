@@ -1,6 +1,6 @@
     <?php
     session_start();
-    require_once "connect.php";
+    require_once "../php/connect.php";
 
     function findIndex($arr, $val)
         {
@@ -134,8 +134,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExpensesGraph</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/scrollbar.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/scrollbar.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 
@@ -169,7 +169,7 @@
                                     <a href="expense_page.php">Add Expense</a>
                                 </li>
                                 <li>
-                                    <a href="logout.php">Sign Out</a>
+                                    <a href="../php/logout.php">Sign Out</a>
                                 </li>
                             </ul>
                         </nav>

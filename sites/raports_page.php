@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "connect.php";
+require_once "../php/connect.php";
 
 if (!isset($_SESSION['logged_in'])) {
     header('Location: login_page.php');
@@ -28,7 +28,8 @@ $result = $connection->query($sql);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/scrollbar.css">
     <title>ExpensesGraph</title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <style>
@@ -150,7 +151,7 @@ $result = $connection->query($sql);
                                 <li><a href="#">Raports</a></li>
                                 <li><a href="income_page.php">Add Income</a></li>
                                 <li><a href="expense_page.php">Add Expense</a></li>
-                                <li><a href="logout.php">Sign Out</a></li>
+                                <li><a href="../php/logout.php">Sign Out</a></li>
                             </ul>
                         </nav>
                         <label for="nav_check" class="hamburger">
@@ -188,11 +189,8 @@ $result = $connection->query($sql);
                                 echo "<td>" . $row['amount'] . " zł</td>";
                                 echo "<td>" . $row['category_title'] . "</td>";
                                 echo "<td>";
-                                // echo "<a href='edit_expense_page.php?id=" . $row['id'] . "' class='btn btn-edit'>Edit</a>";
-                                echo "<a href='edit_expense_page.php?id=" . $row['id'] . "' class='btn btn-edit'>Edit</a>";
-
+                                echo "<a href='./sites/edit_./expense_page.php?id=" . $row['id'] . "' class='btn btn-edit'>Edit</a>";
                                 echo "<a class='btn btn-delete' data-id='" . $row['id'] . "'>Delete</a>";
-
                                 echo "</td>";
                                 echo "</tr>";
                             }
@@ -217,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var id = this.getAttribute('data-id');
             if(confirm('Are you sure you want to delete this record?')) {
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'delete_record.php', true);
+                xhr.open('POST', '../php/delete_record.php', true);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhr.onload = function() {
                     if (this.status == 200) {

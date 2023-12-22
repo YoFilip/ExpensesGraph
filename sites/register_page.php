@@ -1,5 +1,5 @@
 <?php
-require_once "connect.php";
+require_once "../php/connect.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $connection = @new mysqli($host, $db_user, $db_password, $db_name);
@@ -29,7 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/scrollbar.css">
     <title>ExpensesGraph</title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <style>

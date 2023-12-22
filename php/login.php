@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_POST['email']) || !isset($_POST['password'])) {
-    header('Location: login_page.php');
+    header('Location: ../sites/login_page.php');
     exit();
 }
 
@@ -33,14 +33,14 @@ if ($stmt->num_rows > 0) {
         unset($_SESSION['error']);
         $stmt->close();
         $connection->close();
-        header('Location: dashboard.php');
+        header('Location: ../sites/dashboard.php');
     } else {
         $_SESSION['error'] = 'Invalid email or password!';
-        header('Location: login_page.php');
+        header('Location: ../sites/login_page.php');
     }
 } else {
     $_SESSION['error'] = 'Invalid email or password!';
-    header('Location: login_page.php');
+    header('Location: ../sites/login_page.php');
 }
 
 }

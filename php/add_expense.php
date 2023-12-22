@@ -3,7 +3,7 @@ session_start();
 require_once "connect.php";
 
 if (!isset($_SESSION['logged_in'])) {
-    header('Location: login_page.php');
+    header('Location: ../sites/login_page.php');
     exit();
 }
 
@@ -32,7 +32,7 @@ if (isset($_POST['submit_expense'])) {
         $_SESSION['expense_message'] = "Error while adding expense: " . $connection->error;
     }
     
-    header('Location: expense_page.php');     
+    header('Location: ../sites/expense_page.php');     
 }
 
 $connection->close();

@@ -13,7 +13,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/scrollbar.css">
     <title>ExpensesGraph</title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
@@ -99,10 +100,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                             <a href="raports_page.php">Raports</a>
                         </li>
                         <li>
-                            <a href="expense_page.php">Add Expense</a>
+                            <a href="/expense_page.php">Add Expense</a>
                         </li>
                         <li>
-                            <a href="logout.php">Sign Out</a>
+                            <a href="../php/logout.php">Sign Out</a>
                         </li>
                     </ul>
                 </nav>
@@ -127,7 +128,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         <div class="card-02">
           
        
-        <form action="add_income.php" method="post">
+        <form action="../php/add_income.php" method="post">
             Income Amount: <br /> <input type="number" name="income_amount" step="0.01" required /> <br />
             <button class="item-btn" type="submit" name="submit_income">Add Income</button>
         </form>

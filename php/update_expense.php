@@ -3,7 +3,7 @@ session_start();
 require_once "connect.php";
 
 if (!isset($_SESSION['logged_in'])) {
-    header('Location: login_page.php');
+    header('Location: ../sites/login_page.php');
     exit();
 }
 
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "UPDATE expenses SET date = '$date', description = '$description', amount = $amount, expense_id = $category_id WHERE id = $id";
     if ($connection->query($sql)) {
 
-        header('Location: raports_page.php');
+        header('Location: ../sites/raports_page.php');
     } else {
         echo "Error updating record: " . $connection->error;
     }

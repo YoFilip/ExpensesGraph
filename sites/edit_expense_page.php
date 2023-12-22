@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "connect.php";
+require_once "../php/connect.php";
 if (!isset($_SESSION['logged_in'])) {
     header('Location: login_page.php');
     exit();
@@ -41,7 +41,8 @@ if (!$expense) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/scrollbar.css">
     <title>ExpensesGraph</title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <style>
@@ -135,7 +136,7 @@ if (!$expense) {
                                     <a href="expense_page.php">Add Expense</a>
                                 </li>
                                 <li>
-                                    <a href="logout.php">Sign Out</a>
+                                    <a href="../php/logout.php">Sign Out</a>
                                 </li>
                         </ul>
                     </nav>
@@ -161,7 +162,7 @@ if (!$expense) {
             
 
 
-            <form action="update_expense.php" method="post">
+            <form action="../php/update_expense.php" method="post">
     <input type="hidden" name="id" value="<?php echo $expense['id']; ?>" />
 
     Date: <br /> <input type="date" name="date" value="<?php echo $expense['date']; ?>" required /> <br />
