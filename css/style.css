@@ -192,16 +192,41 @@ header nav ul li a {
     border: 3px solid var(--border-black);
     position: relative;
     flex: 1;
-    max-width: 94rem;
-    height: 30rem;
+    max-width: 80%;
     margin: 1rem;
     border-radius: 10px;
     
   }
+
+  .charts{
+    background: var(--white);
+    border: 3px solid var(--border-black);
+    flex: 1;    
+    height: 18rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .charts .item-chart{
+    margin: 1rem;
+    background: var(--white);
+    border: 3px solid var(--white);
+    height: 80%;
+    width: 30%;
+    margin: 1rem;
+    color: var(--white);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
   .card-03{
     position: relative;
     flex: 1;
-    max-width: 94rem; 
+    max-width: 80%
   }
 
   #myChart{
@@ -234,10 +259,7 @@ header nav ul li a {
   }
 
   .item-btn{
-    margin-top: 20px;
-  }
-  #none{
-    margin-top: 0;
+    margin-top: 10px;
   }
 
   form input[type="submit"]{
@@ -380,14 +402,16 @@ header nav ul li a {
 
   /*=====RAPORTS Styles=======*/
   table{
-    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 10px;
     border-collapse: collapse;
+    width: 100%;
   }
   tr,th,td{
     padding: 20px;
     border: 3px solid var(--border-black);
+    width: 20%;
+    border-radius: 10px;
   }

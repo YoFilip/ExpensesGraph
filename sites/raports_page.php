@@ -94,6 +94,7 @@ $result = $connection->query($sql);
         .card-02 {
             height: auto;
             border: none;
+        
         }
 
         #delete-btn, #edit-btn {
@@ -136,6 +137,8 @@ $result = $connection->query($sql);
     </style>
 </head>
 <body>
+
+
     <!-- Header section -->
     <section>
         <div class="header">
@@ -164,11 +167,18 @@ $result = $connection->query($sql);
             </div>
         </div>
     </section>
-
+ 
     <section>
         <div class="container">
             <h1>Your Raport</h1>
-            <div class="row"></div>
+            <div class="row">-
+            <div class="card-02">
+                <div class="charts">
+                    <div class="item-chart"><div class="chart"></div></div>
+                    <div class="item-chart"><div class="chart"></div></div>
+                    <div class="item-chart"><div class="chart"></div></div>
+                </div></div>
+            </div>
             <div class="row">
                 <div class="card-02">
                     <div class="notifications"></div>
@@ -189,7 +199,7 @@ $result = $connection->query($sql);
                                 echo "<td>" . $row['amount'] . " zł</td>";
                                 echo "<td>" . $row['category_title'] . "</td>";
                                 echo "<td>";
-                                echo "<a href='./sites/edit_./expense_page.php?id=" . $row['id'] . "' class='btn btn-edit'>Edit</a>";
+                                echo "<a href='edit_expense_page.php?id=" . $row['id'] . "' class='btn btn-edit'>Edit</a>";
                                 echo "<a class='btn btn-delete' data-id='" . $row['id'] . "'>Delete</a>";
                                 echo "</td>";
                                 echo "</tr>";
@@ -205,6 +215,7 @@ $result = $connection->query($sql);
         </div>
     </section>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="../js/notifications.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -228,5 +239,122 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+<?php 
+
+$query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE u.id = '$user_id' AND e.user_id = '$user_id'";
+$arr1 = [];
+$result = $connection->query($query);
+if($result->num_rows > 0)
+{
+    $row = $result->fetch_assoc();
+
+    $arr1[] = $row['income'];
+    $arr1[] = $row['total'];
+}
+
+$query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE e.user_id = '$user_id' AND e.expense_id = '1'";
+
+$arr2 = [];
+$result = $connection->query($query);
+if($result->num_rows > 0)
+{
+    $row = $result->fetch_assoc();
+
+    $arr2[] = $row['income'];
+    $arr2[] = $row['total'];
+}
+
+$query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE e.user_id = '$user_id' AND e.expense_id = '2'";
+
+$arr3 = [];
+$result = $connection->query($query);
+if($result->num_rows > 0)
+{
+    $row = $result->fetch_assoc();
+
+    $arr3[] = $row['income'];
+    $arr3[] = $row['total'];
+}
+
+?>
+function getRandomColor(){
+    let tablicacyferek = [0,1,2,3,4,5,6,7,8,9, 'A','B','C','D','E','F'];
+    let color = "#";
+    while(color.length < 7){
+        color += tablicacyferek[Math.floor(Math.random() * 16)];
+    }
+}
+
+var options1 = {
+          series: [<?php echo $arr1[0];?>, <?php echo $arr1[1];?>],
+          chart: {
+          width: 380,
+          type: 'pie',
+        },
+        labels: ['Income', 'Expenses'],
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'center'
+            }
+          }
+        }]
+        };
+
+var options2 = {
+          series: [<?php echo $arr2[0];?>, <?php echo $arr2[1];?>],
+          chart: {
+          width: 380,
+          type: 'pie',
+        },
+        labels: ['Income', 'Work'],
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+
+var options3 = {
+          series: [<?php echo $arr3[0];?>, <?php echo $arr3[1];?>],
+          chart: {
+          width: 380,
+          type: 'pie',
+        },
+        labels: ['Income', 'Home'],
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+        // Income, expenes(* categories)
+        var chart1 = new ApexCharts(document.getElementsByClassName("chart")[0], options1);
+        // Income, expenses(1 categorie)
+        var chart2 = new ApexCharts(document.getElementsByClassName("chart")[1], options2);
+        // Income, expenses(2 categorie) 
+        var chart3 = new ApexCharts(document.getElementsByClassName("chart")[2], options3);
+        chart1.render();
+        chart2.render();
+        chart3.render();
+
+
 </script>
+
 </html>

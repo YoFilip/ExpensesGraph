@@ -103,7 +103,7 @@
 
 
         $dataset1[] = [
-            'name' => 'Praca',
+            'name' => 'Work',
             'data' => $data
         ];
 
@@ -117,7 +117,7 @@
         }
 
         $dataset2[] = [
-            'name' => 'Dom',
+            'name' => 'Home',
             'data' => $data 
         ];
 
@@ -266,7 +266,7 @@ var options = {
         tickAmount: <?php echo sizeof($dates);?>
         },
         title: {
-          text: 'Wydatki',
+          text: 'Expenses',
           align: 'center',
           offsetX: 14
         },
