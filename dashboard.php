@@ -227,7 +227,7 @@ var options = {
           stacked: false,
           height: 350,
           zoom: {
-            enabled: false
+            enabled: true
           },
         },
         dataLabels: {
@@ -277,7 +277,8 @@ var options = {
           position: 'top',
           horizontalAlign: 'right',
           offsetX: -10
-        }
+        },
+        
         };
 
         var chart = new ApexCharts(document.querySelector("#myChart"), options);
