@@ -265,6 +265,7 @@ header nav ul li a {
   }
   
   .close-button{
+    cursor: pointer;
     background:var(--black);
     color:var(--white);
     border-radius:5px;
