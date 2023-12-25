@@ -163,6 +163,9 @@
                                     <a href="raports_page.php">Raports</a>
                                 </li>
                                 <li>
+                                    <a href="notepad.php">Notepad</a>
+                                </li>
+                                <li>
                                     <a href="income_page.php">Add Income</a>
                                 </li>
                                 <li>
