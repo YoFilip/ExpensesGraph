@@ -17,7 +17,7 @@
         header("location: ../sites/notepad.php");
     }else{
         echo "Wystąpił błąd z dodaniem notatki do bazy: ". $res->errno;
-        echo "<a href='note_pad.php'>Wróć do strony z notatkami</a>";
+        echo "<a href='../sites/notepad.php'>Wróć do strony z notatkami</a>";
     }
 
 ?>

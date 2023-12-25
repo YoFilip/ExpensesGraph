@@ -49,10 +49,11 @@
             if($res->num_rows > 0)
                 foreach($res as $row)
                 {
-                    echo "<div class='note'>
-                    <h2>".$row['title']."</h2>
-                    <p>".$row['content']."</p>
+                    echo "<div class='note'>    
+                    <h2 class='title'>".$row['title']."</h2>
+                    <p class='content'>".$row['content']."</p>
                     <p>".$row['date']."</p>
+                    <span class = 'changeBtn'><button id = '". $row['id'] ."' onclick = 'changeNote(this.id)'>Zmień notatkę</button></span>
                     </div>";
                 }
             else
@@ -61,6 +62,8 @@
                 </div>";
         ?>
     </div>
+
+    <script src="../js/changeNote.js"></script>
 
 </body>
 </html>
