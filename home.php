@@ -60,6 +60,7 @@ $budget_summary = $total_income + $total_expenses;
 $calculations = isZero($total_income, $total_expenses);
 $budget_percent = $calculations - ($calculations*2);
 
+<<<<<<< Updated upstream
 $sql = "SELECT SUM(amount) as total, date, expense_id FROM expenses WHERE user_id='$user_id' GROUP BY date, expense_id ORDER BY date";
 $result = $connection->query($sql);
 $expensesData = [];
@@ -136,6 +137,46 @@ $datasets = [];
 //         'fill' => false,
 //     ];
 // }
+=======
+$query = "SELECT c.categorie_id, e.amount, e.date, c.title FROM expenses e, categories c WHERE e.expense_id = c.categorie_id AND e.user_id = $user_id";
+
+$res = $connection->query($query);
+
+$data = [];
+$dates = [];
+$titles = [];
+$d1 = [];
+$categories = [];
+
+while($row = $res->fetch_assoc())
+{
+    $data = [...$data, $row['amount']];
+    $titles = [...$titles, $row['title']];
+    $d1 = [...$d1, $row['date']=>$row['amount']];
+}
+
+ksort($d1);
+
+$date_var = array_keys($d1);
+
+for($i = 0; $i < sizeof($d1); ++$i)
+{
+    $dates = [...$dates, $d1[$date_var[$i]]];
+}
+
+$query = "SELECT title FROM categories";
+
+$res = $connection->query($query);
+
+if($res->num_rows > 0)
+{
+    while($row = $res->fetch_assoc())
+    {
+        $categories = [...$categories, $row['title']];
+    }
+}
+
+>>>>>>> Stashed changes
 
 
 ?>
@@ -239,6 +280,7 @@ $datasets = [];
         Data: <br /> <input type="date" name="date" required /> <br />
         Opis: <br /> <input type="text" name="description" required /> <br />
         Kwota Wydatku: <br /> <input type="number" name="amount" step="0.01" required /> <br />
+<<<<<<< Updated upstream
         Kategoria: <br />
         <select name="category">
         <?php
@@ -249,6 +291,16 @@ $datasets = [];
         }
         ?>
     </select> <br />
+=======
+        Waluta: <br /> <input type="text" name="currency" required><br />
+        Kategoria: <br /> <select name="categorie" placeholder="kategorie:">
+            <?php
+            foreach($categories as $cat):
+            ?>
+            <option value="<?php $cat ?>"><?php echo $cat ?></option>
+            <?php endforeach; ?>
+        </select><br />
+>>>>>>> Stashed changes
         <button class="item-btn"type="submit" name="submit_expense" onClick="closeOpenPopUpExpenses()"><i class="fa-solid fa-plus"></i> Dodaj wydatek</button>
         <button id="pop-up-close" class="item-btn-close" onClick="closeOpenPopUpExpenses()">Zamknij Okno</button>
 
@@ -262,6 +314,7 @@ $datasets = [];
 </body>
 
 <script src="./js/menu.js"></script>
+<<<<<<< Updated upstream
 <script>
     var chartDataSets = <?php echo json_encode($datasets); ?>;
 
@@ -482,5 +535,108 @@ chart.render();
 </script>
 
 
+=======
+<!-- <script src="./js/charts.js"></script> -->
+>>>>>>> Stashed changes
 <script src="./js/pop_up.js"></script>
+<script>
+    var categories = <?php echo json_encode($userCategories); ?>;
+
+    var data = <?php echo json_encode($data);?>;
+
+    var dates = <?php echo json_encode($dates);?>;
+
+    var titles = <?php echo json_encode($titles);?>;
+
+    var datasets = [];
+
+    for (var i = 0; i < categories.length; i++) {
+        var dataset = {
+            data: data,
+            label: titles[i],
+            borderColor: getRandomColor(),
+            fill: false
+        };
+        datasets.push(dataset);
+    }
+
+    new Chart(document.getElementById("myChart"), {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: datasets 
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Wydatki'
+            }
+        }
+    });
+
+    function getRandomColor()
+    {
+        let options = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+
+        let color = "#";
+
+        while(color.length < 7)
+        {
+            color += options[Math.floor(Math.random() * 16)]
+        }
+        return color;
+    }
+
+
+    // var categories = <?php// echo json_encode($categories); ?>;
+    // var datasets = [];
+    // for(var i = 0; i < categories.length; ++i)
+    // {
+    //     var dataset = [
+    //         {
+    //             data: [10],
+    //             label: categories[i],
+    //             borderColor: "#3e95cd",
+    //             fill: false
+    //         }
+    //     ]
+    //     datasets.push(dataset);
+    // }
+    
+    // new Chart(document.getElementById("myChart"), {
+    // type: 'line',
+    // data: {
+    //     labels: [1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050, 1999, 2050,],
+    //     datasets: datasets,
+        // {
+        //     data: [282, 350, 411, 502, 635, 809, 947, 1402, 3700, 5267],
+        //     label: categories[1],
+        //     borderColor: "#8e5ea2",
+        //     fill: false
+        // }, {
+        //     data: [168, 170, 178, 190, 203, 276, 408, 547, 675, 734],
+        //     label: categories,
+        //     borderColor: "#3cba9f",
+        //     fill: false
+        // }, {
+        //     data: [40, 20, 10, 16, 24, 38, 74, 167, 508, 784],
+        //     label: categories,
+        //     borderColor: "#e8c3b9",
+        //     fill: false
+        // }, {
+        //     data: [6, 3, 2, 2, 7, 26, 82, 172, 312, 433],
+        //     label: categories,
+        //     borderColor: "#c45850",
+        //     fill: false
+        // }
+        // ]
+//     },
+//     options: {
+//         title: {
+//             display: true,
+//             text: '',
+//         }
+//     }
+// });
+</script>
 </html>

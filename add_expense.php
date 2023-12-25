@@ -20,9 +20,21 @@ if (isset($_POST['submit_expense'])) {
     $date = $_POST['date'];
     $description = mysqli_real_escape_string($connection, $_POST['description']);
     $amount = $_POST['amount'];
+<<<<<<< Updated upstream
     $category_id = $_POST['category'];
 
     $sql = "INSERT INTO expenses (user_id, date, description, amount, expense_id) VALUES ('$user_id', '$date', '$description', '$amount', '$category_id')";
+=======
+    $currency = $_POST['currency'];
+    $categorie = $_POST['categorie'];
+
+    $sql = "SELECT * FROM categories WHERE title = '$categorie'";
+
+    $res = $connection->query($sql);
+    $row = $res->fetch_assoc();
+
+    $sql = "INSERT INTO expenses (user_id, date, description, amount, currency, expense_id) VALUES ('$user_id', '$date', '$description', '$amount', '$currency', '$row['id']')";
+>>>>>>> Stashed changes
 
     if ($connection->query($sql)) {
         echo "Wydatek dodany pomyślnie!";
