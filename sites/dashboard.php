@@ -169,6 +169,9 @@
                                     <a href="expense_page.php">Add Expense</a>
                                 </li>
                                 <li>
+                                    <a href="currency_page.php">Currency Calculator</a>
+                                </li>
+                                <li>
                                     <a href="../php/logout.php">Sign Out</a>
                                 </li>
                             </ul>
@@ -221,6 +224,7 @@
 <script>
 var chartDatasets = <?php echo json_encode($datasets); ?>;
 var options = {
+        colors: ['#007BFF', '#0F1626'], 
           series: chartDatasets,
           chart: {
           type: 'area',

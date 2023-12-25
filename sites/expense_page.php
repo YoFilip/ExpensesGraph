@@ -58,10 +58,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         width: 325px;
         height: 50px;
     }
-
-    form label{
-        margin-bottom: 10px;
-    }
     #login_a{
         margin-top: 20px;
         color: var(--text);
@@ -71,7 +67,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         font-size: 45px;
     }
     .card-02{
-        height: 35rem;
+        height: auto;
     }
     select{
         border: 1px solid black;
@@ -105,6 +101,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         </li>
                         <li>
                             <a href="income_page.php">Add Income</a>
+                        </li>
+                        <li>
+                            <a href="currency_page.php">Currency Calculator</a>
                         </li>
                         <li>
                             <a href="../php/logout.php">Sign Out</a>
