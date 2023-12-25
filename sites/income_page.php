@@ -103,6 +103,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                             <a href="expense_page.php">Add Expense</a>
                         </li>
                         <li>
+                             <a href="currency_page.php">Currency Calculator</a>
+                        </li>
+                        <li>
                             <a href="../php/logout.php">Sign Out</a>
                         </li>
                     </ul>

@@ -151,10 +151,11 @@ $result = $connection->query($sql);
                         <nav>
                             <ul>
                                 <li><a href="dashboard.php">Home</a></li>
-                                <li><a href="#">Raports</a></li>
                                 <li><a href="income_page.php">Add Income</a></li>
                                 <li><a href="expense_page.php">Add Expense</a></li>
+                                <li><a href="currency_page.php">Currency Calculator</a></li>
                                 <li><a href="../php/logout.php">Sign Out</a></li>
+                                
                             </ul>
                         </nav>
                         <label for="nav_check" class="hamburger">
@@ -277,73 +278,70 @@ if($result->num_rows > 0)
 }
 
 ?>
-function getRandomColor(){
-    let tablicacyferek = [0,1,2,3,4,5,6,7,8,9, 'A','B','C','D','E','F'];
-    let color = "#";
-    while(color.length < 7){
-        color += tablicacyferek[Math.floor(Math.random() * 16)];
-    }
-}
 
 var options1 = {
-          series: [<?php echo $arr1[0];?>, <?php echo $arr1[1];?>],
-          chart: {
-          width: 380,
-          type: 'pie',
-        },
-        labels: ['Income', 'Expenses'],
-        responsive: [{
-          breakpoint: 480,
-          options: {
+    series: [<?php echo $arr1[0];?>, <?php echo $arr1[1];?>],
+    chart: {
+        width: 380,
+        type: 'pie',
+    },
+    labels: ['Income', 'Expenses'],
+    colors: ['#0F1626', '#007BFF'],  
+    responsive: [{
+        breakpoint: 480,
+        options: {
             chart: {
-              width: 200
+                width: 200
             },
             legend: {
-              position: 'center'
+                position: 'center'
             }
-          }
-        }]
-        };
+        }
+    }]
+};
 
 var options2 = {
-          series: [<?php echo $arr2[0];?>, <?php echo $arr2[1];?>],
-          chart: {
-          width: 380,
-          type: 'pie',
-        },
-        labels: ['Income', 'Work'],
-        responsive: [{
-          breakpoint: 480,
-          options: {
+    series: [<?php echo $arr2[0];?>, <?php echo $arr2[1];?>],
+    chart: {
+        width: 380,
+        type: 'pie',
+    },
+    labels: ['Income', 'Work'],
+    colors: ['#007BFF', '#0F1626'], 
+    responsive: [{
+        breakpoint: 480,
+        options: {
             chart: {
-              width: 200
+                width: 200
             },
             legend: {
-              position: 'bottom'
+                position: 'bottom'
             }
-          }
-        }]
-        };
+        }
+    }]
+};
 
 var options3 = {
-          series: [<?php echo $arr3[0];?>, <?php echo $arr3[1];?>],
-          chart: {
-          width: 380,
-          type: 'pie',
-        },
-        labels: ['Income', 'Home'],
-        responsive: [{
-          breakpoint: 480,
-          options: {
+    series: [<?php echo $arr3[0];?>, <?php echo $arr3[1];?>],
+    chart: {
+        width: 380,
+        type: 'pie',
+    },
+    labels: ['Income', 'Home'],
+    colors: ['#0F1626', '#007BFF'], 
+    responsive: [{
+        breakpoint: 480,
+        options: {
             chart: {
-              width: 200
+                width: 200
             },
             legend: {
-              position: 'bottom'
+                position: 'bottom'
             }
-          }
-        }]
-        };
+        }
+    }]
+};
+
         // Income, expenes(* categories)
         var chart1 = new ApexCharts(document.getElementsByClassName("chart")[0], options1);
         // Income, expenses(1 categorie)
