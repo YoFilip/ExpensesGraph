@@ -16,7 +16,7 @@
                     <label for="title">Tytuł:</label>
                 </td>
                 <td>
-                    <input type="text" name='title'>
+                    <input type="text" name='title' id='title'>
                 </td>
             </tr>
             <tr>
@@ -24,7 +24,7 @@
                     <label for="content">Zawartość:</label>
                 </td>
                 <td>
-                    <textarea type="text" name='content' rows="4" cols="40"></textarea>
+                    <textarea type="text" name='content' id='content' rows="4" cols="40"></textarea>
                 </td>
             </tr>
             <tr>
