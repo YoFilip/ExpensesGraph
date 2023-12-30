@@ -127,6 +127,7 @@
                             <li><a href="dashboard.php">Dashboard</a></li>
                             <li><a href="raports_page.php">Raports</a></li>
                             <li><a href="income_page.php">Add Income</a></li>
+                            <li><a href="notepad.php">Notepad</a></li>
                             <li><a href="expense_page.php">Add Expense</a></li>
                             <li><a href="../php/logout.php">Sign Out</a></li>
                         </ul>

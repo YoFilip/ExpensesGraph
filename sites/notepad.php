@@ -7,6 +7,49 @@
     <title>Expenses notepad</title>
 </head>
 <body>
+
+<section>
+        <div class="header">
+            <div class="row">
+            <div class="card-03">
+                <header>
+                    <span class="material-symbols-outlined">
+                        join_left
+                    </span>
+                        <h1>ExpensesGraph</h1>
+                    <input type="checkbox" id="nav_check" hidden>
+                    <nav>
+                        <ul>
+                        <li>
+                                <a href="dashboard.php">Dashboard</a>
+                                </li>
+                                <li>
+                                    <a href="raports_page.php">Raports</a>
+                                </li>
+                                <li>
+                                    <a href="income_page.php">Add Income</a>
+                                </li>
+                                <li>
+                                    <a href="expense_page.php">Add Expense</a>
+                                </li>
+                                <li>
+                                    <a href="currency_page.php">Currency Calculator</a>
+                                </li>
+                                <li>
+                                    <a href="../php/logout.php">Sign Out</a>
+                                </li>
+                        </ul>
+                    </nav>
+                    <label for="nav_check" class="hamburger">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </label>
+                </header>
+            </div>
+            </div>
+        </div>
+</section>
     
     <form method="post" action="../php/add_note.php">
         <table>

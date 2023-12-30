@@ -152,10 +152,10 @@ $result = $connection->query($sql);
                             <ul>
                                 <li><a href="dashboard.php">Home</a></li>
                                 <li><a href="income_page.php">Add Income</a></li>
+                                <li><a href="notepad.php">Notepad</a></li>
                                 <li><a href="expense_page.php">Add Expense</a></li>
                                 <li><a href="currency_page.php">Currency Calculator</a></li>
                                 <li><a href="../php/logout.php">Sign Out</a></li>
-                                
                             </ul>
                         </nav>
                         <label for="nav_check" class="hamburger">
