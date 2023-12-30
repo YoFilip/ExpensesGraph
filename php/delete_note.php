@@ -18,5 +18,9 @@ if($res){
     echo "<a href='../sites/notepad.php'>Wróć do strony z notatkami</a>";
 }
 
+$query = "UPDATE notepad SET id = id - 1 WHERE id > '$note_id'";
+
+$conn->query($query);
+
 ?>
 

@@ -1,7 +1,7 @@
 function changeNote(id)
 {
     let note_id = id - 1;
-    
+
     let text = document.getElementsByClassName('content')[note_id].innerHTML;
     let title = document.getElementsByClassName('title')[note_id].innerHTML;
     const note = document.getElementsByClassName('note')[note_id];
