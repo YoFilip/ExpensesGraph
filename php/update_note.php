@@ -5,7 +5,7 @@
 
     $conn = new mysqli($host, $db_user, $db_password, $db_name) or die("Błąd z połączeniem: ".$conn->errno);
 
-    $note_id = $_POST['id'];
+    $note_id = $_POST['btnId'];
     $content = $_POST['content'];
     $title = $_POST['title'];
 

@@ -8,15 +8,13 @@ function changeNote(id)
     
     let form = "<form action='../php/update_note.php' method='post'>";
     
-    let out = form.concat(`<input type='text' name='id' value='${id}' readonly style = 'width: .75rem;'>`,
-    "<h2 style='margin-bottom: 0;'>Zmień tytuł: </h2><br>" ,
+    let out = form.concat("<h2 style='margin-bottom: 0;'>Zmień tytuł: </h2><br>" ,
     `<input type='text' value='${title}' name='title'>`,
     `<h2 style = 'margin-bottom: 0;'>Zmień zawartość: </h2> <br> <textarea rows='3' cols='30' name='content'>${text}</textarea><br>`,
-    "<button type='submit'>Zmień notatkę</button>",
+    `<button type='submit' name='btnId' value='${id}'>Zmień notatkę</button>`,
     "</form>");
 
     note.innerHTML = out;
 
     note.innerHTML += `<form action='../php/delete_note.php' method='post'><button name='btn' value='${id}' type='submit'>Usuń notatkę</button></form>`;
-    // note.innerHTML += "AAA";
 }
