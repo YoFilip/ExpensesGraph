@@ -22,5 +22,11 @@ $query = "UPDATE notepad SET id = id - 1 WHERE id > '$note_id'";
 
 $conn->query($query);
 
+$queryHelp = $note_id - 1;
+
+$query = "ALTER TABLE notepad AUTO_INCREMENT = $queryHelp";
+
+$conn->query($query);
+
 ?>
 
