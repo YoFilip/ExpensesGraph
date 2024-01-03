@@ -138,7 +138,6 @@ $result = $connection->query($sql);
 </head>
 <body>
 
-
     <!-- Header section -->
     <section>
         <div class="header">
@@ -215,10 +214,16 @@ $result = $connection->query($sql);
             </div>
         </div>
     </section>
+    <div id="pdf">
+        <form action="../php/create_file.php">
+            <button type='submit' id='pdfBtn'>Pobierz PDF</button>
+        </form>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="../js/notifications.js"></script>
 <script>
+
 document.addEventListener('DOMContentLoaded', function() {
     var deleteButtons = document.querySelectorAll('.btn-delete');
     deleteButtons.forEach(function(button) {
