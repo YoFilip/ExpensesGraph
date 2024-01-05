@@ -114,6 +114,7 @@ header nav ul li a {
         height: 1500px;
         text-align: center;
         z-index: 1;
+        width: 105%;
     }
     header nav ul {
         display: block;
@@ -202,7 +203,7 @@ header nav ul li a {
     background: var(--white);
     border: 3px solid var(--border-black);
     flex: 1;    
-    height: 18rem;
+    height: auto;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -214,13 +215,9 @@ header nav ul li a {
     margin: 1rem;
     background: var(--white);
     border: 3px solid var(--white);
-    height: 80%;
-    width: 30%;
+
     margin: 1rem;
     color: var(--white);
-    text-align: center;
-    justify-content: center;
-    align-items: center;
     display: flex;
   }
   .card-03{
@@ -255,6 +252,9 @@ header nav ul li a {
     .card-03{
       flex: 100%;
       max-width: 600px;
+    }
+    .btn{
+      margin-bottom: 20px;
     }
   }
 

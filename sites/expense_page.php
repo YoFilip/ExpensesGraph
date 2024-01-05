@@ -71,7 +71,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         font-size: 45px;
     }
     .card-02{
-        height: 35rem;
+        height: 38rem;
+        max-width: 60%;
+        min-width: 354px;
     }
     select{
         border: 1px solid black;

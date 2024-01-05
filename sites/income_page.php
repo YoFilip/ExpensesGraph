@@ -72,6 +72,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     }
     .card-02{
         height: 35rem;
+        max-width: 60%;
+        min-width: 354px;
     }
 
     
@@ -122,8 +124,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <div class="container">
       
       <h1>Add Income Form</h1>
-      <div class="row">
-      </div>
+   
       <div class="row">
         <div class="card-02">
           

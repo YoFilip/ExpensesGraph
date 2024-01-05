@@ -171,7 +171,7 @@ $result = $connection->query($sql);
     <section>
         <div class="container">
             <h1>Your Raport</h1>
-            <div class="row">-
+            <div class="row">
             <div class="card-02">
                 <div class="charts">
                     <div class="item-chart"><div class="chart"></div></div>
@@ -180,9 +180,8 @@ $result = $connection->query($sql);
                 </div></div>
             </div>
             <div class="row">
-                <div class="card-02">
-                    <div class="notifications"></div>
-                    <table>
+                <div class="card-02" style="overflow-x:auto;">
+                    <table >
                         <tr>
                             <th>Date</th>
                             <th>Description</th>
@@ -216,7 +215,6 @@ $result = $connection->query($sql);
     </section>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script src="../js/notifications.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     var deleteButtons = document.querySelectorAll('.btn-delete');

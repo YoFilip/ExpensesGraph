@@ -266,7 +266,7 @@ var options = {
         tickAmount: <?php echo sizeof($dates);?>
         },
         title: {
-          text: 'Expenses',
+          text: 'ㅤ',
           align: 'center',
           offsetX: 14
         },
@@ -274,6 +274,7 @@ var options = {
           shared: true
         },
         legend: {
+        
           position: 'top',
           horizontalAlign: 'right',
           offsetX: -10
