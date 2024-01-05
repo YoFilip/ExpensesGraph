@@ -168,17 +168,22 @@ $result = $connection->query($sql);
             </div>
         </div>
     </section>
- 
+    
     <section>
         <div class="container">
             <h1>Your Raport</h1>
             <div class="row">
-            <div class="card-02">
-                <div class="charts">
-                    <div class="item-chart"><div class="chart"></div></div>
-                    <div class="item-chart"><div class="chart"></div></div>
-                    <div class="item-chart"><div class="chart"></div></div>
-                </div></div>
+                <div class="card-02">
+                    <div class="charts">
+                        <div class="item-chart"><div class="chart"></div></div>
+                        <div class="item-chart"><div class="chart"></div></div>
+                        <div class="item-chart"><div class="chart"></div></div>
+                    </div></div>
+                </div>
+                <div id="pdf">
+            <form action="../php/create_file.php">
+            <button class="btn btn-edit" type='submit' id='pdfBtn' target='_blank' style="width:300px;border:none;height:70px;margin:0;font-size:20px">Download Raport PDF</button>
+            </form>
             </div>
             <div class="row">
                 <div class="card-02" style="overflow-x:auto;">
@@ -210,11 +215,6 @@ $result = $connection->query($sql);
                         ?>
                     </table>
 
-                    <div id="pdf">
-        <form action="../php/create_file.php">
-            <button type='submit' id='pdfBtn' target='_blank'>Pobierz PDF</button>
-        </form>
-    </div>
                 
                 </div>
             </div>
