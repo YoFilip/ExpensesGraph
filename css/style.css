@@ -16,6 +16,7 @@
     --success: #00ac00;
 }
 
+
 * {
     margin: 0;
     padding: 0;
@@ -116,6 +117,7 @@ header nav ul li a {
         height: 1500px;
         text-align: center;
         z-index: 1;
+        width: 105%;
     }
     header nav ul {
         display: block;
@@ -128,7 +130,16 @@ header nav ul li a {
         margin: 5px 0;
         
     }
+    .note form input,textarea{
+      width: 200px;
+      margin-right: 2px;
+      margin-bottom: 2px;
+    }
+    .note form textarea{
+      width: 200px;
+    }
 }
+
 
 
 /*==========Main Container===============*/
@@ -204,7 +215,7 @@ header nav ul li a {
     background: var(--white);
     border: 3px solid var(--border-black);
     flex: 1;    
-    height: 18rem;
+    height: auto;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -216,13 +227,9 @@ header nav ul li a {
     margin: 1rem;
     background: var(--white);
     border: 3px solid var(--white);
-    height: 80%;
-    width: 30%;
+
     margin: 1rem;
     color: var(--white);
-    text-align: center;
-    justify-content: center;
-    align-items: center;
     display: flex;
   }
   .card-03{
@@ -257,6 +264,9 @@ header nav ul li a {
     .card-03{
       flex: 100%;
       max-width: 600px;
+    }
+    .btn{
+      margin-bottom: 20px;
     }
   }
 
@@ -417,3 +427,66 @@ header nav ul li a {
     width: 20%;
     border-radius: 10px;
   }
+
+
+
+
+  .note{
+    border: 3px solid var(--text);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  margin: 10px;
+  width: auto;
+  min-width: 80%;
+  max-width: 100px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+#root{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+form h2{
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+.notesBtn{
+  width: 120px;
+  height: 30px;
+  background-color: var(--text);
+  border: none;
+  color: #fff;
+  transition: all 1s; 
+  margin-bottom: 10px;
+}
+
+#formNone{
+  padding: 0;
+}
+.delateBtn{
+
+  width: 120px;
+  height: 30px;
+  background-color: var(--text);
+  border: none;
+  color: #fff;
+  transition: all 1s;
+  margin-bottom: 10px;
+}
+#changeForm{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+
+
+

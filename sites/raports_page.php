@@ -138,6 +138,7 @@ $result = $connection->query($sql);
 </head>
 <body>
 
+
     <!-- Header section -->
     <section>
         <div class="header">
@@ -167,22 +168,26 @@ $result = $connection->query($sql);
             </div>
         </div>
     </section>
- 
+    
     <section>
         <div class="container">
             <h1>Your Raport</h1>
-            <div class="row">-
-            <div class="card-02">
-                <div class="charts">
-                    <div class="item-chart"><div class="chart"></div></div>
-                    <div class="item-chart"><div class="chart"></div></div>
-                    <div class="item-chart"><div class="chart"></div></div>
-                </div></div>
-            </div>
             <div class="row">
                 <div class="card-02">
-                    <div class="notifications"></div>
-                    <table>
+                    <div class="charts">
+                        <div class="item-chart"><div class="chart"></div></div>
+                        <div class="item-chart"><div class="chart"></div></div>
+                        <div class="item-chart"><div class="chart"></div></div>
+                    </div></div>
+                </div>
+                <div id="pdf">
+            <form action="../php/create_file.php">
+            <button class="btn btn-edit" type='submit' id='pdfBtn' target='_blank' style="width:300px;border:none;height:70px;margin:0;font-size:20px">Download Raport PDF</button>
+            </form>
+            </div>
+            <div class="row">
+                <div class="card-02" style="overflow-x:auto;">
+                    <table >
                         <tr>
                             <th>Date</th>
                             <th>Description</th>
@@ -209,21 +214,16 @@ $result = $connection->query($sql);
                         }
                         ?>
                     </table>
+
                 
                 </div>
             </div>
         </div>
+
     </section>
-    <div id="pdf">
-        <form action="../php/create_file.php">
-            <button type='submit' id='pdfBtn' target='_blank'>Pobierz PDF</button>
-        </form>
-    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script src="../js/notifications.js"></script>
 <script>
-
 document.addEventListener('DOMContentLoaded', function() {
     var deleteButtons = document.querySelectorAll('.btn-delete');
     deleteButtons.forEach(function(button) {
@@ -258,7 +258,7 @@ if($result->num_rows > 0)
     $arr1[] = $row['total'];
 }
 
-$query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE e.user_id = '$user_id' AND e.expense_id = 1";
+$query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE e.user_id = '$user_id' AND e.expense_id = '1'";
 
 $arr2 = [];
 $result = $connection->query($query);
@@ -270,7 +270,7 @@ if($result->num_rows > 0)
     $arr2[] = $row['total'];
 }
 
-$query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE e.user_id = '$user_id' AND e.expense_id = 2";
+$query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE e.user_id = '$user_id' AND e.expense_id = '2'";
 
 $arr3 = [];
 $result = $connection->query($query);
@@ -285,7 +285,7 @@ if($result->num_rows > 0)
 ?>
 
 var options1 = {
-    series: [<?php echo $arr1[0] - $arr1[1];?>, <?php echo $arr1[1];?>],
+    series: [<?php echo $arr1[0];?>, <?php echo $arr1[1];?>],
     chart: {
         width: 380,
         type: 'pie',
