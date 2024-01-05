@@ -285,7 +285,7 @@ if($result->num_rows > 0)
 ?>
 
 var options1 = {
-    series: [<?php echo $arr1[0];?>, <?php echo $arr1[1];?>],
+    series: [<?php echo $arr1[0] - $arr1[1];?>, <?php echo $arr1[1];?>],
     chart: {
         width: 380,
         type: 'pie',
