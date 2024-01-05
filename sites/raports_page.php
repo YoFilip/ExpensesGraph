@@ -209,10 +209,17 @@ $result = $connection->query($sql);
                         }
                         ?>
                     </table>
+
+                    <div id="pdf">
+        <form action="../php/create_file.php">
+            <button type='submit' id='pdfBtn' target='_blank'>Pobierz PDF</button>
+        </form>
+    </div>
                 
                 </div>
             </div>
         </div>
+
     </section>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
