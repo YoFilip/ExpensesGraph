@@ -122,6 +122,6 @@ $pdf->Ln();
 $pdf->setFont('Arial', '', 14);
 
 $pdf->Write(10, "Work consumes ".round(($work * 100)/$sum)."% of your expenses while home consumes the remaining ".round(($home * 100)/$sum)."%.");
-$pdf->Output();
+$pdf->Output('D','raport.pdf');
 ?>
 								
