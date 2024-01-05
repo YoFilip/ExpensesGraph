@@ -163,10 +163,16 @@
                                     <a href="raports_page.php">Raports</a>
                                 </li>
                                 <li>
+                                    <a href="notepad.php">Notepad</a>
+                                </li>
+                                <li>
                                     <a href="income_page.php">Add Income</a>
                                 </li>
                                 <li>
                                     <a href="expense_page.php">Add Expense</a>
+                                </li>
+                                <li>
+                                    <a href="currency_page.php">Currency Calculator</a>
                                 </li>
                                 <li>
                                     <a href="../php/logout.php">Sign Out</a>
@@ -221,6 +227,7 @@
 <script>
 var chartDatasets = <?php echo json_encode($datasets); ?>;
 var options = {
+        colors: ['#007BFF', '#0F1626'], 
           series: chartDatasets,
           chart: {
           type: 'area',

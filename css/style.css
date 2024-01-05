@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@200&family=Changa:wght@300&family=Orbitron&family=Roboto:wght@500&display=swap');
 :root{
     --bg-color: #EEEEEE;
     --box-color:#fff;
@@ -27,6 +28,7 @@
     font-family: 'Changa', sans-serif;
     font-family: 'Orbitron', sans-serif;
     font-family: 'Roboto', sans-serif;
+    font-weight: bold;
 }
 body {
     background: var(--box-color);
