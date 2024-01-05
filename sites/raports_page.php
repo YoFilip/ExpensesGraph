@@ -258,7 +258,7 @@ if($result->num_rows > 0)
     $arr1[] = $row['total'];
 }
 
-$query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE e.user_id = '$user_id' AND e.expense_id = '1'";
+$query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE e.user_id = '$user_id' AND e.expense_id = 1";
 
 $arr2 = [];
 $result = $connection->query($query);
@@ -270,7 +270,7 @@ if($result->num_rows > 0)
     $arr2[] = $row['total'];
 }
 
-$query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE e.user_id = '$user_id' AND e.expense_id = '2'";
+$query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE e.user_id = '$user_id' AND e.expense_id = 2";
 
 $arr3 = [];
 $result = $connection->query($query);
