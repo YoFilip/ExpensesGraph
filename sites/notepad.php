@@ -35,7 +35,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
             form input {
                 margin-top: 10px;
-                width: 300px;
+                width: 325px;
                 height: 30px;
                 padding: 6px
             }
@@ -87,8 +87,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
             textarea {
                 resize: none;
-                width: 300px;
                 height: 100px;
+                width:325px;
             }
             #not-found{
                 font-size:30px;
@@ -97,69 +97,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             }
 
             .notesBtn{
-                margin-top:20px;
+                margin-top:30px;
             }
 
-            /*======Notes styles=======*/
-.note{
-    border: 3px solid var(--text);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  text-align: center;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-  margin: 10px;
-  width: auto;
-  min-width: 80%;
-  max-width: 100px;
-  padding: 10px;
-}
-#root{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-form h2{
-  margin-bottom: 15px;
-  margin-top: 20px;
-}
-
-.notesBtn{
-  width: 120px;
-  height: 30px;
-  background-color: var(--text);
-  border: none;
-  color: #fff;
-  transition: all 1s; 
-  margin-bottom: 10px;
-}
-
-#formNone{
-  padding: 0;
-}
-.delateBtn{
-  margin-top: -150px;
-  width: 120px;
-  height: 30px;
-  background-color: var(--text);
-  border: none;
-  color: #fff;
-  transition: all 1s;
-  margin-bottom: 10px;
-}
-#changeForm{
-    display: flex;
-    flex-wrap: wrap;
-    min-width: 500px;
-}
-.note #changeForm{
-
-}
-
-
-  
         </style>
     </head>
 

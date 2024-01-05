@@ -130,7 +130,16 @@ header nav ul li a {
         margin: 5px 0;
         
     }
+    .note form input,textarea{
+      width: 200px;
+      margin-right: 2px;
+      margin-bottom: 2px;
+    }
+    .note form textarea{
+      width: 200px;
+    }
 }
+
 
 
 /*==========Main Container===============*/
@@ -418,6 +427,66 @@ header nav ul li a {
     width: 20%;
     border-radius: 10px;
   }
+
+
+
+
+  .note{
+    border: 3px solid var(--text);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  margin: 10px;
+  width: auto;
+  min-width: 80%;
+  max-width: 100px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+#root{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+form h2{
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+.notesBtn{
+  width: 120px;
+  height: 30px;
+  background-color: var(--text);
+  border: none;
+  color: #fff;
+  transition: all 1s; 
+  margin-bottom: 10px;
+}
+
+#formNone{
+  padding: 0;
+}
+.delateBtn{
+
+  width: 120px;
+  height: 30px;
+  background-color: var(--text);
+  border: none;
+  color: #fff;
+  transition: all 1s;
+  margin-bottom: 10px;
+}
+#changeForm{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
 
 
 

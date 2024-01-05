@@ -11,10 +11,14 @@ function changeNote(id) {
         `<input type='text' value='${title}' name='title'>`,
         `<label>Zmień zawartość: </label> <br> <textarea rows='3' cols='30' name='content'>${text}</textarea><br>`,
         `<button class='notesBtn'type='submit' name='btnId' value='${id}'>Zmień notatkę</button>`,
+
         "</form>",
     );
+
+
 
     note.innerHTML = out;
 
     note.innerHTML += `<form id='formNone' action='../php/delete_note.php' method='post'><button class='delateBtn' name='btn' value='${id}' type='submit'>Usuń notatkę</button></form>`;
+
 }
