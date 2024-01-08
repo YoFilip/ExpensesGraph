@@ -176,8 +176,8 @@ $result = $connection->query($sql);
                 <div class="card-02">
                     <div class="charts">
                         <div class="item-chart"><div class="chart"></div></div>
-                        <div class="item-chart"><div class="chart"></div></div>
-                        <div class="item-chart"><div class="chart"></div></div>
+                        <!-- <div class="item-chart"><div class="chart"></div></div>
+                        <div class="item-chart"><div class="chart"></div></div> -->
                     </div></div>
                 </div>
                 <div id="pdf">
@@ -247,56 +247,78 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <?php 
 
-$query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE u.id = '$user_id' AND e.user_id = '$user_id'";
-$arr1 = [];
-$result = $connection->query($query);
-if($result->num_rows > 0)
-{
-    $row = $result->fetch_assoc();
+$valArr = [];
 
-    $arr1[] = $row['income'];
-    $arr1[] = $row['total'];
+for($i = 1; $i <= 4; ++$i)
+{
+    $sql = "SELECT SUM(amount) as sum FROM expenses WHERE user_id = '$user_id' AND expense_id = $i";
+
+    $res = $connection->query($sql);
+    
+    if($res)
+    {
+        $val = $res->fetch_assoc();
+        $valArr[] = $val['sum'];
+    }
 }
 
-$query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE e.user_id = '$user_id' AND e.expense_id = 1";
+$sum = 0;
 
-$arr2 = [];
-$result = $connection->query($query);
-if($result->num_rows > 0)
+foreach($valArr as $val)
 {
-    $row = $result->fetch_assoc();
-
-    $arr2[] = $row['income'];
-    $arr2[] = $row['total'];
+    $sum += $val;
 }
 
-$query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE e.user_id = '$user_id' AND e.expense_id = 2";
+$sql = "SELECT income FROM user WHERE id = '$user_id'";
 
-$arr3 = [];
-$result = $connection->query($query);
-if($result->num_rows > 0)
+$res = $connection->query($sql);
+
+if($res)
 {
-    $row = $result->fetch_assoc();
-
-    $arr3[] = $row['income'];
-    $arr3[] = $row['total'];
+    $val = $res->fetch_assoc();
+    $valArr[] = $val['income'];
 }
+
+
+
+// $query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE e.user_id = '$user_id' AND e.expense_id = 1";
+
+// $arr2 = [];
+// $result = $connection->query($query);
+// if($result->num_rows > 0)
+// {
+//     $row = $result->fetch_assoc();
+
+//     $arr2[] = $row['income'];
+//     $arr2[] = $row['total'];
+// }
+
+// $query = "SELECT u.income, SUM(e.amount) as total FROM user u, expenses e WHERE e.user_id = '$user_id' AND e.expense_id = 2";
+
+// $arr3 = [];
+// $result = $connection->query($query);
+// if($result->num_rows > 0)
+// {
+//     $row = $result->fetch_assoc();
+
+//     $arr3[] = $row['income'];
+//     $arr3[] = $row['total'];
+// }
 
 ?>
-
 var options1 = {
-    series: [<?php echo $arr1[0];?>, <?php echo $arr1[1];?>],
+    series: [<?php echo $valArr[0];?>, <?php echo $valArr[1];?>, <?php echo $valArr[2];?>, <?php echo $valArr[3];?>, <?php echo $valArr[4] - $sum;?>],
     chart: {
         width: 380,
         type: 'pie',
     },
-    labels: ['Income', 'Expenses'],
-    colors: ['#0F1626', '#007BFF'],  
+    labels: ['Fun', 'Home', 'Food', 'Health', 'Income'],
+    colors: ['#007BFF', '#EA031B', '#00DF61', '#EAE903', '#0F1626'],  
     responsive: [{
         breakpoint: 480,
         options: {
             chart: {
-                width: 200
+                width: 300
             },
             legend: {
                 position: 'center'
@@ -305,57 +327,15 @@ var options1 = {
     }]
 };
 
-var options2 = {
-    series: [<?php echo $arr2[0];?>, <?php echo $arr2[1];?>],
-    chart: {
-        width: 380,
-        type: 'pie',
-    },
-    labels: ['Income', 'Work'],
-    colors: ['#007BFF', '#0F1626'], 
-    responsive: [{
-        breakpoint: 480,
-        options: {
-            chart: {
-                width: 200
-            },
-            legend: {
-                position: 'bottom'
-            }
-        }
-    }]
-};
-
-var options3 = {
-    series: [<?php echo $arr3[0];?>, <?php echo $arr3[1];?>],
-    chart: {
-        width: 380,
-        type: 'pie',
-    },
-    labels: ['Income', 'Home'],
-    colors: ['#0F1626', '#007BFF'], 
-    responsive: [{
-        breakpoint: 480,
-        options: {
-            chart: {
-                width: 200
-            },
-            legend: {
-                position: 'bottom'
-            }
-        }
-    }]
-};
-
         // Income, expenes(* categories)
         var chart1 = new ApexCharts(document.getElementsByClassName("chart")[0], options1);
         // Income, expenses(1 categorie)
-        var chart2 = new ApexCharts(document.getElementsByClassName("chart")[1], options2);
+        // var chart2 = new ApexCharts(document.getElementsByClassName("chart")[1], options2);
         // Income, expenses(2 categorie) 
-        var chart3 = new ApexCharts(document.getElementsByClassName("chart")[2], options3);
+        // var chart3 = new ApexCharts(document.getElementsByClassName("chart")[2], options3);
         chart1.render();
-        chart2.render();
-        chart3.render();
+        // chart2.render();
+        // chart3.render();
 
 
 </script>

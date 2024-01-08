@@ -42,17 +42,17 @@
             return 0;
         } else {
 
-    $total_expenses = filter_var($total_expenses, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-    $total_income = filter_var($total_income, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+        $total_expenses = filter_var($total_expenses, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+        $total_income = filter_var($total_income, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
-    if (is_numeric($total_expenses) && is_numeric($total_income) && $total_income != 0) {
-        $percentage = (($total_expenses * 100) / $total_income) - 100;
-        $formatted_percentage = sprintf("%.5f", $percentage * (-1));
+        if (is_numeric($total_expenses) && is_numeric($total_income) && $total_income != 0) {
+            $percentage = (($total_expenses * 100) / $total_income) - 100;
+            $formatted_percentage = sprintf("%.5f", $percentage * (-1));
 
-        return number_format($formatted_percentage, 2, '.', '');
-    } else {
-        return 0;
-    }
+            return number_format($formatted_percentage, 2, '.', '');
+        } else {
+            return 0;
+        }
 
             
         }
@@ -78,17 +78,31 @@
         
         $dataArr1 = [];
         $dataArr2 = [];
+        $dataArr3 = [];
+        $dataArr4 = [];
 
         foreach ($expensesData as $expense) {
             $category_id = $expense['expense_id'];
             $date = $expense['date'];
             $amount = $expense['total'];
-
-            if($category_id == 1)
-                $dataArr1[] = [$date => $amount];
-            else if($category_id == 2)
-                $dataArr2[] = [$date => $amount];
+                
+            switch($category_id)
+            {
+                case 1:
+                     $dataArr1[] = [$date => $amount];
+                     break;
+                case 2:
+                     $dataArr2[] = [$date => $amount];
+                     break;
+                case 3: 
+                    $dataArr3[] = [$date => $amount];
+                    break;
+                case 4: 
+                    $dataArr4[] = [$date => $amount];
+                    break;
+            }
         }
+
         $data = [];
         foreach($dataArr1 as $d1 => $d1_val)
         {
@@ -101,9 +115,8 @@
         $datasets = [];
 
 
-
         $dataset1[] = [
-            'name' => 'Work',
+            'name' => 'Fun',
             'data' => $data
         ];
 
@@ -121,7 +134,35 @@
             'data' => $data 
         ];
 
-        $datasets = array_merge($dataset1, $dataset2);
+        $data = [];
+        foreach($dataArr3 as $d1 => $d1_val)
+        {
+            foreach($d1_val as $d => $d_val)
+            {
+                $data[] = [findIndex($dates, $d), $d_val];
+            }
+        }
+
+        $dataset3[] = [
+            'name' => 'Food',
+            'data' => $data
+        ];
+
+        $data = [];
+        foreach($dataArr4 as $d1 => $d1_val)
+        {
+            foreach($d1_val as $d => $d_val)
+            {
+                $data[] = [findIndex($dates, $d), $d_val];
+            }
+        }
+
+        $dataset4[] = [
+            'name' => 'Health',
+            'data' => $data
+        ];
+
+        $datasets = array_merge($dataset1, $dataset2, $dataset3, $dataset4);
 
 
     ?>
@@ -227,7 +268,7 @@
 <script>
 var chartDatasets = <?php echo json_encode($datasets); ?>;
 var options = {
-        colors: ['#007BFF', '#0F1626'], 
+        colors: ['#007BFF', '#EA031B', '#00DF61', '#EAE903'], 
           series: chartDatasets,
           chart: {
           type: 'area',
