@@ -65,7 +65,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         <input type="text" name='title' id='title'>
                         <label for="content">Description:</label>
                         <textarea type="text" name='content' id='content' rows="4" cols="40"></textarea>
-                        <button class="item-btn" type='submit'>Dodaj notatkę</button>
+                        <button class="item-btn" type='submit'>Add Note</button>
                     </form>
                     <div id="root">
                         <?php
@@ -80,7 +80,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                         <h2 class='title'>" . $row['title'] . "</h2>
                                         <p class='content'>" . $row['content'] . "</p>
                                         <p>" . $row['date'] . "</p>
-                                        <span class='changeBtn'><button class='notesBtn' id='" . $row['id'] . "' onclick='changeNote(this.id)'>Zmień notatkę</button></span>
+                                        <span class='changeBtn'><button class='notesBtn' id='" . $row['id'] . "' onclick='changeNote(this.id)'>Edit Note</button></span>
                                     </div>";
                             }
                         else
