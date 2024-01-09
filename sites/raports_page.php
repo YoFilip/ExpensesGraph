@@ -78,6 +78,7 @@ $result = $connection->query($sql);
                     <div class="charts">
                         <div class="item-chart">
                             <div class="chart"></div>
+                        
                         </div>
                     </div>
                 </div>
@@ -174,10 +175,10 @@ $result = $connection->query($sql);
             $valArr[] = $val['income'];
         }
 
-        $income = $valArr[0];
+        $income = $valArr[4];
         ?>
 
-        <?php if ($income >= 0): ?>
+        <?php if ($sum < $income):?>
             var options1 = {
                 series: [
                     <?php echo $valArr[0] ?? 0; ?>,
@@ -208,7 +209,7 @@ $result = $connection->query($sql);
             var chart1 = new ApexCharts(document.getElementsByClassName('chart')[0], options1);
             chart1.render();
         <?php else: ?>
-            document.querySelector('.chart').innerHTML = '<p>Twój dochód jest ujemny. Wykres nie może zostać wygenerowany.</p>';
+            document.getElementsByClassName('chart')[0].innerHTML = '<p class="error-chart">Your income is negative. The chart cannot be generated.</p>';
         <?php endif; ?>
     });
 </script>

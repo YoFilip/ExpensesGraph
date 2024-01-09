@@ -95,3 +95,8 @@ cursor: pointer;
 .btn:hover {
     background-color: #0056b3;
 }
+
+.error-chart{
+    color: red;
+    font-size: 30px;
+}
