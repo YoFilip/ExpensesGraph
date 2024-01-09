@@ -1,492 +1,474 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@200&family=Changa:wght@300&family=Orbitron&family=Roboto:wght@500&display=swap');
-:root{
-    --bg-color: #EEEEEE;
-    --box-color:#fff;
-    --shadow: #0F1626;
-    --shadow-p: #ffffff;
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@200&family=Changa:wght@300&family=Orbitron&family=Roboto:wght@500&display=swap");
+:root {
+	--bg-color: #eeeeee;
+	--box-color: #fff;
+	--shadow: #0f1626;
+	--shadow-p: #ffffff;
 
-    --black: #000;
-    --white: #fff;
-    --text: #0F1626;
+	--black: #000;
+	--white: #fff;
+	--text: #0f1626;
 
-    --cards-text: #0f16266e;
-    --border-black: #00000025;
+	--cards-text: #0f16266e;
+	--border-black: #00000025;
 
-    --error: #ff0000;
-    --success: #00ac00;
+	--error: #ff0000;
+	--success: #00ac00;
 }
-
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: "futura md bt";
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
-    
-    font-family: 'Barlow', sans-serif;
-    font-family: 'Changa', sans-serif;
-    font-family: 'Orbitron', sans-serif;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
+	margin: 0;
+	padding: 0;
+	font-family: "futura md bt";
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+
+	font-family: "Barlow", sans-serif;
+	font-family: "Changa", sans-serif;
+	font-family: "Orbitron", sans-serif;
+	font-family: "Roboto", sans-serif;
+	font-weight: bold;
 }
 body {
-    background: var(--box-color);
-    color: var(--text);
+	background: var(--box-color);
+	color: var(--text);
 }
 
 /*=========Header=============*/
 header {
-    background: #fff;
-    width: 100%;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    padding: 50px 0;
+	background: #fff;
+	width: 100%;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	padding: 50px 0;
 }
-header .material-symbols-outlined{
-    position: relative;
-    font-size: 30px;
+header .material-symbols-outlined {
+	position: relative;
+	font-size: 30px;
 }
-header h1{
-    margin-left: 9px;
+header h1 {
+	margin-left: 9px;
 }
 header nav ul {
-    display: flex;
-    margin-left: 30px;
+	display: flex;
+	margin-left: 30px;
 }
 
-
 header nav ul li a:hover {
-    background-color: var(--shadow);
-    color: var(--white);
-    padding: 5px 20px 5px 20px;
-    border-radius: 10px;
+	background-color: var(--shadow);
+	color: var(--white);
+	padding: 5px 20px 5px 20px;
+	border-radius: 10px;
 }
 
 header nav ul li a {
-    display: inline-block;
-    padding: 5px 10px 5px 10px;
-    margin: 0 10px;
-    border: 3px solid transparent;
-    text-transform: uppercase;
-    transition: 0.2s;
-    color: var(--text);
-    font-weight: 600;
+	display: inline-block;
+	padding: 5px 10px 5px 10px;
+	margin: 0 10px;
+	border: 3px solid transparent;
+	text-transform: uppercase;
+	transition: 0.2s;
+	color: var(--text);
+	font-weight: 600;
 }
 
 .hamburger {
-    cursor: pointer;
-    display: none;
+	cursor: pointer;
+	display: none;
 }
 .hamburger div {
-    width: 30px;
-    height: 3px;
-    margin: 5px 0;
-    background: #000;
+	width: 30px;
+	height: 3px;
+	margin: 5px 0;
+	background: #000;
 }
 @media only screen and (max-width: 900px) {
-    header {
-        padding: 0 30px;
-    }
+	header {
+		padding: 0 30px;
+	}
 }
 @media only screen and (max-width: 700px) {
-    .hamburger {
-        display: block;
-        position: absolute;
-        right: 10px; 
-        top: 30%;
-         
-    }
-    header nav {
-        position: absolute;
-        width: 100%;
-        height: 200%;
-        left: -150%;
-        top: 70px;
-        width: 100%;
-        background: var(--white);
-        padding: 30px;
-        transition: 0.3s;
-        z-index: 1;
-       
-    }
-    header #nav_check:checked ~ nav {
-        left: 0;
-        height: 1500px;
-        text-align: center;
-        z-index: 1;
-        width: 105%;
-    }
-    header nav ul {
-        display: block;
-        margin: 0;
-    }
-    header nav ul li{
-        background-color: none;
-    }
-    header nav ul li a {
-        margin: 5px 0;
-        
-    }
-    .note form input,textarea{
-      width: 200px;
-      margin-right: 2px;
-      margin-bottom: 2px;
-    }
-    .note form textarea{
-      width: 200px;
-    }
+	.hamburger {
+		display: block;
+		position: absolute;
+		right: 10px;
+		top: 30%;
+	}
+	header nav {
+		position: absolute;
+		width: 100%;
+		height: 200%;
+		left: -150%;
+		top: 70px;
+		width: 100%;
+		background: var(--white);
+		padding: 30px;
+		transition: 0.3s;
+		z-index: 1;
+	}
+	header #nav_check:checked ~ nav {
+		left: 0;
+		height: 1500px;
+		text-align: center;
+		z-index: 1;
+		width: 105%;
+	}
+	header nav ul {
+		display: block;
+		margin: 0;
+	}
+	header nav ul li {
+		background-color: none;
+	}
+	header nav ul li a {
+		margin: 5px 0;
+	}
+	.note form input,
+	textarea {
+		width: 200px;
+		margin-right: 2px;
+		margin-bottom: 2px;
+	}
+	.note form textarea {
+		width: 200px;
+	}
 }
-
-
 
 /*==========Main Container===============*/
 
-.container,.header{
-    margin: 20px;
-  }
-  .container h1{
-    margin-top: 30px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 50px;
-
-  }
-  
-  .row{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .card-01{
-    background: var(--box-color);
-    border: 3px solid var(--border-black);
-    position: relative;
-    flex: 1;
-    max-width: 30rem;
-    height: 13rem;
-    margin: 1rem;
-    border-radius: 10px;
-  }
-  .card-01 h4{
-    font-size: 20px;
-    color: var(--cards-text);
-    padding: 60px 0px 0px 50px;
-  }
-  .card-01 p{
-    font-size: 50px;
-    color: var(--text);
-    padding: 10px 0px 0px 50px;
-  }
-
-  .percentage-change {
-    position: absolute;
-    top: 65%;
-    right: 20px;
-    transform: translateY(-50%);
-    color: #000000;
-    border: 1px solid black;
-    padding: 2px 10px 2px 10px;
-    border-radius: 10px;
-    margin-right: 30px;
+.container,
+.header {
+	margin: 20px;
 }
-  .percentage-change span {
-    font-weight: bold;
-    font-size: 15px;
-  }
-  
-
-  .card-02{
-    background: var(--box-color);
-    border: 3px solid var(--border-black);
-    position: relative;
-    flex: 1;
-    max-width: 80%;
-    margin: 1rem;
-    border-radius: 10px;
-    
-  }
-
-  .charts{
-    background: var(--white);
-    border: 3px solid var(--border-black);
-    flex: 1;    
-    height: auto;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .charts .item-chart{
-    margin: 1rem;
-    background: var(--white);
-    border: 3px solid var(--white);
-
-    margin: 1rem;
-    color: var(--white);
-    display: flex;
-  }
-  .card-03{
-    position: relative;
-    flex: 1;
-    max-width: 80%
-  }
-
-  #myChart{
-    max-width: auto;
-    margin: 55px 35px 35px 35px;
-  }
-
-  #error_message{
-    color: var(--error);
-  }
-  #success_message{
-    color: var(--success);
-  }
-  
-  @media (max-width:800px){
-    .card-01{
-      flex: 100%;
-      max-width: 600px;
-    }
-  
-    .card-02{
-      flex: 100%;
-      max-width: 600px;
-    }
-  
-    .card-03{
-      flex: 100%;
-      max-width: 600px;
-    }
-    .btn{
-      margin-bottom: 20px;
-    }
-  }
-
-  .item-btn{
-    margin-top: 10px;
-  }
-
-  form input[type="submit"]{
-    margin-top: 10px;
-  }
-  form label{
-    margin-top: 10px;
-  }
-  select{
-    width: 65px;
-    text-align: center;
-    background-color: var(--black);
-    color: var(--white);
-    margin-top: 10px;
-    height: 30px;
-  }
-
-
-  /*====Popup Cookie===*/
-  
-  body.active {
-    overflow: hidden;
-  }
-  
-  .blur-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #00000080; 
-    backdrop-filter: blur(5px); 
-    z-index: 8; 
-  }
-
-  .popup {
-    display: none;
-    position: fixed;
-    background-color: var(--white);
-    border-radius: 5px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9;
-    padding: 50px;
-  }
-  
-  .close-button{
-    cursor: pointer;
-    background:var(--black);
-    color:var(--white);
-    border-radius:5px;
-    padding:10px;
-    border:none;
-  }
-  .popup h1,p,button{
-    padding: 5px;
-
-  }
-  .popup button{
-    margin-left: 5px;
-    margin-top: 10px;
-  }
-
-  
-
-
-
-  /*==========Notifications styles=======================*/
-
-  .notifications{
-    position: fixed;
-    top: 30px;
-    right: 20px;
-  }
-  .toast{
-      position: relative;
-      padding: 10px;
-      color: var(--white);
-      margin-bottom: 10px;
-      width: 500px;
-      height: 75px;
-      display: grid;
-      grid-template-columns: 70px 1fr 70px;
-      --color: var(--success);
-      background-color: var(--text) ;
-      margin-left: 10px;
-      animation: show 0.3s ease 1 forwards  
-  }
-  .toast i{
-      color: var(--color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: x-large;
-  }
-  .toast .title{
-      font-size: x-large;
-      font-weight: bold;
-  }
-  .toast span, .toast i:nth-child(3){
-      color: var(--white);
-  }
-  @keyframes show{
-      0%{
-          transform: translateX(100%);
-      }
-      40%{
-          transform: translateX(-5%);
-      }
-      80%{
-          transform: translateX(0%);
-      }
-      100%{
-          transform: translateX(-10%);
-      }
-  }
-  .toast::before{
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      background-color: var(--color);
-      width: 100%;
-      height: 3px;
-      content: '';
-      box-shadow: 0 0 10px var(--color);
-      animation: timeOut 5s linear 1 forwards;
-      border-radius: 25px;
-  }
-  @keyframes timeOut{
-      to{
-          width: 0;
-      }
-  }
-  .toast.error{
-      --color: var(--error);
-      background-color: var(--text);   
-  }
-
-
-  /*=====RAPORTS Styles=======*/
-  table{
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 10px;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  tr,th,td{
-    padding: 20px;
-    border: 3px solid var(--border-black);
-    width: 20%;
-    border-radius: 10px;
-  }
-
-
-
-
-  .note{
-    border: 3px solid var(--text);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  text-align: center;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-  margin: 10px;
-  width: auto;
-  min-width: 80%;
-  max-width: 100px;
-  padding: 10px;
-  justify-content: center;
-  align-items: center;
-}
-#root{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-form h2{
-  margin-bottom: 15px;
-  margin-top: 20px;
+.container h1 {
+	margin-top: 30px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 50px;
 }
 
-.notesBtn{
-  width: 120px;
-  height: 30px;
-  background-color: var(--text);
-  border: none;
-  color: #fff;
-  transition: all 1s; 
-  margin-bottom: 10px;
+.row {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
-#formNone{
-  padding: 0;
+.card-01 {
+	background: var(--box-color);
+	border: 3px solid var(--border-black);
+	position: relative;
+	flex: 1;
+	max-width: 30rem;
+	height: 13rem;
+	margin: 1rem;
+	border-radius: 10px;
 }
-.delateBtn{
-
-  width: 120px;
-  height: 30px;
-  background-color: var(--text);
-  border: none;
-  color: #fff;
-  transition: all 1s;
-  margin-bottom: 10px;
+.card-01 h4 {
+	font-size: 20px;
+	color: var(--cards-text);
+	padding: 60px 0px 0px 50px;
 }
-#changeForm{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
+.card-01 p {
+	font-size: 50px;
+	color: var(--text);
+	padding: 10px 0px 0px 50px;
 }
 
+.percentage-change {
+	position: absolute;
+	top: 65%;
+	right: 20px;
+	transform: translateY(-50%);
+	color: #000000;
+	border: 1px solid black;
+	padding: 2px 10px 2px 10px;
+	border-radius: 10px;
+	margin-right: 30px;
+}
+.percentage-change span {
+	font-weight: bold;
+	font-size: 15px;
+}
 
+.card-02 {
+	background: var(--box-color);
+	border: 3px solid var(--border-black);
+	position: relative;
+	flex: 1;
+	max-width: 80%;
+	margin: 1rem;
+	border-radius: 10px;
+}
 
+.charts {
+	background: var(--white);
+	border: 3px solid var(--border-black);
+	flex: 1;
+	height: auto;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.charts .item-chart {
+	margin: 1rem;
+	background: var(--white);
+	border: 3px solid var(--white);
 
+	margin: 1rem;
+	color: var(--white);
+	display: flex;
+}
+.card-03 {
+	position: relative;
+	flex: 1;
+	max-width: 80%;
+}
+
+#myChart {
+	max-width: auto;
+	margin: 55px 35px 35px 35px;
+}
+
+#error_message {
+	color: var(--error);
+}
+#success_message {
+	color: var(--success);
+}
+
+@media (max-width: 800px) {
+	.card-01 {
+		flex: 100%;
+		max-width: 600px;
+	}
+
+	.card-02 {
+		flex: 100%;
+		max-width: 600px;
+	}
+
+	.card-03 {
+		flex: 100%;
+		max-width: 600px;
+	}
+	.btn {
+		margin-bottom: 20px;
+	}
+}
+
+.item-btn {
+	margin-top: 10px;
+}
+
+form input[type="submit"] {
+	margin-top: 10px;
+}
+form label {
+	margin-top: 10px;
+}
+select {
+	width: 130px;
+	text-align: center;
+	background-color: var(--black);
+	color: var(--white);
+	margin-top: 10px;
+	height: 30px;
+}
+
+/*====Popup Cookie===*/
+
+body.active {
+	overflow: hidden;
+}
+
+.blur-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #00000080;
+	backdrop-filter: blur(5px);
+	z-index: 8;
+}
+
+.popup {
+	display: none;
+	position: fixed;
+	background-color: var(--white);
+	border-radius: 5px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 9;
+	padding: 50px;
+}
+
+.close-button {
+	cursor: pointer;
+	background: var(--black);
+	color: var(--white);
+	border-radius: 5px;
+	padding: 10px;
+	border: none;
+}
+.popup h1,
+p,
+button {
+	padding: 5px;
+}
+.popup button {
+	margin-left: 5px;
+	margin-top: 10px;
+}
+
+/*==========Notifications styles=======================*/
+
+.notifications {
+	position: fixed;
+	top: 30px;
+	right: 20px;
+}
+.toast {
+	position: relative;
+	padding: 10px;
+	color: var(--white);
+	margin-bottom: 10px;
+	width: 500px;
+	height: 75px;
+	display: grid;
+	grid-template-columns: 70px 1fr 70px;
+	--color: var(--success);
+	background-color: var(--text);
+	margin-left: 10px;
+	animation: show 0.3s ease 1 forwards;
+}
+.toast i {
+	color: var(--color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: x-large;
+}
+.toast .title {
+	font-size: x-large;
+	font-weight: bold;
+}
+.toast span,
+.toast i:nth-child(3) {
+	color: var(--white);
+}
+@keyframes show {
+	0% {
+		transform: translateX(100%);
+	}
+	40% {
+		transform: translateX(-5%);
+	}
+	80% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(-10%);
+	}
+}
+.toast::before {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: var(--color);
+	width: 100%;
+	height: 3px;
+	content: "";
+	box-shadow: 0 0 10px var(--color);
+	animation: timeOut 5s linear 1 forwards;
+	border-radius: 25px;
+}
+@keyframes timeOut {
+	to {
+		width: 0;
+	}
+}
+.toast.error {
+	--color: var(--error);
+	background-color: var(--text);
+}
+
+/*=====RAPORTS Styles=======*/
+table {
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 10px;
+	border-collapse: collapse;
+	width: 100%;
+}
+tr,
+th,
+td {
+	padding: 20px;
+	border: 3px solid var(--border-black);
+	width: 20%;
+	border-radius: 10px;
+}
+
+.note {
+	border: 3px solid var(--text);
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	text-align: center;
+	margin-bottom: 30px;
+	flex-wrap: wrap;
+	margin: 10px;
+	width: auto;
+	min-width: 80%;
+	max-width: 100px;
+	padding: 10px;
+	justify-content: center;
+	align-items: center;
+}
+#root {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+form h2 {
+	margin-bottom: 15px;
+	margin-top: 20px;
+}
+
+.notesBtn {
+	width: 120px;
+	height: 30px;
+	background-color: var(--text);
+	border: none;
+	color: #fff;
+	transition: all 1s;
+	margin-bottom: 10px;
+}
+
+#formNone {
+	padding: 0;
+}
+.delateBtn {
+	width: 120px;
+	height: 30px;
+	background-color: var(--text);
+	border: none;
+	color: #fff;
+	transition: all 1s;
+	margin-bottom: 10px;
+}
+#changeForm {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0;
+}
