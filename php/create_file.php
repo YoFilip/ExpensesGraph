@@ -106,7 +106,7 @@ $tipsArr = [
 ];
 
 // Query to retrieve expenses data along with category title
-$res = $conn->query(
+$resData = $conn->query(
     "SELECT expenses.*, categories.title AS category_title 
     FROM expenses 
     JOIN categories ON expenses.expense_id = categories.categorie_id 
@@ -118,6 +118,15 @@ $pdf->setFont('Arial', 'B', 30);
 
 $pdf->Cell(0, 10, utf8_decode("User report"), 0, 1, "C");
 $pdf->Ln();
+
+$res = $conn->query("SELECT income FROM user WHERE id = '$user_id'");
+
+$income = 0;
+if($res)
+{
+    $val = $res->fetch_assoc();
+    $income = $val['income'];
+}
 
 $pdf->setFont('Arial', 'B', 20);
 $pdf->Cell(0, 10, "Your expenses: ", 0, 1);
@@ -137,8 +146,8 @@ $pdf->Cell($col_length, $col_height, "Category", 1, 0, 'C');
 $pdf->Cell($col_length, $col_height, "Date", 1, 1, 'C');
 
 // Displaying expense data in the PDF
-if ($res) {
-    foreach ($res as $row) {
+if ($resData) {
+    foreach ($resData as $row) {
         $pdf->Cell($col_length, $col_height, $row['description'], 1, 0, 'C');
         $pdf->Cell($col_length, $col_height, $row['amount'] . "pln", 1, 0, 'C');
         $pdf->Cell($col_length, $col_height, $row['category_title'], 1, 0, 'C');
@@ -148,16 +157,19 @@ if ($res) {
 
 $pdf->Ln();
 
+
+if($income < $sum)
+{
+    $pdf->Write(10, "Your income is less than your expenses. You should start thinking how to optimize your expenses!");
+    $pdf->Ln();
+}
+
 // Query to retrieve user income
 $res = $conn->query("SELECT income FROM user WHERE id = '$user_id'");
 
-$income = [];
-
 // Calculate user income
-if ($res) {
-    $income = $res->fetch_assoc();
-    $income['income'] = (int)$income['income'];
-    $pdf->Cell(0, 10, "Income: " . $income['income'] . "pln");
+if ($income != NULL) {
+    $pdf->Cell(0, 10, "Income: " . $income . "pln");
 } else {
     $pdf->Cell(0, 10, "Income: None");
     $pdf->Output();
@@ -168,15 +180,23 @@ $pdf->Ln();
 $pdf->setFont('Arial', '', 15);
 $pdf->Cell(0, 10, "Expenses: " . $sum . "pln");
 $pdf->Ln();
-$pdf->Write(10, "Account balance: " . ($income['income'] - $sum) . "pln");
+$pdf->Write(10, "Account balance: " . ($income - $sum) . "pln");
 $pdf->Ln();
 $pdf->Ln();
 
-$percentage = ($sum * 100) / $income['income'];
+if($income != 0)
+{
+    $percentage = ($sum * 100) / $income;
+    $pdf->Cell(0, 10, "Your expenses consume " . $percentage . "% of your income.", 0, 0, 'C');
+    $pdf->Ln();
+    $pdf->Ln();
+}
+else{
+    $pdf->Cell(0, 10, "Your income is 0 therefore couldnt generate percentage!", 0, 0, 'C');
+    $pdf->Ln();
+    $pdf->Ln();
+}
 
-$pdf->Cell(0, 10, "Your expenses consume " . $percentage . "% of your income.", 0, 0, 'C');
-$pdf->Ln();
-$pdf->Ln();
 
 // Displaying a random tip based on the category with the highest expenses
 generateTip($pdf, getMaxIndexValue($sumArr), $tipsArr);
@@ -186,13 +206,16 @@ $pdf->Ln();
 
 $pdf->setFont('Arial', '', 14);
 
-$text = "Expense percentages:
--Fun consumes " . round(($sumArr[0] * 100) / $sum) . "%;
--home consumes " . round(($sumArr[1] * 100) / $sum) . "%;
--food consumes " . round(($sumArr[2] * 100) / $sum) . "%;
--health consumes " . round(($sumArr[3] * 100) / $sum) . "%";
+if($income > $sum)
+{
+    $text = "Expense percentages:
+    -Fun consumes " . round(($sumArr[0] * 100) / $sum) . "%;
+    -home consumes " . round(($sumArr[1] * 100) / $sum) . "%;
+    -food consumes " . round(($sumArr[2] * 100) / $sum) . "%;
+    -health consumes " . round(($sumArr[3] * 100) / $sum) . "%";
+    $pdf->Write(10, $text);
+}
 
-$pdf->Write(10, $text);
 
 // Output the PDF as a download
 $pdf->Output('D', 'report.pdf');
