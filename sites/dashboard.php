@@ -29,7 +29,7 @@ require_once "../php/dashboard_php.php";
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/scrollbar.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    
+    <link rel="icon" href="../favicon.ico" type="image/icon">
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 <body>
