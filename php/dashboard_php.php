@@ -109,7 +109,7 @@ function findIndex(array $arr, $val): int {
 function getCategoryName(int $categoryId): string {
     switch($categoryId) {
         case 1:
-            return 'Fun';
+            return 'Entertainment';
         case 2:
             return 'Home';
         case 3:

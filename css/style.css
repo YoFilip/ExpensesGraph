@@ -88,6 +88,9 @@ header nav ul li a {
 	header {
 		padding: 0 30px;
 	}
+	#none{
+		display: none;
+	}
 }
 @media only screen and (max-width: 700px) {
 	.hamburger {
@@ -134,6 +137,10 @@ header nav ul li a {
 	.note form textarea {
 		width: 200px;
 	}
+	#none{
+		display: none;
+	}
+
 }
 
 /*==========Main Container===============*/
@@ -249,7 +256,7 @@ header nav ul li a {
 	}
 
 	.card-02 {
-		flex: 100%;
+
 		max-width: 600px;
 	}
 
@@ -259,6 +266,9 @@ header nav ul li a {
 	}
 	.btn {
 		margin-bottom: 20px;
+	}
+	#none{
+		display: none;
 	}
 }
 

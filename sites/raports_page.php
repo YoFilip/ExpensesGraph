@@ -74,7 +74,7 @@ $result = $connection->query($sql);
     <section>
         <div class="container">
             <h1>Your Raport</h1>
-            <div class="row">
+            <div class="row" id="none">
                 <div class="card-02">
                     <div class="charts">
                         <div class="item-chart">
@@ -192,7 +192,7 @@ $result = $connection->query($sql);
                     width: 380,
                     type: 'pie',
                 },
-                labels: ['Fun', 'Home', 'Food', 'Health', 'Income'],
+                labels: ['Entertainment', 'Home', 'Food', 'Health', 'Income'],
                 colors: ['#007BFF', '#EA031B', '#00DF61', '#EAE903', '#0F1626'],
                 responsive: [{
                     breakpoint: 480,
