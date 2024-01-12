@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/scrollbar.css">
     <link rel="stylesheet" href="../css/currency.css">
-    <link rel="icon" href="../favicon.ico" type="image/icon">
+    <link rel="icon" href="../favicon.png" type="image/icon">
     <title>ExpensesGraph</title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
@@ -96,5 +96,5 @@
     </div>
 </section>
 </body>
-    <script src="exchangerates.js"></script>
+    <script src="../js/exchangerates.js"></script>
 </html>

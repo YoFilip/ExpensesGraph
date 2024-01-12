@@ -1,5 +1,5 @@
 function updateExchangeRates() {
-    var apiKey = 'bf07853c4b1f54b8310b3b15';
+    var apiKey = '52d3f61b1851bf3d7ce21361';
     var fromCurrency = document.getElementById('from-currency').value;
     var exchangeRatesUrl = 'https://v6.exchangerate-api.com/v6/' + apiKey + '/latest/' + fromCurrency;
 
@@ -11,6 +11,7 @@ function updateExchangeRates() {
             tableBody.innerHTML = '';
 
             for (var currency in rates) {
+
                 var row = tableBody.insertRow();
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
@@ -23,13 +24,13 @@ function updateExchangeRates() {
         });
 }
 
-setInterval(updateExchangeRates, 250);
+setInterval(updateExchangeRates, 300000000000);
 
 function calculateCurrency() {
     var amount = document.getElementById('amount').value;
     var fromCurrency = document.getElementById('from-currency').value;
     var toCurrency = document.getElementById('to-currency').value;
-    var apiKey = 'bf07853c4b1f54b8310b3b15';
+    var apiKey = '52d3f61b1851bf3d7ce21361';
     var apiUrl = 'https://v6.exchangerate-api.com/v6/' + apiKey + '/latest/' + fromCurrency;
 
     fetch(apiUrl)
@@ -42,4 +43,5 @@ function calculateCurrency() {
         .catch(error => {
             console.error('Error fetching exchange rates:', error);
         });
-}
+    updateExchangeRates();
+};
