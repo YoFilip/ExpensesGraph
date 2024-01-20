@@ -1,5 +1,5 @@
 function updateExchangeRates() {
-    var apiKey = '374dd95e97da0106b314c6bb';
+    var apiKey = 'Your_api_kay';
     var fromCurrency = document.getElementById('from-currency').value;
     var exchangeRatesUrl = 'https://v6.exchangerate-api.com/v6/' + apiKey + '/latest/' + fromCurrency;
 
@@ -30,7 +30,7 @@ function calculateCurrency() {
     var amount = document.getElementById('amount').value;
     var fromCurrency = document.getElementById('from-currency').value;
     var toCurrency = document.getElementById('to-currency').value;
-    var apiKey = '374dd95e97da0106b314c6bb';
+    var apiKey = 'Your_api_kay';
     var apiUrl = 'https://v6.exchangerate-api.com/v6/' + apiKey + '/latest/' + fromCurrency;
 
     fetch(apiUrl)
