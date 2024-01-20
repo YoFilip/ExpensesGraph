@@ -1,7 +1,14 @@
 # 💹 Expenses Graph - Comprehensive Expense Management System
 
+> [!WARNING]
+> **The official files are on the Main and YoFilip branches, it is recommended to download the zip with the project from Main!!!**
+
+
 ## 📝 Project Description
 "Expenses Graph" is a sophisticated web application tailored for meticulous expense tracking and financial management. It offers an intuitive platform for users to record and analyze their financial activities through interactive charts and comprehensive data visualization. The system is designed to cater to different expense categories such as Home, Food, Entertainment, and Health, making it a versatile tool for personal finance management.
+
+
+**Thank you for your attention!**
 
 ## 🌟 Features
 - 📊 Interactive charts for visualizing expenses.
