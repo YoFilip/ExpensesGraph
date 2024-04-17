@@ -1,0 +1,102 @@
+form {
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--text);
+    width: auto;
+    height: auto;
+    padding: 78px 106px;
+}
+
+form input {
+    margin-top: 10px;
+    width: 300px;
+    height: 30px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+form input[type=email], input[type=password] {
+    text-transform: lowercase;
+}
+
+form input[type=email]:hover, input[type=password]:hover {
+    border: 1px solid var(--text);
+}
+
+form button.item-btn {
+    width: 300px;
+    height: 40px;
+    background-color: var(--text);
+    border: none;
+    color: #fff;
+    transition: all 1s;
+}
+
+form button.item-btn:hover {
+    width: 325px;
+    height: 50px;
+}
+
+form label {
+    margin-bottom: 10px;
+}
+
+#login_a {
+    margin-top: 20px;
+    color: var(--text);
+    text-decoration: underline;
+}
+
+.material-symbols-outlined {
+    font-size: 45px;
+}
+
+.card-02 {
+    height: auto;
+    border: none;
+
+}
+
+#delete-btn, #edit-btn {
+    width: 100px;
+    height: 40px;
+    margin: 7px;
+    border: none;
+    border-radius: 5px;
+}
+
+#delete-btn {
+    background: red;
+}
+
+#edit-btn {
+    background: #F0AE4C;
+}
+
+.popup{
+    border: 1px solid black;
+}
+
+.btn {
+display: inline-block;
+padding: 8px 20px;
+background-color: #007bff;
+color: white;
+text-align: center;
+border-radius: 5px;
+text-decoration: none;
+margin-right:20px;
+cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.error-chart{
+    color: red;
+    font-size: 30px;
+}

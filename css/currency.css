@@ -1,0 +1,103 @@
+form {
+	background-color: var(--white);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	color: var(--text);
+	width: auto;
+	height: auto;
+	padding: 100px 150px 50px 150px;
+}
+
+form input {
+	margin-top: 10px;
+	width: 300px;
+	height: 30px;
+	padding: 6px;
+}
+
+form input[type="email"],
+input[type="password"] {
+	text-transform: lowercase;
+}
+
+form input[type="email"]:hover,
+input[type="password"]:hover {
+	border: 1px solid var(--text);
+}
+
+form select {
+	margin-top: 30px;
+	width: 140px;
+	height: 30px;
+	padding: 6px;
+	margin-right: 5px;
+}
+
+form .select-container {
+	display: flex;
+	justify-content: space-between;
+	width: 300px;
+}
+
+form button.item-btn {
+	width: 300px;
+	height: 40px;
+	background-color: var(--text);
+	border: none;
+	color: #fff;
+	transition: all 1s;
+	margin-top: 20px;
+}
+
+form button.item-btn:hover {
+	width: 325px;
+	height: 50px;
+}
+
+form label {
+	margin-bottom: 10px;
+}
+
+#login_a {
+	margin-top: 20px;
+	color: var(--text);
+	text-decoration: underline;
+}
+
+.material-symbols-outlined {
+	font-size: 45px;
+}
+
+.card-02 {
+	height: auto;
+	padding: 30px;
+}
+
+#result {
+	margin-top: 20px;
+	text-align: center;
+	font-size: 40px;
+	margin-bottom: 20px;
+}
+
+#exchange-rates-table {
+	margin-top: 20px;
+	border-collapse: collapse;
+	width: 80%;
+	margin: 0 auto;
+}
+
+#exchange-rates-table th,
+#exchange-rates-table td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+}
+
+#exchange-rates-table th {
+	background-color: var(--text);
+	color: #fff;
+	border-radius: 0;
+}
